@@ -1,4 +1,12 @@
-import { CategoryPage, Editor, Home, Login, Post, Search } from "./pages/index";
+import {
+  CategoryPage,
+  Editor,
+  Home,
+  Login,
+  Post,
+  Search,
+  About,
+} from "./pages/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 
@@ -9,9 +17,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/category" element={<CategoryPage />} />
-          <Route path="/editor" element={<Editor />} />
           <Route path="/login" element={<Login />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/about" element={<About />} />
           <Route path="/post/:postId" element={<Post />} />
         </Route>
       </Routes>

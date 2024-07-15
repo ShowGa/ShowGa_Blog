@@ -1,3 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   box-sizing: border-box;
+  font-family: "Comfortaa", sans-serif;
+  /* font-family: "Knewave", cursive; */
+}
+
+/* NavBar */
+.lan_dropdown {
+  opacity: 0;
+  min-width: 150px;
+  min-height: 120px;
+  right: 0;
+  top: 60px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+  color: white;
+
+  transition: all;
+  transition-duration: 200ms;
+}
+.lan_dropdown_on {
+  opacity: 1;
+  top: 45px;
+}
+
+/* ================ Miscellaneous Effect ================= */
+
+/* linear-gradient */
+.red_blue_LG {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 14, 6, 1) 0%,
+    rgba(7, 103, 227, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hover effect */
+.navBtnHoverEffect:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 14, 6, 1) 0%,
+    rgba(7, 103, 227, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
