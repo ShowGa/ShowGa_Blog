@@ -4,22 +4,23 @@ import { Link } from "react-router-dom";
 // icon
 import { RiGlobalFill } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
+import { SiBurgerking } from "react-icons/si";
 
 const Header = ({ changeLanguage }) => {
   const [lanBtnActive, setLanBtnActive] = useState(false);
-  console.log(lanBtnActive);
+  const [burgerBtnActive, setBurgerBtnActive] = useState(false);
 
   return (
     <header className="flex justify-between items-center px-6 h-16 ">
       <div className="flex items-center">
-        <img src={showGaB} alt="ShowGa Logo" className="h-10" />
+        <img src={showGaB} alt="ShowGa Logo" className="h-12" />
         <p className="comfortaa text-xl font-bold">
           <span className="red_blue_LG">ShowGa's </span>Blog
         </p>
       </div>
 
-      <nav className="flex gap-3">
-        <ul className="flex gap-3 items-center">
+      <nav className="flex items-center gap-3 h-full">
+        <ul className="navList flex gap-3 items-center">
           <Link to={"/"} className="navBtnHoverEffect cursor-pointer">
             Home
           </Link>
@@ -31,23 +32,54 @@ const Header = ({ changeLanguage }) => {
           </Link>
         </ul>
 
-        <Link to={"/search"}>
-          <FiSearch className="text-2xl cursor-pointer transition-all duration-200 hover:text-blue-500" />
-        </Link>
-
-        <div className="relative">
-          <RiGlobalFill
-            onClick={() => {
-              setLanBtnActive(!lanBtnActive);
-            }}
-            className={`text-2xl cursor-pointer transition-all duration-200 ${
-              lanBtnActive ? "text-blue-500" : ""
+        <div
+          onMouseEnter={() => setBurgerBtnActive(!burgerBtnActive)}
+          onMouseLeave={() => setBurgerBtnActive(!burgerBtnActive)}
+          className="relative h-full flex items-center"
+        >
+          <SiBurgerking
+            className={`burger text-3xl cursor-pointer transition-all duration-200 ${
+              burgerBtnActive ? "text-yellow-600" : ""
             }`}
           />
 
           <div
-            className={`lan_dropdown ${
-              lanBtnActive ? "lan_dropdown_on" : ""
+            className={`dropdown ${
+              burgerBtnActive ? "dropdown_on dropdown_effect" : ""
+            } absolute`}
+          >
+            <ul className="font-bold">
+              <li className="cursor-pointer pl-2 py-1 rounded-md hover:bg-gray-500">
+                <Link to={"/"}>Home</Link>
+              </li>
+              <li className="cursor-pointer pl-2 py-1 rounded-md hover:bg-gray-500">
+                <Link to={"/about"}>About</Link>
+              </li>
+              <li className="cursor-pointer pl-2 py-1 rounded-md hover:bg-gray-500">
+                <Link to={"/login"}>Login</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <Link to={"/search"} className="h-full flex items-center">
+          <FiSearch className="text-3xl cursor-pointer transition-all duration-200 hover:text-green-600" />
+        </Link>
+
+        <div
+          onMouseEnter={() => setLanBtnActive(!lanBtnActive)}
+          onMouseLeave={() => setLanBtnActive(!lanBtnActive)}
+          className="relative h-full flex items-center"
+        >
+          <RiGlobalFill
+            className={`text-3xl cursor-pointer transition-all duration-200 ${
+              lanBtnActive ? "text-red-600" : ""
+            }`}
+          />
+
+          <div
+            className={`dropdown ${
+              lanBtnActive ? "dropdown_on dropdown_effect" : ""
             } absolute `}
           >
             <ul className="font-bold">
