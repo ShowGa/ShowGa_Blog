@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { showGaB } from "../assets";
 import { Link } from "react-router-dom";
 // icon
@@ -11,6 +11,31 @@ const Header = ({ changeLanguage }) => {
   const [lanBtnActive, setLanBtnActive] = useState(false);
   const [burgerBtnActive, setBurgerBtnActive] = useState(false);
 
+  const handleAbleToggle = (cb, btnActiveState) => {
+    if (window.innerWidth < 768) {
+      cb(!btnActiveState);
+    }
+  };
+  const handleAbleHover = (cb, btnActiveState) => {
+    if (window.innerWidth > 767) {
+      cb(!btnActiveState);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setLanBtnActive(false);
+      setBurgerBtnActive(false);
+    });
+
+    return () => {
+      window.removeEventListener("resize", () => {
+        setLanBtnActive(false);
+        setBurgerBtnActive(false);
+      });
+    };
+  }, []);
+
   return (
     <header>
       <div className="relative flex justify-between items-center px-6 h-16 shadoweffect">
@@ -21,7 +46,7 @@ const Header = ({ changeLanguage }) => {
           </p>
         </div>
 
-        <nav className="flex items-center gap-3 h-full">
+        <nav className="flex items-center h-full">
           <ul className="navList flex gap-3 items-center">
             <Link to={"/"} className="navBtnHoverEffect cursor-pointer">
               Home
@@ -34,12 +59,11 @@ const Header = ({ changeLanguage }) => {
             </Link>
           </ul>
 
-          <div
-            onMouseEnter={() => setBurgerBtnActive(!burgerBtnActive)}
-            onMouseLeave={() => setBurgerBtnActive(!burgerBtnActive)}
-            className="relative h-full flex items-center"
-          >
+          <div className="relative h-full flex items-center pl-3">
             <SiBurgerking
+              onClick={() => {
+                setBurgerBtnActive(!burgerBtnActive);
+              }}
               className={`burger text-3xl cursor-pointer transition-all duration-200 ${
                 burgerBtnActive ? "text-yellow-600" : ""
               }`}
@@ -50,7 +74,12 @@ const Header = ({ changeLanguage }) => {
                 burgerBtnActive ? "dropdown_on dropdown_effect" : ""
               } absolute z-40`}
             >
-              <ul className="font-bold">
+              <ul
+                onClick={() => {
+                  setBurgerBtnActive(false);
+                }}
+                className="font-bold"
+              >
                 <Link to={"/"}>
                   <li className="cursor-pointer pl-2 py-1 rounded-md hover:bg-gray-500">
                     Home
@@ -70,16 +99,25 @@ const Header = ({ changeLanguage }) => {
             </div>
           </div>
 
-          <Link to={"/search"} className="h-full flex items-center">
-            <FiSearch className="text-3xl cursor-pointer transition-all duration-200 hover:text-green-600" />
-          </Link>
+          <div className="h-full flex items-center pl-3">
+            <Link to={"/search"}>
+              <FiSearch className="text-3xl cursor-pointer transition-all duration-200 hover:text-green-600" />
+            </Link>
+          </div>
 
           <div
-            onMouseEnter={() => setLanBtnActive(!lanBtnActive)}
-            onMouseLeave={() => setLanBtnActive(!lanBtnActive)}
-            className="relative h-full flex items-center"
+            onMouseEnter={() => {
+              handleAbleHover(setLanBtnActive, lanBtnActive);
+            }}
+            onMouseLeave={() => {
+              handleAbleHover(setLanBtnActive, lanBtnActive);
+            }}
+            className="relative h-full flex items-center pl-3"
           >
             <RiGlobalFill
+              onClick={() => {
+                handleAbleToggle(setLanBtnActive, lanBtnActive);
+              }}
               className={`text-3xl cursor-pointer transition-all duration-200 ${
                 lanBtnActive ? "text-red-600" : ""
               }`}
