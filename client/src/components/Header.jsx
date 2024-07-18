@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import { RiGlobalFill } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
 import { SiBurgerking } from "react-icons/si";
+// component
 import RgbBar from "./effect/RgbBar";
+import ThemeBtn from "./button/ThemeBtn";
 
 const Header = ({ changeLanguage }) => {
   const [lanBtnActive, setLanBtnActive] = useState(false);
@@ -71,7 +73,7 @@ const Header = ({ changeLanguage }) => {
 
             <div
               className={`dropdown ${
-                burgerBtnActive ? "dropdown_on dropdown_effect" : ""
+                burgerBtnActive ? "dropdown_on" : ""
               } absolute z-40`}
             >
               <ul
@@ -125,7 +127,7 @@ const Header = ({ changeLanguage }) => {
 
             <div
               className={`dropdown ${
-                lanBtnActive ? "dropdown_on dropdown_effect" : ""
+                lanBtnActive ? "dropdown_on" : ""
               } absolute z-40`}
             >
               <ul className="font-bold">
@@ -144,6 +146,8 @@ const Header = ({ changeLanguage }) => {
               </ul>
             </div>
           </div>
+
+          <ThemeBtn />
         </nav>
       </div>
 
