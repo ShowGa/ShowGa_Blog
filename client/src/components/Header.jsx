@@ -41,6 +41,9 @@ const Header = ({ changeLanguage }) => {
   return (
     <header>
       <div className="relative flex justify-between items-center px-6 h-16 shadoweffect">
+        
+        {/* ======== Logo section ======== */}
+
         <div className="flex items-center">
           <img src={showGaB} alt="ShowGa Logo" className="h-12" />
           <p className="comfortaa text-xl font-bold">
@@ -48,7 +51,12 @@ const Header = ({ changeLanguage }) => {
           </p>
         </div>
 
+        {/* ======== Nav section ======== */}
+
         <nav className="flex items-center h-full">
+
+          {/* ---- Page List ---- */}
+
           <ul className="navList flex gap-3 items-center">
             <Link to={"/"} className="navBtnHoverEffect cursor-pointer">
               Home
@@ -60,6 +68,8 @@ const Header = ({ changeLanguage }) => {
               Login
             </Link>
           </ul>
+
+          {/* ---- Page List and Burger button ---- */}
 
           <div className="relative h-full flex items-center pl-3">
             <SiBurgerking
@@ -101,11 +111,15 @@ const Header = ({ changeLanguage }) => {
             </div>
           </div>
 
+          {/* ---- Search button ---- */}
+
           <div className="h-full flex items-center pl-3">
             <Link to={"/search"}>
               <FiSearch className="text-3xl cursor-pointer transition-all duration-200 hover:text-green-600" />
             </Link>
           </div>
+
+          {/* ---- Language List and Button ---- */}
 
           <div
             onMouseEnter={() => {
@@ -146,6 +160,8 @@ const Header = ({ changeLanguage }) => {
               </ul>
             </div>
           </div>
+
+          {/* ---- Theme Button ---- */}
 
           <ThemeBtn />
         </nav>
