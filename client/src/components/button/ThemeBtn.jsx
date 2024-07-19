@@ -18,10 +18,10 @@ const ThemeBtn = () => {
       }}
       className="switch_container"
     >
-      <div className="switch_background light"></div>
+      <div className="switch_background switch_background_light"></div>
       <div
-        className={`switch_background dark ${
-          theme === "light" ? "" : "dark_on"
+        className={`switch_background switch_background_dark ${
+          theme === "light" ? "" : "switch_background_dark_on"
         }`}
       ></div>
 
