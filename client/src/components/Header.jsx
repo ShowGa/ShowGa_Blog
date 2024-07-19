@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { showGaB } from "../assets";
+import { showGaB, showGaW } from "../assets";
 import { Link } from "react-router-dom";
 // icon
 import { RiGlobalFill } from "react-icons/ri";
@@ -8,8 +8,12 @@ import { SiBurgerking } from "react-icons/si";
 // component
 import RgbBar from "./effect/RgbBar";
 import ThemeBtn from "./button/ThemeBtn";
+// zustand
+import useThemeStore from "../zustand/useTheme";
 
 const Header = ({ changeLanguage }) => {
+  const { theme, toggleTheme } = useThemeStore();
+
   const [lanBtnActive, setLanBtnActive] = useState(false);
   const [burgerBtnActive, setBurgerBtnActive] = useState(false);
 
@@ -41,11 +45,14 @@ const Header = ({ changeLanguage }) => {
   return (
     <header>
       <div className="relative flex justify-between items-center px-6 h-16 shadoweffect">
-        
         {/* ======== Logo section ======== */}
 
         <div className="flex items-center">
-          <img src={showGaB} alt="ShowGa Logo" className="h-12" />
+          <img
+            src={theme === "light" ? showGaB : showGaW}
+            alt="ShowGa Logo"
+            className="h-12"
+          />
           <p className="comfortaa text-xl font-bold">
             <span className="red_blue_LG">ShowGa's </span>Blog
           </p>
@@ -54,7 +61,6 @@ const Header = ({ changeLanguage }) => {
         {/* ======== Nav section ======== */}
 
         <nav className="flex items-center h-full">
-
           {/* ---- Page List ---- */}
 
           <ul className="navList flex gap-3 items-center">

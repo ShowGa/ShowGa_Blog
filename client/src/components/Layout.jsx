@@ -16,9 +16,8 @@ const Layout = () => {
   const { theme, toggleTheme } = useThemeStore();
 
   return (
-    <div className={`content_container ${theme}`}>
+    <div className={`content_container ${theme} h-[100vh]`}>
       <Header changeLanguage={changeLanguage} />
-      <p>{t("test")}</p>
       <Outlet />
       <Footer />
     </div>
