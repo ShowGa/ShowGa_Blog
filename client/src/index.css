@@ -9,7 +9,7 @@
   --softTextColor: #626262;
 }
 
-.content_container {
+.page_container {
   background-color: var(--bg);
   color: var(--textColor);
 }
