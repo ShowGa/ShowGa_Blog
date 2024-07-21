@@ -8,10 +8,10 @@ const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="content_container">
+    <div className="">
       <section>HeroSection</section>
 
-      <div className="content_flex">
+      <div className="">
         <main>Main</main>
         <RecommendSideBar />
       </div>

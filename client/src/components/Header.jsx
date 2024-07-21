@@ -10,6 +10,8 @@ import RgbBar from "./effect/RgbBar";
 import ThemeBtn from "./button/ThemeBtn";
 // zustand
 import useThemeStore from "../zustand/useTheme";
+// CSS module
+import "./components.css";
 
 const Header = ({ changeLanguage }) => {
   const { theme, toggleTheme } = useThemeStore();
@@ -44,45 +46,45 @@ const Header = ({ changeLanguage }) => {
 
   return (
     <header>
-      <div className="relative flex justify-between items-center px-6 h-16 shadoweffect">
+      <div className="c-header_container  c-header_container_effect">
         {/* ======== Logo section ======== */}
 
-        <div className="flex items-center">
+        <div className="c-header_logo_container">
           <img
             src={theme === "light" ? showGaB : showGaW}
             alt="ShowGa Logo"
             className="h-12"
           />
-          <p className="comfortaa text-xl font-bold">
+          <p className="text-xl font-bold">
             <span className="red_blue_LG">ShowGa's </span>Blog
           </p>
         </div>
 
         {/* ======== Nav section ======== */}
 
-        <nav className="flex items-center h-full">
+        <nav className="c-nav_container">
           {/* ---- Page List ---- */}
 
-          <ul className="navList flex gap-3 items-center">
-            <Link to={"/"} className="navBtnHoverEffect cursor-pointer">
+          <ul className="c-nav_list">
+            <Link to={"/"} className="btn_hover_effect cursor-pointer">
               Home
             </Link>
-            <Link to={"/about"} className="navBtnHoverEffect cursor-pointer">
+            <Link to={"/about"} className="btn_hover_effect cursor-pointer">
               About
             </Link>
-            <Link to={"/login"} className="navBtnHoverEffect cursor-pointer">
+            <Link to={"/login"} className="btn_hover_effect cursor-pointer">
               Login
             </Link>
           </ul>
 
           {/* ---- Page List and Burger button ---- */}
 
-          <div className="relative h-full flex items-center pl-3">
+          <div className="c-nav_icons_container relative">
             <SiBurgerking
               onClick={() => {
                 setBurgerBtnActive(!burgerBtnActive);
               }}
-              className={`burger text-3xl cursor-pointer transition-all duration-200 ${
+              className={`c-nav_icons c-nav_icon_burger ${
                 burgerBtnActive ? "text-yellow-600" : ""
               }`}
             />
@@ -99,19 +101,13 @@ const Header = ({ changeLanguage }) => {
                 className="font-bold"
               >
                 <Link to={"/"}>
-                  <li className="cursor-pointer pl-2 py-1 rounded-md hover:bg-gray-500">
-                    Home
-                  </li>
+                  <li className="dropdown_items">Home</li>
                 </Link>
                 <Link to={"/About"}>
-                  <li className="cursor-pointer pl-2 py-1 rounded-md hover:bg-gray-500">
-                    About
-                  </li>
+                  <li className="dropdown_items">About</li>
                 </Link>
                 <Link to={"/login"}>
-                  <li className="cursor-pointer pl-2 py-1 rounded-md hover:bg-gray-500">
-                    Login
-                  </li>
+                  <li className="dropdown_items">Login</li>
                 </Link>
               </ul>
             </div>
@@ -119,9 +115,9 @@ const Header = ({ changeLanguage }) => {
 
           {/* ---- Search button ---- */}
 
-          <div className="h-full flex items-center pl-3">
+          <div className="c-nav_icons_container">
             <Link to={"/search"}>
-              <FiSearch className="text-3xl cursor-pointer transition-all duration-200 hover:text-green-600" />
+              <FiSearch className="c-nav_icons hover:text-green-600" />
             </Link>
           </div>
 
@@ -134,15 +130,13 @@ const Header = ({ changeLanguage }) => {
             onMouseLeave={() => {
               handleAbleHover(setLanBtnActive, lanBtnActive);
             }}
-            className="relative h-full flex items-center pl-3"
+            className="c-nav_icons_container relative"
           >
             <RiGlobalFill
               onClick={() => {
                 handleAbleToggle(setLanBtnActive, lanBtnActive);
               }}
-              className={`text-3xl cursor-pointer transition-all duration-200 ${
-                lanBtnActive ? "text-red-600" : ""
-              }`}
+              className={`c-nav_icons ${lanBtnActive ? "text-red-600" : ""}`}
             />
 
             <div
@@ -152,13 +146,13 @@ const Header = ({ changeLanguage }) => {
             >
               <ul className="font-bold">
                 <li
-                  className="cursor-pointer pl-2 py-1 rounded-md hover:bg-gray-500"
+                  className="dropdown_items"
                   onClick={() => changeLanguage("zh")}
                 >
                   中文
                 </li>
                 <li
-                  className="cursor-pointer pl-2 py-1 rounded-md hover:bg-gray-500"
+                  className="dropdown_items"
                   onClick={() => changeLanguage("en")}
                 >
                   English

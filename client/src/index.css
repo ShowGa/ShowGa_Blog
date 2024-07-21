@@ -9,16 +9,16 @@
   --softTextColor: #626262;
 }
 
-.page_container {
-  background-color: var(--bg);
-  color: var(--textColor);
-}
-
 body {
   box-sizing: border-box;
   font-family: "Comfortaa", sans-serif;
   height: 100vh;
   /* font-family: "Knewave", cursive; */
+}
+
+.page_container {
+  background-color: var(--bg);
+  color: var(--textColor);
 }
 
 /* NavBar */
@@ -47,62 +47,8 @@ body {
   top: 64px;
   pointer-events: auto;
 }
-
-.burger {
-  display: none;
-}
-
-.shadoweffect {
-  box-shadow: inset 0px 1px 1px 0px rgb(198, 198, 198);
-}
-
-.switch_container {
-  width: 50px;
-  height: 25px;
-  display: flex;
-  align-items: center;
-  position: relative;
-  margin-left: 12px;
-  cursor: pointer;
-}
-
-.switch_background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  border-radius: 20px;
-  transition: all 0.5s ease-in;
-}
-
-.switch_background_light {
-  background-image: url("assets/day.jpg");
-  opacity: 1;
-}
-
-.switch_background_dark {
-  background-image: url("assets/night.jpg");
-  opacity: 0;
-}
-
-.switch_background_dark_on {
-  opacity: 1;
-}
-
-.ball {
-  z-index: 10;
-  display: inline-block;
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  font-size: 21px;
-  margin-left: 3px;
-  transition: all 0.5s;
-  color: rgb(255, 242, 0);
-}
-
-.ball_effect {
-  transform: translate(24px, 0);
-  color: gold;
+.dropdown_items {
+  @apply cursor-pointer pl-2 py-1 rounded-md hover:bg-gray-500;
 }
 
 /* Theme */
@@ -115,16 +61,9 @@ body {
 
 /* RWD */
 @media (max-width: 767px) {
-  .burger {
-    display: block;
-  }
-  .navList {
-    display: none;
-  }
 }
 
 /* ================ Miscellaneous Effect ================= */
-
 /* linear-gradient */
 .red_blue_LG {
   background: linear-gradient(
@@ -137,7 +76,7 @@ body {
 }
 
 /* Effect */
-.navBtnHoverEffect:hover {
+.btn_hover_effect:hover {
   background: linear-gradient(
     135deg,
     rgba(239, 14, 6, 1) 0%,

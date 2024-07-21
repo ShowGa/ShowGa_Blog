@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { HiLightBulb } from "react-icons/hi";
 // zustand
 import useThemeStore from "../../zustand/useTheme";
+// CSS module
+import "../components.css";
 
 const ThemeBtn = () => {
   const { theme, toggleTheme } = useThemeStore();
@@ -16,16 +18,16 @@ const ThemeBtn = () => {
           JSON.stringify(theme === "light" ? "dark" : "light")
         );
       }}
-      className="switch_container"
+      className="c-switch_container"
     >
-      <div className="switch_background switch_background_light"></div>
+      <div className="c-switch_background c-switch_background_light"></div>
       <div
-        className={`switch_background switch_background_dark ${
-          theme === "light" ? "" : "switch_background_dark_on"
+        className={`c-switch_background c-switch_background_dark ${
+          theme === "light" ? "" : "c-switch_background_dark_on"
         }`}
       ></div>
 
-      <div className={`ball ${theme === "light" ? "" : "ball_effect"}`}>
+      <div className={`c-ball ${theme === "light" ? "" : "c-ball_effect"}`}>
         <HiLightBulb />
       </div>
     </div>
