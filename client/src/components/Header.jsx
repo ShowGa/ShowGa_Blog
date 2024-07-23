@@ -18,6 +18,9 @@ const Header = ({ changeLanguage }) => {
 
   const [lanBtnActive, setLanBtnActive] = useState(false);
   const [burgerBtnActive, setBurgerBtnActive] = useState(false);
+  // deal with header scroll effect
+  let scrollY = 0;
+  const [topPosition, setPosition] = useState("");
 
   const handleAbleToggle = (cb, btnActiveState) => {
     if (window.innerWidth < 768) {
@@ -30,22 +33,38 @@ const Header = ({ changeLanguage }) => {
     }
   };
 
+  const handleHeaderEffect = () => {
+    const currentScrollPos = window.scrollY;
+
+    if (currentScrollPos > scrollY) {
+      setPosition("top-[-64px]");
+    } else if (currentScrollPos < scrollY) {
+      setPosition("top-[0px]");
+    }
+
+    scrollY = currentScrollPos;
+  };
+
   useEffect(() => {
     window.addEventListener("resize", () => {
       setLanBtnActive(false);
       setBurgerBtnActive(false);
     });
 
+    window.addEventListener("scroll", handleHeaderEffect);
+
     return () => {
       window.removeEventListener("resize", () => {
         setLanBtnActive(false);
         setBurgerBtnActive(false);
       });
+
+      window.removeEventListener("scroll", handleHeaderEffect);
     };
   }, []);
 
   return (
-    <header>
+    <header className={`${topPosition}`}>
       <div className="c-header_container  c-header_container_effect">
         {/* ======== Logo section ======== */}
 
