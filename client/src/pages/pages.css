@@ -1,0 +1,64 @@
+/*
+==================
+Home.jsx
+==================
+*/
+.p-heroSec_intro_head_container {
+  @apply flex flex-col gap-2 py-11;
+}
+
+.p-heroSec_intro_head_container h1 {
+  @apply text-5xl font-extrabold;
+}
+
+.p-heroSec_intro_head_container p {
+  @apply text-2xl;
+}
+
+.p-heroSec_intro_body_container {
+  @apply flex items-center justify-center gap-5;
+}
+
+.p-heroSec_swiper {
+  @apply w-[320px] m-0 flex-shrink-0 rounded-lg;
+}
+
+.p-heroSec_swiper img {
+  @apply w-full h-full object-cover object-center;
+}
+
+.p-heroSec_intro_body_text_container {
+  @apply flex flex-col gap-4 max-w-[600px];
+}
+
+.p-heroSec_intro_body_text_container h1 {
+  @apply text-3xl font-extrabold;
+}
+
+.p-tagSec {
+  @apply mt-11;
+}
+
+.p-tagSec h1 {
+  @apply font-bold text-2xl;
+}
+
+.p-tagSec_tags_container {
+  @apply flex justify-between mt-4;
+}
+
+.p-post-sidebarSec {
+  @apply mt-11;
+}
+
+.p-post-sidebarSec_container {
+  @apply flex gap-10;
+}
+
+.p-post_main_title {
+  @apply font-bold text-2xl;
+}
+
+.p-post-main_postcards_container {
+  @apply flex flex-col gap-8 mt-4;
+}

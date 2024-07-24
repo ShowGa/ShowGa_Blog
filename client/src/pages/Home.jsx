@@ -11,7 +11,10 @@ import "swiper/css/bundle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
 // images
-import { me1, me2, me3 } from "../assets";
+import { me1, me2 } from "../assets";
+import { tagInfo } from "../constants";
+// CSS
+import "./pages.css";
 
 const Home = () => {
   SwiperCore.use([Autoplay, Pagination, Navigation, EffectFade]);
@@ -20,23 +23,23 @@ const Home = () => {
   return (
     <div className="w-[80%] mx-auto">
       {/* Hero section */}
-      <section className="flex flex-col">
-        <div className="flex flex-col gap-2 py-11">
-          <h1 className="text-5xl font-extrabold">
+      <section>
+        <div className="p-heroSec_intro_head_container">
+          <h1>
             Hi,
             <br /> ShowGa here
           </h1>
 
-          <p className="text-xl">
+          <p>
             I'm a software engineering learner from Taiwan . This blog was hand
             on crafted by thousands line of code , to recode my life with
             articles and pictures .
           </p>
         </div>
 
-        <div className="flex items-center justify-evenly gap-8">
+        <div className="p-heroSec_intro_body_container">
           <Swiper
-            className="w-[320px] m-0 flex-shrink-0"
+            className="p-heroSec_swiper"
             centeredSlides={true}
             autoplay={{ delay: 4000, disableOnInteraction: false }}
             pagination={false}
@@ -45,38 +48,21 @@ const Home = () => {
             loop={true}
           >
             <SwiperSlide>
-              <div className="h-[400px] overflow-hidden">
-                <img
-                  src={me1}
-                  alt=""
-                  className="w-full h-full object-cover object-center"
-                />
+              <div className="h-[400px]">
+                <img src={me1} />
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="h-[400px] overflow-hidden">
-                <img
-                  src={me2}
-                  alt=""
-                  className="w-full h-full object-cover object-center"
-                />
+              <div className="h-[400px]">
+                <img src={me2} />
               </div>
             </SwiperSlide>
-            {/* <SwiperSlide>
-              <div className="h-[400px] overflow-hidden">
-                <img
-                  src={me3}
-                  alt=""
-                  className="w-full h-full object-cover object-center"
-                />
-              </div>
-            </SwiperSlide> */}
           </Swiper>
 
-          <div className="flex flex-col gap-4 max-w-[600px]">
-            <h1 className="text-3xl font-extrabold">ShowGa 簡介</h1>
+          <div className="p-heroSec_intro_body_text_container">
+            <h1 className="">ShowGa 簡介</h1>
 
-            <p className="w-full">
+            <p>
               I'm a software engineering learner from Taiwan . This blog was
               hand on crafted line by line of thousands of code , to recode my
               life with articles and pictures .
@@ -86,23 +72,28 @@ const Home = () => {
       </section>
 
       {/* Tag section */}
-      <section>
+      <section className="p-tagSec">
         <h1>Categories</h1>
-        <div className="flex justify-evenly bg-blue-200">
-          <Tag />
-          <Tag />
+        <div className="p-tagSec_tags_container">
+          {tagInfo.map((info) => {
+            return <Tag key={info.tagName} {...info} />;
+          })}
         </div>
       </section>
 
       {/* Post and Sidebar section */}
-      <section>
-        <h1>Recent Posts</h1>
-        <div className="">
-          <main className="bg-red-400">
-            <PostCard />
+      <section className="p-post-sidebarSec">
+        <div className="p-post-sidebarSec_container">
+          <main>
+            <h1 className="p-post_main_title">Recent Posts</h1>
+            <div className="p-post-main_postcards_container">
+              <PostCard />
+              <PostCard />
+              <PostCard />
+            </div>
           </main>
 
-          <aside className="w-52">
+          <aside>
             <RecommendSideBar />
           </aside>
         </div>
@@ -112,13 +103,3 @@ const Home = () => {
 };
 
 export default Home;
-
-/*
-======================
-To-Do-List
-======================
-1. Create main part component
-2. Create Post Card component
-3.
-
-*/

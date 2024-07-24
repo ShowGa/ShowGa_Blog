@@ -1,6 +1,15 @@
 /*
 ==================
-Head
+Global - Components
+==================
+*/
+.c-img_hover-effect {
+  transition: transform 300ms;
+}
+
+/*
+==================
+Header.jsx
 ==================
 */
 .c-header_container {
@@ -39,7 +48,7 @@ Head
 
 /*
 ==================
-ThemeButton
+ThemeButton.jsx
 ==================
 */
 .c-switch_container {
@@ -89,4 +98,76 @@ ThemeButton
 .c-ball_effect {
   transform: translate(24px, 0);
   color: gold;
+}
+
+/*
+==================
+PostCard.jsx
+==================
+*/
+.c-postcard_container {
+  @apply flex items-center gap-6 pb-3 border-b cursor-pointer;
+}
+
+.c-postcard_container:hover .c-img_hover-effect {
+  transform: scale(1.1, 1.1);
+}
+
+.c-postcard_img_container {
+  @apply flex-shrink-0 w-[250px] h-[250px] overflow-hidden;
+}
+
+.c-postcard_img_container img {
+  @apply w-full h-full object-cover;
+}
+
+.c-postcard_text_container {
+  @apply flex flex-col items-start gap-5;
+}
+
+/*
+==================
+SideBarPostCard.jsx
+==================
+*/
+.c-sideBarPostCard_container {
+  @apply flex items-center gap-3 cursor-pointer;
+}
+
+.c-sideBarPostCard_container:hover .c-img_hover-effect {
+  transform: scale(1.1, 1.1);
+}
+
+.c-sideBarPostCard_img_container {
+  @apply w-[50px] flex-shrink-0;
+}
+
+.c-sideBarPostCard_img_container img {
+  @apply border-2 border-gray-400 rounded-full;
+}
+
+.c-sideBarPostCard_text_container {
+  @apply flex flex-col items-start gap-2;
+}
+
+/*
+==================
+Tag.jsx
+==================
+*/
+.c-tag_container {
+  @apply flex justify-center items-center gap-2 w-[160px] h-[65px] p-5 rounded-lg cursor-pointer bg-opacity-50;
+}
+
+.c-tag_container img {
+  @apply w-full h-full rounded-full object-cover;
+}
+
+/*
+==================
+SideBarTag.jsx
+==================
+*/
+.c-sideBarTag_container {
+  @apply flex justify-center items-center px-5 py-2 rounded-lg cursor-pointer bg-opacity-50 text-sm;
 }

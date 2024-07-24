@@ -1,10 +1,13 @@
 import React from "react";
 
-const Tag = () => {
+const Tag = (props) => {
   return (
-    <div className="flex">
-      <img src="" alt="" />
-      <p>Tag</p>
+    <div className={`c-tag_container ${props.bgColor} `}>
+      <div className="w-[35px]">
+        <img src={props.tagImg} alt={props.tagName} />
+      </div>
+
+      <p>{props.tagName}</p>
     </div>
   );
 };
