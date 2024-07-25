@@ -9,7 +9,13 @@ import PostCard from "../components/card/PostCard";
 import SwiperCore from "swiper";
 import "swiper/css/bundle";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation, EffectFade } from "swiper/modules";
+import {
+  Autoplay,
+  Pagination,
+  Navigation,
+  EffectCoverflow,
+  EffectFade,
+} from "swiper/modules";
 // images
 import { me1, me2 } from "../assets";
 import { tagInfo } from "../constants";
@@ -17,7 +23,7 @@ import { tagInfo } from "../constants";
 import "./pages.css";
 
 const Home = () => {
-  SwiperCore.use([Autoplay, Pagination, Navigation, EffectFade]);
+  SwiperCore.use([Autoplay, Pagination, EffectCoverflow]);
   const { t } = useTranslation();
 
   return (
@@ -33,24 +39,34 @@ const Home = () => {
           <p>I'm a software engineering learner live in Taiwan .</p>
         </div>
 
-        <div className="p-heroSec_intro_body_container">
+        <div className="p-swiper_container">
           <Swiper
-            className="p-heroSec_swiper"
+            effect={"coverflow"}
+            grabCursor={true}
+            slidesPerView={"auto"}
             centeredSlides={true}
             autoplay={{ delay: 4000, disableOnInteraction: false }}
-            pagination={false}
-            effect={"fade"}
-            fadeEffect={{ window: true }}
-            loop={true}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+            }}
+            // loop={true}
           >
             <SwiperSlide>
-              <div className="h-[400px]">
+              <div>
                 <img src={me1} />
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="h-[400px]">
-                <img src={me2} />
+              <div>
+                <img src={me1} />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div>
+                <img src={me1} />
               </div>
             </SwiperSlide>
           </Swiper>

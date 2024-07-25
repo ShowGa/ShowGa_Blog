@@ -1,5 +1,28 @@
 /*
 ==================
+Swiper
+==================
+*/
+.swiper-slide {
+  width: max-content;
+}
+
+.swiper-slide div {
+  @apply w-[320px] h-[400px] overflow-hidden;
+  @apply max-md:w-[280px] max-md:h-[350px] max-sm:w-[240px] max-sm:h-[300px];
+}
+
+.swiper-slide img {
+  @apply w-full h-full object-cover object-center rounded-lg;
+}
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  border-radius: 0.5rem;
+}
+
+/*
+==================
 Home.jsx
 ==================
 */
@@ -17,18 +40,13 @@ Home.jsx
   @apply max-md:text-lg;
 }
 
+.p-swiper_container {
+  margin: auto;
+}
+
 .p-heroSec_intro_body_container {
   @apply flex items-center justify-center gap-5;
   @apply max-md:flex-col;
-}
-
-.p-heroSec_swiper {
-  @apply w-[320px] m-0 flex-shrink-0 rounded-lg;
-  @apply max-md:order-2;
-}
-
-.p-heroSec_swiper img {
-  @apply w-full h-full object-cover object-center;
 }
 
 .p-heroSec_intro_body_text_container {
