@@ -13,14 +13,14 @@ const PostCard = () => {
 
       <div className="c-postcard_text_container">
         <p className="text-sm">2024-07-23</p>
-        <h1 className="text-2xl font-bold">How to Write Code</h1>
+        <h1 className="text-2xl font-bold max-sm:text-xl">How to Write Code</h1>
         <p className="text-sm line-clamp-2">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita
           tempora quam inventore sunt. Vero quam cum hic quis delectus est,
           doloremque tenetur similique accusamus impedit, perferendis aperiam
           labore eveniet voluptatum.
         </p>
-        <span className="ml-1 text-xs rounded-full p-1 bg-red-300">Code</span>
+        <span className="c-tag_text-color">Code</span>
       </div>
     </div>
   );

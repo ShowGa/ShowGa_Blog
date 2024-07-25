@@ -7,6 +7,10 @@ Global - Components
   transition: transform 300ms;
 }
 
+.c-tag_text-color {
+  @apply text-gray-800 font-bold;
+}
+
 /*
 ==================
 Header.jsx
@@ -115,6 +119,7 @@ PostCard.jsx
 
 .c-postcard_img_container {
   @apply flex-shrink-0 w-[250px] h-[250px] overflow-hidden;
+  @apply max-md:w-[180px] max-md:h-[180px] max-sm:w-[130px] max-sm:h-[130px];
 }
 
 .c-postcard_img_container img {
@@ -123,6 +128,14 @@ PostCard.jsx
 
 .c-postcard_text_container {
   @apply flex flex-col items-start gap-5;
+}
+
+.c-postcard_text_container p {
+  color: var(--softTextColor);
+}
+
+.c-postcard_text_container span {
+  @apply ml-1 text-xs rounded-full p-1 bg-red-300;
 }
 
 /*
@@ -150,17 +163,31 @@ SideBarPostCard.jsx
   @apply flex flex-col items-start gap-2;
 }
 
+.c-sideBarPostCard_text_container span {
+  @apply px-2 py-[2px] rounded-full bg-orange-300 text-[10px];
+}
+
+.c-sideBarPostCard_text_container p {
+  color: var(--softTextColor);
+}
+
 /*
 ==================
 Tag.jsx
 ==================
 */
 .c-tag_container {
-  @apply flex justify-center items-center gap-2 w-[160px] h-[65px] p-5 rounded-lg cursor-pointer bg-opacity-50;
+  @apply flex justify-center items-center gap-2 w-[160px] h-[65px] px-5 rounded-lg cursor-pointer;
+
+  @apply max-sm:h-[3.25rem] max-sm:w-full;
 }
 
 .c-tag_container img {
   @apply w-full h-full rounded-full object-cover;
+}
+
+.c-tag_container p {
+  /* color: var(--softTextColor); */
 }
 
 /*
@@ -170,4 +197,29 @@ SideBarTag.jsx
 */
 .c-sideBarTag_container {
   @apply flex justify-center items-center px-5 py-2 rounded-lg cursor-pointer bg-opacity-50 text-sm;
+}
+
+/*
+==================
+RecommendSideBar.jsx
+==================
+*/
+.c-recommendSideBar_wrapper {
+  @apply w-[300px] flex flex-col gap-11;
+}
+
+.c-recommendSideBar_topic_container {
+  @apply flex flex-col gap-6;
+}
+
+.c-recommendSideBar_post-container {
+  @apply flex flex-col gap-6;
+}
+
+.c-recommendSideBar_text_container p {
+  @apply text-xs;
+}
+
+.c-recommendSideBar_text_container h1 {
+  @apply text-2xl font-bold;
 }

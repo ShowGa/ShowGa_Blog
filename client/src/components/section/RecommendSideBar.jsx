@@ -7,24 +7,24 @@ import { tagInfo } from "../../constants";
 
 const RecommendSideBar = () => {
   return (
-    <div className="w-[300px] flex flex-col gap-11">
-      <div className="flex flex-col gap-6">
-        <div>
-          <p className="text-xs">See the trendy post</p>
-          <h1 className="text-2xl font-bold">Most Popular</h1>
+    <div className="c-recommendSideBar_wrapper">
+      <div className="c-recommendSideBar_topic_container">
+        <div className="c-recommendSideBar_text_container">
+          <p>See the trendy post</p>
+          <h1>Most Popular</h1>
         </div>
 
-        <div className="flex flex-col gap-6">
+        <div className="c-recommendSideBar_post-container">
           <SideBarPostCard />
           <SideBarPostCard />
           <SideBarPostCard />
         </div>
       </div>
 
-      <div className="flex flex-col gap-6">
-        <div>
-          <p className="text-xs">Discovering by topic</p>
-          <h1 className="text-2xl font-bold">Categories</h1>
+      <div className="c-recommendSideBar_topic_container">
+        <div className="c-recommendSideBar_text_container">
+          <p>Discovering by topic</p>
+          <h1>Categories</h1>
         </div>
 
         <div className="flex flex-wrap gap-2">
@@ -34,13 +34,13 @@ const RecommendSideBar = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-6">
-        <div>
-          <p className="text-xs">Features</p>
-          <h1 className="text-2xl font-bold">Feature posts chosen by ShowGa</h1>
+      <div className="c-recommendSideBar_topic_container">
+        <div className="c-recommendSideBar_text_container">
+          <p>Features</p>
+          <h1>Feature posts chosen by ShowGa</h1>
         </div>
 
-        <div className="flex flex-col gap-6">
+        <div className="c-recommendSideBar_post-container">
           <SideBarPostCard />
           <SideBarPostCard />
           <SideBarPostCard />

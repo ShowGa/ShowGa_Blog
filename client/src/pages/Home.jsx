@@ -21,7 +21,7 @@ const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="w-[80%] mx-auto">
+    <div className="max-w-[80%] mx-auto max-md:max-w-[95%]">
       {/* Hero section */}
       <section>
         <div className="p-heroSec_intro_head_container">
@@ -30,11 +30,7 @@ const Home = () => {
             <br /> ShowGa here
           </h1>
 
-          <p>
-            I'm a software engineering learner from Taiwan . This blog was hand
-            on crafted by thousands line of code , to recode my life with
-            articles and pictures .
-          </p>
+          <p>I'm a software engineering learner live in Taiwan .</p>
         </div>
 
         <div className="p-heroSec_intro_body_container">
@@ -58,16 +54,6 @@ const Home = () => {
               </div>
             </SwiperSlide>
           </Swiper>
-
-          <div className="p-heroSec_intro_body_text_container">
-            <h1 className="">ShowGa 簡介</h1>
-
-            <p>
-              I'm a software engineering learner from Taiwan . This blog was
-              hand on crafted line by line of thousands of code , to recode my
-              life with articles and pictures .
-            </p>
-          </div>
         </div>
       </section>
 
@@ -93,7 +79,7 @@ const Home = () => {
             </div>
           </main>
 
-          <aside>
+          <aside className="max-lg:hidden">
             <RecommendSideBar />
           </aside>
         </div>

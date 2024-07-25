@@ -10,13 +10,11 @@ const SideBarPostCard = () => {
       </div>
 
       <div className="c-sideBarPostCard_text_container">
-        <span className="px-2 py-[2px] rounded-full bg-orange-300 text-[10px]">
-          Food
-        </span>
+        <span className="c-tag_text-color">Food</span>
 
-        <p className="text-lg font-bold leading-5">
+        <h1 className="text-lg font-bold leading-5">
           How to eat shiiit without feeling to barf
-        </p>
+        </h1>
 
         <p className="text-[10px]">23.07.2024</p>
       </div>

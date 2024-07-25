@@ -9,18 +9,22 @@ Home.jsx
 
 .p-heroSec_intro_head_container h1 {
   @apply text-5xl font-extrabold;
+  @apply max-md:text-3xl;
 }
 
 .p-heroSec_intro_head_container p {
   @apply text-2xl;
+  @apply max-md:text-lg;
 }
 
 .p-heroSec_intro_body_container {
   @apply flex items-center justify-center gap-5;
+  @apply max-md:flex-col;
 }
 
 .p-heroSec_swiper {
   @apply w-[320px] m-0 flex-shrink-0 rounded-lg;
+  @apply max-md:order-2;
 }
 
 .p-heroSec_swiper img {
@@ -35,6 +39,10 @@ Home.jsx
   @apply text-3xl font-extrabold;
 }
 
+.p-heroSec_intro_body_text_container p {
+  color: var(--softTextColor);
+}
+
 .p-tagSec {
   @apply mt-11;
 }
@@ -44,7 +52,7 @@ Home.jsx
 }
 
 .p-tagSec_tags_container {
-  @apply flex justify-between mt-4;
+  @apply flex flex-wrap gap-2 justify-between mt-4;
 }
 
 .p-post-sidebarSec {
