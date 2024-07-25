@@ -7,6 +7,7 @@
   --textColor: black;
   --softBg: #f0f0f0;
   --softTextColor: #383838;
+  --headerBg: rgba(255, 255, 255, 0.6);
 }
 
 body {
@@ -16,7 +17,8 @@ body {
 }
 
 header {
-  background-color: var(--bg);
+  background-color: var(--headerBg);
+  backdrop-filter: blur(50px);
   position: sticky;
   transition: top;
   transition-duration: 500ms;
@@ -64,6 +66,7 @@ header {
   --textColor: #ddd;
   --softBg: #1f273a;
   --softTextColor: #c3c3c3;
+  --headerBg: rgba(15, 23, 42, 0.6);
 }
 
 /* RWD */
