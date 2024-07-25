@@ -28,6 +28,10 @@ Header.jsx
   @apply flex items-center h-full;
 }
 
+.c-header_logo_container p {
+  @apply max-sm:hidden;
+}
+
 .c-nav_container {
   @apply flex items-center h-full;
 }

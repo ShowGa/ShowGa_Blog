@@ -18,7 +18,7 @@ body {
 
 header {
   background-color: var(--headerBg);
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(20px);
   position: sticky;
   transition: top;
   transition-duration: 500ms;
