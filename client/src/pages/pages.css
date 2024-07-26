@@ -88,3 +88,67 @@ Home.jsx
 .p-post-main_postcards_container {
   @apply flex flex-col gap-8 mt-4;
 }
+
+/*
+==================
+Search.jsx
+==================
+*/
+.p-post_searchResult_title_container {
+  @apply flex items-center gap-6;
+}
+
+.p-search_section_container {
+  @apply border-b-2 border-red-400;
+}
+
+.p-search_section_container h1 {
+  @apply text-2xl font-bold;
+}
+
+.p-search_section_system_form {
+  @apply flex flex-col gap-5 p-4;
+}
+
+.p-search_section_system_form label {
+  @apply text-xl font-bold;
+}
+
+.p-search_form_Term {
+  @apply flex items-center gap-3;
+}
+
+.p-search_form_Term input {
+  @apply border-2 border-gray-500 rounded-md p-1 text-black;
+}
+
+.p-search_form_tag {
+  @apply flex flex-col gap-3;
+}
+
+.p-tag_span_container {
+  @apply flex flex-row gap-2;
+}
+
+.p-span_item {
+  @apply text-gray-800 font-bold rounded-full p-2;
+  @apply cursor-pointer;
+}
+
+.p-search_form_sort {
+  @apply flex items-center gap-3;
+}
+
+.p-search_form_sort select {
+  @apply border-2 border-gray-500 rounded-md p-1;
+}
+
+.p-search_form_sort select {
+  @apply text-black;
+}
+
+.p-search_button {
+  @apply text-xl border-2 py-1 border-orange-400 w-[60%] m-auto;
+  @apply transition-all duration-100;
+  @apply hover:bg-orange-400 hover:text-gray-800;
+}
