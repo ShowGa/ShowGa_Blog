@@ -9,6 +9,7 @@ import gaming from "./gaming.jpg";
 import magic from "./magic.jpg";
 import travel from "./travel.jpg";
 import postTest from "./postTest.png";
+import gao from "./gao.jpg";
 
 export {
   showGaB,
@@ -18,6 +19,7 @@ export {
   me3,
   code,
   postTest,
+  gao,
   food,
   gaming,
   magic,

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // i18next
 import { useTranslation } from "react-i18next";
 // components
@@ -10,6 +10,20 @@ import { tagInfo } from "../constants";
 import "./pages.css";
 
 const Search = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [formTag, setFormTag] = useState("");
+  const [formSort, setFormSort] = useState("Oldest");
+
+  const handleTagSelect = (tag) => {
+    setFormTag(formTag === tag ? null : tag);
+  };
+  const handleFormSelect = (event) => {
+    setFormSort(event.target.value);
+  };
+  const handleSearchTerm = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
     <div className="max-w-[80%] mx-auto max-md:max-w-[95%]">
       {/* Hero section */}
@@ -29,7 +43,7 @@ const Search = () => {
         <form className="p-search_section_system_form">
           <div className="p-search_form_Term">
             <label>Search Term :</label>
-            <input type="text" />
+            <input type="text" onChange={handleSearchTerm} />
           </div>
 
           <div className="p-search_form_tag">
@@ -37,7 +51,15 @@ const Search = () => {
             <div className="p-tag_span_container">
               {tagInfo.map((info) => {
                 return (
-                  <span className={`p-span_item ${info.bgColor}`}>
+                  <span
+                    key={info.tagName}
+                    onClick={() => {
+                      handleTagSelect(info.tagName);
+                    }}
+                    className={`p-span_item ${info.bgColor} ${
+                      formTag === info.tagName ? `scale-75` : ""
+                    }`}
+                  >
                     {info.tagName}
                   </span>
                 );
@@ -47,11 +69,11 @@ const Search = () => {
 
           <div className="p-search_form_sort">
             <label>Sort :</label>
-            <select id="">
-              <option value="">Oldest</option>
-              <option value="">Latest</option>
-              <option value="">Most popular</option>
-              <option value="">Feature by ShowGa</option>
+            <select onChange={handleFormSelect}>
+              <option value="Oldest">Oldest</option>
+              <option value="Latest">Latest</option>
+              <option value="Popular">Most popular</option>
+              <option value="Feature">Feature by ShowGa</option>
             </select>
           </div>
 
@@ -65,7 +87,10 @@ const Search = () => {
           <main>
             <div className="p-post_searchResult_title_container">
               <h1 className="font-bold text-2xl">Search Result :</h1>
-              <div className="search_tag_container">tag</div>
+              <div className="selected_tag_container">
+                {formTag && <span>{formTag}</span>}
+                {formSort && <span>{formSort}</span>}
+              </div>
             </div>
 
             <div className="p-post-main_postcards_container">

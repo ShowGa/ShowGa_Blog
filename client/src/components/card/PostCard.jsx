@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // Images
-import { postTest } from "../../assets";
+import { postTest, gao } from "../../assets";
 // Components CSS
 
 const PostCard = () => {
   return (
     <div className="c-postcard_container">
       <div className="c-postcard_img_container">
-        <img src={postTest} className="c-img_hover-effect" />
+        <img src={gao} className="c-img_hover-effect" />
       </div>
 
       <div className="c-postcard_text_container">

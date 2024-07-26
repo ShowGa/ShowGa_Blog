@@ -1,12 +1,12 @@
 import React from "react";
 // Image
-import { postTest } from "../../assets";
+import { postTest, gao } from "../../assets";
 
 const SideBarPostCard = () => {
   return (
     <div className="c-sideBarPostCard_container">
       <div className="c-sideBarPostCard_img_container">
-        <img src={postTest} alt="" className="c-img_hover-effect" />
+        <img src={gao} alt="" className="c-img_hover-effect" />
       </div>
 
       <div className="c-sideBarPostCard_text_container">

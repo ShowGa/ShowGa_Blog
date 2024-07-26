@@ -127,12 +127,12 @@ Search.jsx
 }
 
 .p-tag_span_container {
-  @apply flex flex-row gap-2;
+  @apply flex flex-row flex-wrap gap-2;
 }
 
 .p-span_item {
   @apply text-gray-800 font-bold rounded-full p-2;
-  @apply cursor-pointer;
+  @apply transition-all duration-150 cursor-pointer;
 }
 
 .p-search_form_sort {
@@ -151,4 +151,8 @@ Search.jsx
   @apply text-xl border-2 py-1 border-orange-400 w-[60%] m-auto;
   @apply transition-all duration-100;
   @apply hover:bg-orange-400 hover:text-gray-800;
+}
+
+.selected_tag_container span {
+  @apply text-lg pr-3;
 }
