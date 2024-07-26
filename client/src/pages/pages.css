@@ -153,6 +153,11 @@ Search.jsx
   @apply hover:bg-orange-400 hover:text-gray-800;
 }
 
-.selected_tag_container span {
+.p-selected_tag_container span {
   @apply text-lg pr-3;
+}
+
+.p-load_more_button {
+  @apply text-5xl m-auto cursor-pointer transition-all duration-150;
+  @apply hover:scale-110;
 }

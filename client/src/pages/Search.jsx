@@ -8,6 +8,8 @@ import PostCard from "../components/card/PostCard";
 import { tagInfo } from "../constants";
 // CSS
 import "./pages.css";
+// react icons
+import { FaSquarePlus } from "react-icons/fa6";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -87,7 +89,7 @@ const Search = () => {
           <main>
             <div className="p-post_searchResult_title_container">
               <h1 className="font-bold text-2xl">Search Result :</h1>
-              <div className="selected_tag_container">
+              <div className="p-selected_tag_container">
                 {formTag && <span>{formTag}</span>}
                 {formSort && <span>{formSort}</span>}
               </div>
@@ -97,6 +99,10 @@ const Search = () => {
               <PostCard />
               <PostCard />
               <PostCard />
+
+              <div>
+                <FaSquarePlus className="p-load_more_button" />
+              </div>
             </div>
           </main>
 
