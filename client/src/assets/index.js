@@ -10,6 +10,8 @@ import magic from "./magic.jpg";
 import travel from "./travel.jpg";
 import postTest from "./postTest.png";
 import gao from "./gao.jpg";
+import slamDunk from "./TheFirstSlamDunk.jpg";
+import slamDunk2 from "./slamdunk.jpg";
 
 export {
   showGaB,
@@ -20,6 +22,8 @@ export {
   code,
   postTest,
   gao,
+  slamDunk,
+  slamDunk2,
   food,
   gaming,
   magic,

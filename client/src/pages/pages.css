@@ -1,5 +1,14 @@
 /*
 ==================
+page global
+==================
+*/
+.p-row_flex_between {
+  @apply flex justify-between;
+}
+
+/*
+==================
 Swiper
 ==================
 */
@@ -160,4 +169,70 @@ Search.jsx
 .p-load_more_button {
   @apply text-5xl m-auto cursor-pointer transition-all duration-150;
   @apply hover:scale-110;
+}
+
+/*
+==================
+Post.jsx
+==================
+*/
+.p-post_page_heroSection_container {
+  @apply flex gap-3 pt-11;
+}
+
+.p-post_title_container {
+  @apply flex flex-col flex-1 justify-center gap-10;
+}
+
+.p-post_title_container h1 {
+  @apply text-5xl;
+}
+
+.p-author_container {
+  @apply flex items-center gap-6;
+}
+
+.p-author_container img {
+  @apply w-20 rounded-full;
+}
+
+.p-author_text p {
+  @apply text-xl;
+}
+
+.p-post_title_function-list {
+  @apply flex gap-6 items-center py-4;
+}
+
+.p-function_clap_container {
+  @apply flex gap-1 cursor-pointer;
+}
+
+.p-function_comments_container {
+  @apply flex gap-1 cursor-pointer;
+}
+
+.p-post_img_container {
+  @apply flex-1;
+}
+
+.p-post_comments_section {
+  @apply flex flex-col gap-5 w-[26rem] p-6 overflow-scroll;
+  @apply shadow-lg shadow-gray-500 bg-white;
+  @apply fixed -right-20 top-0 bottom-0 z-50;
+  @apply opacity-0 pointer-events-none transition-all duration-150;
+}
+.p-textarea_container textarea {
+  @apply w-full;
+}
+.p-comments_section-effect {
+  @apply opacity-100 pointer-events-auto right-0;
+}
+
+.p-article_container {
+  @apply flex-1;
+}
+
+.p-article_container article {
+  @apply text-lg;
 }
