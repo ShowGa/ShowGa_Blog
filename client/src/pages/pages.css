@@ -229,14 +229,21 @@ Post.jsx
 
 .p-post_comments_section {
   background-color: var(--bg);
-  @apply flex flex-col gap-5 w-[26rem] p-6 overflow-scroll;
-  @apply shadow-xl shadow-gray-500;
+  @apply flex flex-col gap-5 w-[26rem] p-6 overflow-y-auto overflow-x-hidden
+  shadow-xl shadow-gray-500;
   @apply fixed -right-20 top-0 bottom-0 z-50;
   @apply opacity-0 pointer-events-none transition-all duration-150;
+  @apply max-sm:w-full max-sm:top-[4.15rem];
 }
+
+.p-post_comments_section::-webkit-scrollbar {
+  display: none;
+}
+
 .p-textarea_container textarea {
   @apply w-full;
 }
+
 .p-comments_section-effect {
   @apply opacity-100 pointer-events-auto right-0;
 }
