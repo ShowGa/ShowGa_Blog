@@ -57,12 +57,17 @@ const Post = () => {
       {/* Comments Section */}
       <section
         className={`p-post_comments_section ${
-          showCommentSec ? "" : "p-comments_section-effect"
+          showCommentSec ? "p-comments_section-effect" : ""
         }`}
       >
         <div className="p-row_flex_between">
           <p className="text-xl font-bold">Comments</p>
-          <FaWindowClose className="text-2xl" />
+          <FaWindowClose
+            onClick={() => {
+              setShowCommentSec(!showCommentSec);
+            }}
+            className="text-2xl cursor-pointer"
+          />
         </div>
 
         <div className="p-textarea_container">

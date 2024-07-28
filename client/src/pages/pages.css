@@ -205,10 +205,12 @@ Post.jsx
 }
 
 .p-function_clap_container {
+  color: var(--softTextColor);
   @apply flex gap-1 cursor-pointer;
 }
 
 .p-function_comments_container {
+  color: var(--softTextColor);
   @apply flex gap-1 cursor-pointer;
 }
 
@@ -217,8 +219,9 @@ Post.jsx
 }
 
 .p-post_comments_section {
+  background-color: var(--bg);
   @apply flex flex-col gap-5 w-[26rem] p-6 overflow-scroll;
-  @apply shadow-lg shadow-gray-500 bg-white;
+  @apply shadow-xl shadow-gray-500;
   @apply fixed -right-20 top-0 bottom-0 z-50;
   @apply opacity-0 pointer-events-none transition-all duration-150;
 }
