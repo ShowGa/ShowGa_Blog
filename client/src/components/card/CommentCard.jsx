@@ -6,13 +6,13 @@ import { PiHandsClapping } from "react-icons/pi";
 
 const CommentCard = () => {
   return (
-    <div className="flex flex-col gap-4 border-t pt-4 mt-5">
-      <div className="flex items-center gap-3">
-        <img src={gao} alt="" className="w-9 rounded-full" />
+    <div className="c-comment-card_container">
+      <div className="c-comment-card_author_container">
+        <img src={gao} alt="" />
 
         <div>
           <p>ShowGa Hsiao</p>
-          <span className="text-sm leading-none">27.07.2024</span>
+          <span>27.07.2024</span>
         </div>
       </div>
 
@@ -26,7 +26,7 @@ const CommentCard = () => {
       </div>
 
       <div>
-        <div className="flex gap-1 cursor-pointer">
+        <div className="c-comment-card_function">
           <PiHandsClapping className="text-lg" />
           <p>100</p>
         </div>

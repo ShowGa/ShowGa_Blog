@@ -227,3 +227,29 @@ RecommendSideBar.jsx
 .c-recommendSideBar_text_container h1 {
   @apply text-2xl font-bold;
 }
+
+/*
+==================
+CommentCard.jsx
+==================
+*/
+.c-comment-card_container {
+  @apply flex flex-col gap-4 border-t pt-4 mt-5;
+}
+
+.c-comment-card_author_container {
+  @apply flex items-center gap-3;
+}
+
+.c-comment-card_author_container img {
+  @apply w-9 rounded-full;
+}
+
+.c-comment-card_author_container div span {
+  color: var(--softTextColor);
+  @apply text-sm leading-none;
+}
+
+.c-comment-card_function {
+  @apply flex gap-1 cursor-pointer;
+}
