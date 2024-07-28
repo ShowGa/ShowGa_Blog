@@ -15,6 +15,7 @@ import slamDunk2 from "./slamdunk.jpg";
 import github from "./github.png";
 import google from "./google.png";
 import facebook from "./facebook.png";
+import steam from "./steam.png";
 
 export {
   showGaB,
@@ -34,4 +35,5 @@ export {
   github,
   google,
   facebook,
+  steam,
 };
