@@ -12,6 +12,9 @@ import postTest from "./postTest.png";
 import gao from "./gao.jpg";
 import slamDunk from "./TheFirstSlamDunk.jpg";
 import slamDunk2 from "./slamdunk.jpg";
+import github from "./github.png";
+import google from "./google.png";
+import facebook from "./facebook.png";
 
 export {
   showGaB,
@@ -28,4 +31,7 @@ export {
   gaming,
   magic,
   travel,
+  github,
+  google,
+  facebook,
 };
