@@ -54,30 +54,39 @@ const Post = () => {
         </div>
       </section>
 
-      {/* Comments Section */}
       <section
         className={`p-post_comments_section ${
           showCommentSec ? "p-comments_section-effect" : ""
         }`}
+        onClick={() => {
+          setShowCommentSec(!showCommentSec);
+        }}
       >
-        <div className="p-row_flex_between">
-          <p className="text-xl font-bold">Comments</p>
-          <FaWindowClose
-            onClick={() => {
-              setShowCommentSec(!showCommentSec);
-            }}
-            className="text-2xl cursor-pointer"
-          />
-        </div>
+        <div
+          className="p-post_comments_container"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <div className="p-row_flex_between">
+            <p className="text-xl font-bold">Comments</p>
+            <FaWindowClose
+              onClick={() => {
+                setShowCommentSec(!showCommentSec);
+              }}
+              className="text-2xl cursor-pointer"
+            />
+          </div>
 
-        <div className="p-textarea_container">
-          <textarea name="" id=""></textarea>
-        </div>
+          <div className="p-textarea_container">
+            <textarea name="" id=""></textarea>
+          </div>
 
-        <div>
-          <CommentCard />
-          <CommentCard />
-          <CommentCard />
+          <div>
+            <CommentCard />
+            <CommentCard />
+            <CommentCard />
+          </div>
         </div>
       </section>
 
