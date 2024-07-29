@@ -1,6 +1,7 @@
 import { Editor, Home, Login, Post, Search, About } from "./pages/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/about" element={<About />} />
           <Route path="/post/:postId" element={<Post />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/editor" element={<Editor />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

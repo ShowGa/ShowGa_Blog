@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 const Editor = () => {
   const { t } = useTranslation();
 
-  return <div>{t("test1")}</div>;
+  return <div>Editor</div>;
 };
 
 export default Editor;

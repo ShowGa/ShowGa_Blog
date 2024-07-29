@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { RiGlobalFill } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
 import { SiBurgerking } from "react-icons/si";
+import { FaPenFancy } from "react-icons/fa";
 // component
 import RgbBar from "./effect/RgbBar";
 import ThemeBtn from "./button/ThemeBtn";
@@ -130,6 +131,14 @@ const Header = ({ changeLanguage }) => {
                 </Link>
               </ul>
             </div>
+          </div>
+
+          {/* ---- Write button ---- */}
+          {/* --- Login funtionality --- */}
+          <div className="c-nav_icons_container">
+            <Link to={"/editor"}>
+              <FaPenFancy className="c-nav_icons hover:text-blue-600" />
+            </Link>
           </div>
 
           {/* ---- Search button ---- */}
