@@ -1,8 +1,12 @@
 import React from "react";
 // Images
 import { google, github, facebook } from "../assets";
+//zustand
+import useAuthUserStore from "../zustand/useAuthUser";
 
 const Login = () => {
+  const { authUser, setAuthUser } = useAuthUserStore();
+
   return (
     <main className="p-login-page_wrapper">
       <div className="p-login_button_wrapper">
