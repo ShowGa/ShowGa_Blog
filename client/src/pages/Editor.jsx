@@ -16,8 +16,8 @@ const Editor = () => {
   const [plusBtnShow, setPlusBtnShow] = useState(false);
 
   return (
-    <div className="max-w-[50%] mx-auto max-md:max-w-[95%] pt-11">
-      <input type="text" placeholder="Title" className="p-title_input" />
+    <div className="max-w-[50%] min-h-[100vh] mx-auto max-md:max-w-[95%] pt-11">
+      <input type="text" placeholder="Title" className="p-editor_title_input" />
 
       <ReactQuill
         theme="bubble"

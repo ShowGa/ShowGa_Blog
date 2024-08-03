@@ -43,7 +43,7 @@ const Home = () => {
           <Swiper
             effect={"coverflow"}
             grabCursor={true}
-            slidesPerView={"auto"}
+            slidesPerView={4}
             centeredSlides={true}
             autoplay={{ delay: 4000, disableOnInteraction: false }}
             coverflowEffect={{

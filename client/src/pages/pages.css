@@ -12,8 +12,9 @@ page global
 react-quill
 ==================
 */
-.ql-editor::before {
-  @apply text-lg;
+.ql-editor.ql-blank::before {
+  @apply text-lg opacity-60;
+  color: var(--softTextColor);
 }
 .ql-bubble .ql-editor p {
   @apply text-lg;
@@ -273,7 +274,10 @@ Post.jsx
 }
 
 .p-textarea_container textarea {
-  @apply w-full p-1 rounded-md text-black;
+  @apply w-full h-[10rem] p-1 border-2 border-black rounded-md text-black;
+}
+.p-textarea_container textarea::-webkit-scrollbar {
+  display: none;
 }
 
 .p-comments_section-effect {
@@ -343,8 +347,8 @@ About.jsx
 Editor.jsx
 ==================
 */
-.p-title_input {
-  @apply w-full p-1 ml-4 mb-4 text-2xl;
+.p-editor_title_input {
+  @apply w-full p-1 mb-4 text-2xl bg-transparent;
 }
 .p-function_container {
   @apply flex items-center gap-4 pl-3;
