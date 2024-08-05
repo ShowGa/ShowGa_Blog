@@ -1,4 +1,12 @@
-import { Editor, Home, Login, Post, Search, About } from "./pages/index";
+import {
+  Editor,
+  Home,
+  Login,
+  Post,
+  Search,
+  About,
+  Profile,
+} from "./pages/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import PrivateRoute from "./components/PrivateRoute";
@@ -15,6 +23,7 @@ function App() {
           <Route path="/post/:postId" element={<Post />} />
           <Route element={<PrivateRoute />}>
             <Route path="/editor" element={<Editor />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
         </Route>
       </Routes>

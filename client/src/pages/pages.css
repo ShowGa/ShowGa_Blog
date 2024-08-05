@@ -398,3 +398,40 @@ Editor.jsx
 .p-post > *:first-child {
   margin-top: 0;
 }
+
+/*
+==================
+Profile.jsx
+==================
+*/
+.p-profile-page_wrapper {
+  @apply max-w-lg h-[90vh] mx-auto mt-11 p-3;
+}
+
+.p-profile-head_container {
+  @apply flex flex-col items-center gap-3;
+}
+.p-profile-head_container h1 {
+  @apply text-3xl font-bold;
+}
+.p-profile-head_container img {
+  @apply w-28 rounded-full border-2 border-gray-300 cursor-pointer;
+}
+
+.p-profile-body_container {
+  @apply flex flex-col;
+}
+.p-profile-body_container label {
+  @apply mt-5 text-xl;
+}
+.p-profile-body_container input {
+  background-color: var(--softBg);
+  @apply border border-gray-300 rounded-md p-2;
+}
+.p-profile-body_container button {
+  border-color: rgb(248, 96, 121);
+  @apply w-[50%] mx-auto mt-7 p-1 border-2 text-lg;
+}
+.p-profile-body_container button:hover {
+  background: linear-gradient(135deg, rgb(231, 70, 148), rgb(255, 139, 76));
+}

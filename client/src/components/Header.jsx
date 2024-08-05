@@ -217,8 +217,13 @@ const Header = ({ changeLanguage }) => {
               </div>
 
               <div className="c-dropdown-list_container">
-                <p className="dropdown_items">Dashboard</p>
-                <p className="dropdown_items">Profile</p>
+                <Link to={"/dashboard"}>
+                  <p className="dropdown_items">Dashboard</p>
+                </Link>
+
+                <Link to={"/profile"}>
+                  <p className="dropdown_items">Profile</p>
+                </Link>
               </div>
 
               <p className="dropdown_items">Sign Out</p>
