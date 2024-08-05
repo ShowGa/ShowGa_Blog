@@ -54,6 +54,37 @@ Header.jsx
   @apply max-md:block;
 }
 
+.c-nav-profile-dropdown {
+  opacity: 0;
+  min-width: 14rem;
+  min-height: max-content;
+  right: 0;
+  top: 64px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.25rem;
+  pointer-events: none;
+
+  position: absolute;
+  z-index: 40;
+
+  transition: all;
+  transition-duration: 200ms;
+  /* @apply w; */
+}
+.c-nav-profile-dropdown_on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.c-dropdown-list_container {
+  @apply border-b border-gray-700 pb-2 mb-2;
+}
+
 /*
 ==================
 ThemeButton.jsx

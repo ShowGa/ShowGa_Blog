@@ -13,12 +13,15 @@ import ThemeBtn from "./button/ThemeBtn";
 import useThemeStore from "../zustand/useTheme";
 // CSS module
 import "./components.css";
+// image
+import { gao } from "../assets";
 
 const Header = ({ changeLanguage }) => {
   const { theme, toggleTheme } = useThemeStore();
 
   const [lanBtnActive, setLanBtnActive] = useState(false);
   const [burgerBtnActive, setBurgerBtnActive] = useState(false);
+  const [profileBtnActive, setProfileBtnActive] = useState(false);
   // deal with header scroll effect
   let scrollY = 0;
   const [topPosition, setPosition] = useState("");
@@ -50,6 +53,7 @@ const Header = ({ changeLanguage }) => {
     window.addEventListener("resize", () => {
       setLanBtnActive(false);
       setBurgerBtnActive(false);
+      setProfileBtnActive(false);
     });
 
     window.addEventListener("scroll", handleHeaderEffect);
@@ -58,6 +62,7 @@ const Header = ({ changeLanguage }) => {
       window.removeEventListener("resize", () => {
         setLanBtnActive(false);
         setBurgerBtnActive(false);
+        setProfileBtnActive(false);
       });
 
       window.removeEventListener("scroll", handleHeaderEffect);
@@ -192,6 +197,33 @@ const Header = ({ changeLanguage }) => {
           {/* ---- Theme Button ---- */}
 
           <ThemeBtn />
+
+          <div
+            className="c-nav_icons_container relative"
+            onClick={() => {
+              setProfileBtnActive(!profileBtnActive);
+            }}
+          >
+            <img src={gao} className="h-[60%] rounded-full cursor-pointer" />
+
+            <div
+              className={`c-nav-profile-dropdown ${
+                profileBtnActive ? "c-nav-profile-dropdown_on" : ""
+              }`}
+            >
+              <div className="c-dropdown-list_container">
+                <p>@ShowGa</p>
+                <p className="text-sm">showga@gmail.com</p>
+              </div>
+
+              <div className="c-dropdown-list_container">
+                <p className="dropdown_items">Dashboard</p>
+                <p className="dropdown_items">Profile</p>
+              </div>
+
+              <p className="dropdown_items">Sign Out</p>
+            </div>
+          </div>
         </nav>
       </div>
 
