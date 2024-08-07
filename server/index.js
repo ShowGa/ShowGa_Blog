@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+// router
+import authRouter from "./routes/auth_route.js";
 
 dotenv.config();
 const app = express();
@@ -21,10 +23,8 @@ app.use(cookieParser());
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.get("/", (req, res) => {
-  res.send("Sup bitchh !");
-});
+// route
+app.use("/server/auth", authRouter);
 
 app.listen(8080, () => {
   console.log("Server listening to Port 8080");
