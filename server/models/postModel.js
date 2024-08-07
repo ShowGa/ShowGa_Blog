@@ -20,6 +20,11 @@ const postSchema = new mongoose.Schema(
     },
     views: {
       type: Number,
+      default: 0,
+    },
+    isFeatured: {
+      type: Boolean,
+      required: true,
     },
     slug: {
       type: String,
