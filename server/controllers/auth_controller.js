@@ -1,6 +1,6 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const signUp = async (req, res) => {
   try {
@@ -30,5 +30,31 @@ export const signUp = async (req, res) => {
     res
       .status(500)
       .json({ error: "Internal Server Error ! Please contact us ." });
+  }
+};
+
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    // check user email and password
+    const foundUser = await User.findOne({ email });
+    if (!foundUser) {
+      return res.status(402).json({ error: "Invalid username or password !" });
+    }
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      foundUser.password
+    );
+    if (!isPasswordCorrect) {
+      return res.status(402).json({ error: "Invalid username or password !" });
+    }
+
+    const { password: ps, ...rest } = foundUser._doc;
+    // generate token and send cookie
+    generateTokenAndSetCookie(foundUser._id, res);
+    return res.status(200).json(rest);
+  } catch (e) {
+    console.log("Error in login controller", e);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
