@@ -15,8 +15,15 @@ import useThemeStore from "../zustand/useTheme";
 import "./components.css";
 // image
 import { gao } from "../assets";
+// auth-service
+import AuthService from "../services/auth-service";
+// react hot toast
+import toast from "react-hot-toast";
+// zustand
+import useAuthUserStore from "../zustand/useAuthUser";
 
 const Header = ({ changeLanguage }) => {
+  const { authUser, logoutSetAuthUser } = useAuthUserStore();
   const { theme, toggleTheme } = useThemeStore();
 
   const [lanBtnActive, setLanBtnActive] = useState(false);
@@ -47,6 +54,19 @@ const Header = ({ changeLanguage }) => {
     }
 
     scrollY = currentScrollPos;
+  };
+
+  // auth functionality
+  const handleLogOut = () => {
+    AuthService.logOut()
+      .then(() => {
+        logoutSetAuthUser();
+        toast.success("Log out successfully !");
+      })
+      .catch((e) => {
+        toast.error("Error occurred when trying to log out !");
+        console.log(e);
+      });
   };
 
   useEffect(() => {
@@ -226,7 +246,9 @@ const Header = ({ changeLanguage }) => {
                 </Link>
               </div>
 
-              <p className="dropdown_items">Sign Out</p>
+              <p onClick={handleLogOut} className="dropdown_items">
+                Sign Out
+              </p>
             </div>
           </div>
         </nav>
