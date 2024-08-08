@@ -5,6 +5,8 @@ import i18n from "../config/i18n_config";
 import { useTranslation } from "react-i18next";
 import { Outlet } from "react-router-dom";
 import useThemeStore from "../zustand/useTheme";
+// react hot toast
+import { Toaster } from "react-hot-toast";
 
 const Layout = () => {
   const { t } = useTranslation();
@@ -20,6 +22,7 @@ const Layout = () => {
       <Header changeLanguage={changeLanguage} />
       <Outlet />
       <Footer />
+      <Toaster />
     </div>
   );
 };
