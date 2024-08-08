@@ -85,6 +85,22 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
+.red_blue_bg_LG {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 14, 6, 1) 0%,
+    rgba(7, 103, 227, 1) 100%
+  );
+}
+
+.pink_orange_bg_LG {
+  background: linear-gradient(
+    135deg,
+    rgb(244, 135, 26) 0%,
+    rgb(228, 25, 130) 100%
+  );
+}
+
 /* Effect */
 .btn_hover_effect:hover {
   background: linear-gradient(

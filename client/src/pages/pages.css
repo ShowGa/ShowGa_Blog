@@ -298,15 +298,26 @@ Login.jsx
 ==================
 */
 .p-login-page_wrapper {
-  @apply h-[90vh] flex justify-center items-center;
+  @apply flex flex-col justify-center gap-5 min-h-[85vh] max-w-md m-auto;
 }
 
-.p-login_button_wrapper {
-  @apply max-w-96 max-h-[22rem] w-full h-full flex flex-col justify-center gap-6 p-12 rounded-sm bg-gray-800;
+.p-login-lock {
+  @apply flex justify-center items-center w-fit gap-2 border border-orange-400 px-2 py-1 mb-6 mx-auto;
+  @apply text-black rounded-md;
+}
+
+.p-login_title {
+  @apply text-4xl font-bold;
+}
+.p-login_title span {
+  @apply text-white text-center p-2 rounded-md;
+}
+.p-login_des {
+  @apply text-sm mt-5;
 }
 
 .login_button {
-  @apply flex justify-center items-center gap-1 text-center h-12 rounded-full cursor-pointer;
+  @apply flex justify-center items-center gap-1 text-center h-12 mt-3 rounded-full cursor-pointer bg-gray-200;
 }
 
 .login_button img {
