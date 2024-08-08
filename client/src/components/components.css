@@ -284,3 +284,16 @@ CommentCard.jsx
 .c-comment-card_function {
   @apply flex gap-1 cursor-pointer;
 }
+
+/*
+==================
+OAuth.jsx
+==================
+*/
+.login_button {
+  @apply flex justify-center items-center gap-1 text-center h-12 mt-3 rounded-full cursor-pointer bg-gray-200;
+}
+
+.login_button img {
+  @apply w-8;
+}

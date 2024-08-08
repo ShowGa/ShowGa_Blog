@@ -5,6 +5,8 @@ import { google } from "../assets";
 import useAuthUserStore from "../zustand/useAuthUser";
 // react icons
 import { FaUnlockAlt } from "react-icons/fa";
+// OAuth
+import OAuth from "../components/button/OAuth";
 
 const Login = () => {
   const { authUser, setAuthUser } = useAuthUserStore();
@@ -22,10 +24,8 @@ const Login = () => {
         </p>
         <p className="p-login_des">Login for leaving a comment in the post !</p>
       </div>
-      <div className="login_button">
-        <img src={google} />
-        <p className="text-black">Login with Google</p>
-      </div>
+
+      <OAuth />
     </main>
   );
 };
