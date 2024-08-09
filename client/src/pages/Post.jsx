@@ -11,8 +11,13 @@ import "./pages.css";
 // react icons
 import { PiHandsClapping } from "react-icons/pi";
 import { FaRegComment, FaWindowClose } from "react-icons/fa";
+// zustand
+import useAuthUserStore from "../zustand/useAuthUser";
+import { Link } from "react-router-dom";
 
 const Post = () => {
+  const { authUser } = useAuthUserStore();
+
   const [showCommentSec, setShowCommentSec] = useState(false);
 
   return (
@@ -79,7 +84,18 @@ const Post = () => {
           </div>
 
           <div className="p-textarea_container">
-            <textarea name="" id=""></textarea>
+            {authUser ? (
+              <textarea name="" id=""></textarea>
+            ) : (
+              <div>
+                <p>
+                  <Link to={"/login"} className="link">
+                    Login
+                  </Link>{" "}
+                  to leave comments !
+                </p>
+              </div>
+            )}
           </div>
 
           <div>

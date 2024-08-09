@@ -26,8 +26,6 @@ const Header = ({ changeLanguage }) => {
   const { authUser, logoutSetAuthUser } = useAuthUserStore();
   const { theme } = useThemeStore();
 
-  console.log(authUser);
-
   const [lanBtnActive, setLanBtnActive] = useState(false);
   const [burgerBtnActive, setBurgerBtnActive] = useState(false);
   const [profileBtnActive, setProfileBtnActive] = useState(false);

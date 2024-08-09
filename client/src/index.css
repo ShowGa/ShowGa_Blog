@@ -73,6 +73,12 @@ header {
 @media (max-width: 767px) {
 }
 
+/* Link effect */
+.link {
+  @apply text-blue-500;
+  @apply hover:underline;
+}
+
 /* ================ Miscellaneous Effect ================= */
 /* linear-gradient */
 .red_blue_LG {
