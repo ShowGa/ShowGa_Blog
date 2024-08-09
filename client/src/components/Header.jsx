@@ -24,7 +24,9 @@ import useAuthUserStore from "../zustand/useAuthUser";
 
 const Header = ({ changeLanguage }) => {
   const { authUser, logoutSetAuthUser } = useAuthUserStore();
-  const { theme, toggleTheme } = useThemeStore();
+  const { theme } = useThemeStore();
+
+  console.log(authUser);
 
   const [lanBtnActive, setLanBtnActive] = useState(false);
   const [burgerBtnActive, setBurgerBtnActive] = useState(false);
@@ -117,9 +119,11 @@ const Header = ({ changeLanguage }) => {
             <Link to={"/about"} className="btn_hover_effect cursor-pointer">
               About
             </Link>
-            <Link to={"/login"} className="btn_hover_effect cursor-pointer">
-              Login
-            </Link>
+            {!authUser && (
+              <Link to={"/login"} className="btn_hover_effect cursor-pointer">
+                Login
+              </Link>
+            )}
           </ul>
 
           {/* ---- Page List and Burger button ---- */}
@@ -151,20 +155,24 @@ const Header = ({ changeLanguage }) => {
                 <Link to={"/About"}>
                   <li className="dropdown_items">About</li>
                 </Link>
-                <Link to={"/login"}>
-                  <li className="dropdown_items">Login</li>
-                </Link>
+                {!authUser && (
+                  <Link to={"/login"}>
+                    <li className="dropdown_items">Login</li>
+                  </Link>
+                )}
               </ul>
             </div>
           </div>
 
           {/* ---- Write button ---- */}
           {/* --- Login funtionality --- */}
-          <div className="c-nav_icons_container">
-            <Link to={"/editor"}>
-              <FaPenFancy className="c-nav_icons hover:text-blue-600" />
-            </Link>
-          </div>
+          {authUser && authUser.isAdmin && (
+            <div className="c-nav_icons_container">
+              <Link to={"/editor"}>
+                <FaPenFancy className="c-nav_icons hover:text-blue-600" />
+              </Link>
+            </div>
+          )}
 
           {/* ---- Search button ---- */}
 
@@ -218,39 +226,47 @@ const Header = ({ changeLanguage }) => {
 
           <ThemeBtn />
 
-          <div
-            className="c-nav_icons_container relative"
-            onClick={() => {
-              setProfileBtnActive(!profileBtnActive);
-            }}
-          >
-            <img src={gao} className="h-[60%] rounded-full cursor-pointer" />
-
+          {/* ---- Avatar ---- */}
+          {authUser && (
             <div
-              className={`c-nav-profile-dropdown ${
-                profileBtnActive ? "c-nav-profile-dropdown_on" : ""
-              }`}
+              className="c-nav_icons_container relative"
+              onClick={() => {
+                setProfileBtnActive(!profileBtnActive);
+              }}
             >
-              <div className="c-dropdown-list_container">
-                <p>@ShowGa</p>
-                <p className="text-sm">showga@gmail.com</p>
+              <img
+                src={authUser.avatar}
+                className="h-[60%] rounded-full cursor-pointer"
+              />
+
+              <div
+                className={`c-nav-profile-dropdown ${
+                  profileBtnActive ? "c-nav-profile-dropdown_on" : ""
+                }`}
+              >
+                <div className="c-dropdown-list_container">
+                  <p>{authUser.username}</p>
+                  <p className="text-sm">{authUser.email}</p>
+                </div>
+
+                <div className="c-dropdown-list_container">
+                  {authUser && authUser.isAdmin && (
+                    <Link to={"/dashboard"}>
+                      <p className="dropdown_items">Dashboard</p>
+                    </Link>
+                  )}
+
+                  <Link to={"/profile"}>
+                    <p className="dropdown_items">Profile</p>
+                  </Link>
+                </div>
+
+                <p onClick={handleLogOut} className="dropdown_items">
+                  Sign Out
+                </p>
               </div>
-
-              <div className="c-dropdown-list_container">
-                <Link to={"/dashboard"}>
-                  <p className="dropdown_items">Dashboard</p>
-                </Link>
-
-                <Link to={"/profile"}>
-                  <p className="dropdown_items">Profile</p>
-                </Link>
-              </div>
-
-              <p onClick={handleLogOut} className="dropdown_items">
-                Sign Out
-              </p>
             </div>
-          </div>
+          )}
         </nav>
       </div>
 
