@@ -6,10 +6,14 @@ import {
   Search,
   About,
   Profile,
+  Dashboard,
 } from "./pages/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import PrivateRoute from "./components/PrivateRoute";
+// Components
+import DashInfo from "./components/dash/DashInfo";
+import DashPosts from "./components/dash/DashPosts";
 
 function App() {
   return (
@@ -24,6 +28,10 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/editor" element={<Editor />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route index element={<DashInfo />} />
+              <Route path="posts" element={<DashPosts />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

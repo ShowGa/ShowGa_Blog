@@ -438,3 +438,23 @@ Profile.jsx
 .p-profile-body_container button:hover {
   background: linear-gradient(135deg, rgb(231, 70, 148), rgb(255, 139, 76));
 }
+
+/*
+==================
+Profile.jsx
+==================
+*/
+.p-dashboard-wrapper {
+  @apply flex min-h-screen;
+}
+
+.p-dashboard-sidebar_sec {
+  background: var(--softBg);
+  @apply flex flex-col gap-2 min-h-full p-3;
+}
+
+.p-sidebar-items {
+  @apply flex items-center gap-2 p-1 rounded-md cursor-pointer;
+  @apply hover:bg-gray-500 hover:bg-opacity-30;
+  /* @apply; */
+}
