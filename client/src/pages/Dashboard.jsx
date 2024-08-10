@@ -17,6 +17,10 @@ const Dashboard = () => {
 
   const [activeItem, setActiveItem] = useState("dash");
 
+  const handleActiveItems = (e) => {
+    setActiveItem(e.target.id);
+  };
+
   const handleLogOut = () => {
     AuthService.logOut()
       .then(() => {
@@ -32,14 +36,30 @@ const Dashboard = () => {
   return (
     <main className="p-dashboard-wrapper">
       <section className="p-dashboard-sidebar_sec">
-        <Link to={""} className="p-sidebar-items">
+        <Link
+          to={""}
+          onClick={handleActiveItems}
+          id="dash"
+          className={`p-sidebar-items ${
+            activeItem === "dash" ? "p-items_active" : ""
+          }`}
+        >
           <MdSpaceDashboard className="text-2xl" />
           <p>Dash Information</p>
         </Link>
-        <Link to={"posts"} className="p-sidebar-items">
+
+        <Link
+          to={"posts"}
+          onClick={handleActiveItems}
+          id="posts"
+          className={`p-sidebar-items ${
+            activeItem === "posts" ? "p-items_active" : ""
+          }`}
+        >
           <PiArticleNyTimesFill className="text-2xl" />
           <p>Posts</p>
         </Link>
+
         <div onClick={handleLogOut} className="p-sidebar-items">
           <FaSignOutAlt className="text-2xl" />
           <p>Sign Out</p>

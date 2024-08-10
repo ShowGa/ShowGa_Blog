@@ -458,3 +458,10 @@ Profile.jsx
   @apply hover:bg-gray-500 hover:bg-opacity-30;
   /* @apply; */
 }
+.p-sidebar-items * {
+  @apply pointer-events-none;
+}
+
+.p-items_active {
+  @apply bg-gray-500 bg-opacity-30;
+}
