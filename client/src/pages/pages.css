@@ -433,10 +433,17 @@ Profile.jsx
 }
 .p-profile-body_container button {
   border-color: rgb(248, 96, 121);
-  @apply w-[50%] mx-auto mt-7 p-1 border-2 text-lg;
+  @apply w-full mx-auto mt-7 p-1 border-2 text-lg;
 }
 .p-profile-body_container button:hover {
   background: linear-gradient(135deg, rgb(231, 70, 148), rgb(255, 139, 76));
+}
+
+.p-profile-function_button_container {
+  @apply text-red-600 mt-7;
+}
+.p-profile-function_button_container span {
+  @apply hover:underline cursor-pointer;
 }
 
 /*
