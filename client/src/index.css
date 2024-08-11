@@ -36,7 +36,7 @@ header {
   min-width: 150px;
   min-height: 120px;
   right: 0;
-  top: 75px;
+  top: 64px;
   background-color: rgba(0, 0, 0, 0.8);
   padding-top: 30px;
   padding-bottom: 30px;
@@ -53,7 +53,6 @@ header {
 }
 .dropdown_on {
   opacity: 1;
-  top: 64px;
   pointer-events: auto;
 }
 .dropdown_items {
