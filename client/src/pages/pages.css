@@ -37,6 +37,13 @@ react-quill
 .ql-bubble .ql-editor img {
   @apply max-w-md mx-auto;
 }
+.ql-syntax {
+  background-color: #dddddd;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+  color: black;
+}
 
 /*
 ==================

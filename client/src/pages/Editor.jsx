@@ -5,10 +5,9 @@ import { CiCirclePlus } from "react-icons/ci";
 import { AiOutlinePicture } from "react-icons/ai";
 // React quill
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.bubble.css";
+import { modules, formats } from "../config/react_quill_config";
 // CSS
 import "./pages.css";
-import toast from "react-hot-toast";
 // firebase
 import {
   getDownloadURL,
@@ -108,30 +107,5 @@ const Editor = () => {
     </div>
   );
 };
-
-const modules = {
-  toolbar: [
-    [{ header: "1" }, { header: "2" }, "image"],
-    ["bold", "italic", "underline"],
-    ["clean"],
-  ],
-};
-
-const formats = [
-  "header",
-  "font",
-  "size",
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "blockquote",
-  "list",
-  "bullet",
-  "indent",
-  "link",
-  "image",
-  "video",
-];
 
 export default Editor;
