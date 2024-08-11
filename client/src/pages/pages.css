@@ -422,14 +422,6 @@ Profile.jsx
   @apply w-full h-full rounded-full border-2 border-gray-300 object-cover object-center cursor-pointer;
 }
 
-.p-profileImg-progressbar {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 .p-profile-body_container {
   @apply flex flex-col;
 }

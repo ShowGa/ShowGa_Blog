@@ -15,7 +15,7 @@ import { app } from "../firebase/firebase";
 // toast
 import toast from "react-hot-toast";
 // progressbar
-import { CircularProgressbar } from "react-circular-progressbar";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 const Profile = () => {
@@ -80,10 +80,16 @@ const Profile = () => {
         {imgUploadProgress && (
           <CircularProgressbar
             value={imgUploadProgress || 0}
-            text={`${imgUploadProgress}%`}
-            strokeWidth={2}
+            strokeWidth={3}
             className="p-profileImg-progressbar"
             styles={{
+              root: {
+                width: "100%",
+                height: "100%",
+                position: "absolute",
+                top: 0,
+                left: 0,
+              },
               path: {
                 stroke: `rgba(251, 180, 0, ${imgUploadProgress / 100})`,
               },
