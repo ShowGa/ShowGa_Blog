@@ -34,6 +34,9 @@ react-quill
 .ql-bubble .ql-editor a {
   white-space: wrap !important;
 }
+.ql-bubble .ql-editor img {
+  @apply max-w-md mx-auto;
+}
 
 /*
 ==================
@@ -392,6 +395,9 @@ Editor.jsx
 }
 .p-post a {
   text-decoration: underline;
+}
+.p-post img {
+  @apply max-w-md mx-auto;
 }
 
 .p-post h1 + p,
