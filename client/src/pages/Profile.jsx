@@ -44,9 +44,6 @@ const Profile = () => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         setImguploadProgress(progress.toFixed(0));
-        // if (progress === 100) {
-
-        // }
       },
       (error) => {
         toast.error(
