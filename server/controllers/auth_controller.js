@@ -51,7 +51,7 @@ export const login = async (req, res) => {
 
     const { password: ps, ...rest } = foundUser._doc;
     // generate token and send cookie
-    generateTokenAndSetCookie(foundUser._id, res);
+    generateTokenAndSetCookie(foundUser._id, foundUser.isAdmin, res);
     return res.status(200).json(rest);
   } catch (e) {
     console.log("Error in login controller", e);
@@ -75,7 +75,7 @@ export const loginGoogle = async (req, res) => {
     const foundUser = await User.findOne({ email });
     // check if user existed
     if (foundUser) {
-      generateTokenAndSetCookie(foundUser._id, res);
+      generateTokenAndSetCookie(foundUser._id, foundUser.isAdmin, res);
       // take off the password
       const { password: ps, ...rest } = foundUser._doc;
       return res.status(200).json(rest);
