@@ -37,6 +37,9 @@ react-quill
 .ql-bubble .ql-editor img {
   @apply max-w-md mx-auto;
 }
+.ql-bubble .ql-editor p:has(img) {
+  @apply text-center;
+}
 .ql-syntax {
   background-color: #dddddd;
   padding: 10px;
@@ -404,7 +407,11 @@ Editor.jsx
   text-decoration: underline;
 }
 .p-post img {
-  @apply max-w-md mx-auto;
+  @apply max-w-md mx-auto mb-2;
+}
+.p-post p:has(img) {
+  @apply text-center text-sm;
+  color: var(--softTextColor);
 }
 
 .p-post h1 + p,
