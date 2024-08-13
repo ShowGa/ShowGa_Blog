@@ -400,6 +400,10 @@ Editor.jsx
   @apply border-2 p-1 rounded-full text-4xl;
 }
 
+.p-editor-publish_button {
+  @apply bg-green-500 p-2 rounded-full text-white;
+  @apply hover:bg-green-600;
+}
 /*for the post page*/
 .p-post {
 }

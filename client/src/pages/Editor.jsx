@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+// react-router-dom
+import { useNavigate } from "react-router-dom";
 // React icons
 import { CiCirclePlus } from "react-icons/ci";
 import { AiOutlinePicture } from "react-icons/ai";
@@ -20,8 +22,12 @@ import { app } from "../firebase/firebase";
 // constants
 import { tagInfo } from "../constants";
 import toast from "react-hot-toast";
+// Post-service
+import PostService from "../services/post-service";
 
 const Editor = () => {
+  const navigate = useNavigate();
+
   const { t } = useTranslation();
 
   const [editorContent, setEditorContent] = useState("");
@@ -31,7 +37,7 @@ const Editor = () => {
     banerImg: "",
     content: "",
     category: tagInfo[0].tagName,
-    isFeature: false,
+    isFeatured: false,
   });
 
   const handleChange = (e) => {
@@ -118,6 +124,24 @@ const Editor = () => {
     setEditorContent(editorContent + imgContent);
   };
 
+  const handleSubmitPost = () => {
+    const { title, banerImg, content } = postContent;
+
+    if (title === "" || banerImg === "" || content === "") {
+      return toast.error("Please fullfilled all the required content !");
+    }
+
+    PostService.createPost(postContent)
+      .then((res) => {
+        toast.success("Create post successfully !");
+        navigate("/");
+      })
+      .catch((e) => {
+        toast.error("Error occurred when try to create post !");
+        console.log(e);
+      });
+  };
+
   useEffect(() => {
     setPostContent({
       ...postContent,
@@ -199,6 +223,10 @@ const Editor = () => {
           </div>
         )}
       </div>
+
+      <button onClick={handleSubmitPost} className="p-editor-publish_button">
+        Publish
+      </button>
 
       <div
         className="p-post"
