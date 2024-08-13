@@ -366,6 +366,21 @@ Editor.jsx
 .p-editor_title_input {
   @apply w-full p-1 mb-4 text-2xl bg-transparent;
 }
+.p-editor_banerImg_container {
+  @apply mb-6;
+}
+.p-editor_banerImg_container span {
+  @apply text-xl font-bold;
+}
+.p-select_container {
+  @apply flex flex-col gap-2 text-xl;
+}
+.p-select_container select {
+  @apply bg-transparent;
+}
+.p-select_container option {
+  @apply text-black;
+}
 .p-function_container {
   @apply flex items-center gap-4 pl-3;
 }
