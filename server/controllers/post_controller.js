@@ -53,7 +53,11 @@ export const getAllPosts = async (req, res) => {
       .skip(startIndex)
       .limit(limit);
 
-    res.status(201).json({ foundPost });
+    if (!foundPost) {
+      res.status(400).json({ error: "No post founded !" });
+    }
+
+    res.status(200).json({ foundPost });
   } catch (e) {
     console.log("Error in getAllPosts controller !" + e);
     res.status(500).json({ error: "Internal server error !" });
