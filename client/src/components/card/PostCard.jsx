@@ -9,7 +9,7 @@ import { postSmallTag } from "../../constants";
 const PostCard = ({ post }) => {
   return (
     <div>
-      <Link className="c-postcard_container" to={"/post/123"}>
+      <Link className="c-postcard_container" to={`/post/${post.slug}`}>
         <div className="c-postcard_img_container">
           <img src={post.banerImg} className="c-img_hover-effect" />
         </div>
