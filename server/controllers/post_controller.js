@@ -19,6 +19,9 @@ export const createPost = async (req, res) => {
     belongAuthorID: req.user.id,
   });
 
+  // add _id at the end of slug
+  newPost.slug += `-${newPost._id}`;
+
   try {
     const savedPost = await newPost.save();
     res.status(201).json({ message: "Create post successfully !" });
