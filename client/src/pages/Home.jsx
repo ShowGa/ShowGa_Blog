@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // i18next
 import { useTranslation } from "react-i18next";
 // components
@@ -17,14 +17,35 @@ import {
   EffectFade,
 } from "swiper/modules";
 // images
-import { me1, me2 } from "../assets";
+import { me1 } from "../assets";
 import { tagInfo } from "../constants";
 // CSS
 import "./pages.css";
+// Post service
+import PostService from "../services/post-service";
+import toast from "react-hot-toast";
 
 const Home = () => {
   SwiperCore.use([Autoplay, Pagination, EffectCoverflow]);
   const { t } = useTranslation();
+
+  // useState
+  const [recentPosts, setRecentPosts] = useState(null);
+
+  const handleGetPosts = () => {
+    PostService.getAllPosts()
+      .then((res) => {
+        setRecentPosts(res.data.foundPost);
+      })
+      .catch((e) => {
+        toast.error("Error occurred when trying to get recent article !");
+        console.log(e);
+      });
+  };
+
+  useEffect(() => {
+    handleGetPosts();
+  }, []);
 
   return (
     <div className="max-w-[80%] mx-auto max-md:max-w-[95%]">
@@ -89,9 +110,10 @@ const Home = () => {
           <main>
             <h1 className="p-post_main_title">Recent Posts</h1>
             <div className="p-post-main_postcards_container">
-              <PostCard />
-              <PostCard />
-              <PostCard />
+              {recentPosts &&
+                recentPosts.map((post) => {
+                  return <PostCard post={post} key={post._id} />;
+                })}
             </div>
           </main>
 

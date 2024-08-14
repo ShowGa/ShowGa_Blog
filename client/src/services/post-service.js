@@ -8,6 +8,10 @@ class PostService {
       withCredentials: true,
     });
   }
+
+  getAllPosts() {
+    return axios.get(API_URL + "/server/post/getallposts");
+  }
 }
 
 export default new PostService();

@@ -3,27 +3,27 @@ import { Link } from "react-router-dom";
 // Images
 import { postTest, gao } from "../../assets";
 // Components CSS
+import "../components.css";
+// p-post page CSS
+import "../../pages/pages.css";
 
-const PostCard = () => {
+const PostCard = ({ post }) => {
   return (
     <div>
       <Link className="c-postcard_container" to={"/post/123"}>
         <div className="c-postcard_img_container">
-          <img src={gao} className="c-img_hover-effect" />
+          <img src={post.banerImg} className="c-img_hover-effect" />
         </div>
 
         <div className="c-postcard_text_container">
-          <p className="text-sm">2024-07-23</p>
-          <h1 className="text-2xl font-bold max-sm:text-xl">
-            How to Write Code
-          </h1>
-          <p className="text-sm line-clamp-2">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita
-            tempora quam inventore sunt. Vero quam cum hic quis delectus est,
-            doloremque tenetur similique accusamus impedit, perferendis aperiam
-            labore eveniet voluptatum.
-          </p>
-          <span className="c-tag_text-color">Code</span>
+          <p className="text-sm">{post.createdAt}</p>
+          <h1 className="text-2xl font-bold max-sm:text-xl">{post.title}</h1>
+          <div
+            className="text-sm line-clamp-2"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          ></div>
+
+          <span className="c-tag_text-color">{post.category}</span>
         </div>
       </Link>
     </div>
