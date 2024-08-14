@@ -1,4 +1,3 @@
-import User from "../models/userModel.js";
 import Post from "../models/postModel.js";
 
 export const createPost = async (req, res) => {
@@ -28,5 +27,35 @@ export const createPost = async (req, res) => {
     res
       .status(500)
       .json({ error: "Internal server error ! Please contact us ." });
+  }
+};
+
+export const getAllPosts = async (req, res) => {
+  try {
+    const queryContent = req.query;
+
+    const startIndex = parseInt(queryContent) || 0;
+    const limit = parseInt(queryContent.limit) || 6;
+    const sort = queryContent.sort || "createdAt";
+    const order = queryContent.order || "desc";
+
+    const foundPost = await Post.find({
+      ...(queryContent.category && { category: queryContent.category }),
+      ...(queryContent.isFeatured && { isFeatured: queryContent.isFeatured }),
+      ...(queryContent.searchTerm && {
+        $or: [
+          { title: { $regex: queryContent.searchTerm, $options: "i" } },
+          { content: { $regex: queryContent.searchTerm, $options: "i" } },
+        ],
+      }),
+    })
+      .sort({ [sort]: order })
+      .skip(startIndex)
+      .limit(limit);
+
+    res.status(201).json({ foundPost });
+  } catch (e) {
+    console.log("Error in getAllPosts controller !" + e);
+    res.status(500).json({ error: "Internal server error !" });
   }
 };
