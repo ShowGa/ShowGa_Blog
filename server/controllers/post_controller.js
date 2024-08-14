@@ -59,3 +59,20 @@ export const getAllPosts = async (req, res) => {
     res.status(500).json({ error: "Internal server error !" });
   }
 };
+
+export const getPost = async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    const foundPost = await Post.findOne({ slug });
+
+    if (!foundPost) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+
+    res.status(200).json({ foundPost });
+  } catch (e) {
+    console.log("Error in getPost controller !" + e);
+    res.status(500).json({ error: "Internal server error !" });
+  }
+};
