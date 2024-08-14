@@ -170,7 +170,7 @@ PostCard.jsx
 }
 
 .c-postcard_text_container span {
-  @apply ml-1 text-xs rounded-full p-1 bg-red-300;
+  @apply ml-1 text-xs rounded-full p-1;
 }
 
 /*

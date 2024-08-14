@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// Images
-import { postTest, gao } from "../../assets";
 // Components CSS
 import "../components.css";
 // p-post page CSS
 import "../../pages/pages.css";
+import { postSmallTag } from "../../constants";
 
 const PostCard = ({ post }) => {
   return (
@@ -23,7 +22,13 @@ const PostCard = ({ post }) => {
             dangerouslySetInnerHTML={{ __html: post.content }}
           ></div>
 
-          <span className="c-tag_text-color">{post.category}</span>
+          <span
+            className={`c-tag_text-color ${
+              postSmallTag[post.category].bgColor
+            }`}
+          >
+            {post.category}
+          </span>
         </div>
       </Link>
     </div>
