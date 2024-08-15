@@ -1,4 +1,5 @@
 import Post from "../models/postModel.js";
+import Comment from "../models/postModel.js";
 
 export const createPost = async (req, res) => {
   if (!req.user.isAdmin) {
@@ -71,13 +72,28 @@ export const getPost = async (req, res) => {
   try {
     const { slug } = req.params;
 
-    const foundPost = await Post.findOne({ slug });
+    // populate username and avatar
+    const foundPost = await Post.findOneAndUpdate(
+      { slug },
+      {
+        $inc: { views: 1 },
+      },
+      { new: true }
+    ).populate({
+      path: "belongAuthorID",
+      select: "username avatar",
+    });
 
     if (!foundPost) {
       return res.status(404).json({ error: "Post not found" });
     }
 
-    res.status(200).json({ foundPost });
+    // Calculate number post Comments
+    const postComments = await Comment.countDocuments({
+      belongPostID: foundPost._id,
+    });
+
+    res.status(200).json({ foundPost, postComments });
   } catch (e) {
     console.log("Error in getPost controller !" + e);
     res.status(500).json({ error: "Internal server error !" });
