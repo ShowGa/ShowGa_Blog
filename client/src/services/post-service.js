@@ -16,6 +16,10 @@ class PostService {
   getPost(slug) {
     return axios.get(API_URL + `/server/post/getpost/${slug}`);
   }
+
+  getSidebarPost(query) {
+    return axios.get(API_URL + `/server/post/getsidebarpost/?${query}`);
+  }
 }
 
 export default new PostService();
