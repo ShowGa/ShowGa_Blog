@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // i18next
 import { useTranslation } from "react-i18next";
 // components
@@ -13,12 +13,32 @@ import { PiHandsClapping } from "react-icons/pi";
 import { FaRegComment, FaWindowClose } from "react-icons/fa";
 // zustand
 import useAuthUserStore from "../zustand/useAuthUser";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import PostService from "../services/post-service";
+import toast from "react-hot-toast";
 
 const Post = () => {
+  const params = useParams();
+
   const { authUser } = useAuthUserStore();
 
   const [showCommentSec, setShowCommentSec] = useState(false);
+  const [post, setpost] = useState(null);
+
+  const handleGetPost = () => {
+    PostService.getPost(params.postId)
+      .then((res) => {
+        setpost(res.data.foundPost);
+      })
+      .catch((e) => {
+        toast.success("Error occurred when getting article");
+        console.log(e);
+      });
+  };
+
+  useEffect(() => {
+    handleGetPost();
+  }, []);
 
   return (
     <div className="max-w-[80%] mx-auto max-md:max-w-[95%]">
@@ -26,12 +46,12 @@ const Post = () => {
       <section>
         <div className="p-post_page_heroSection_container">
           <div className="p-post_title_container">
-            <h1>Is Slam Dunk the best Japanese anime ?</h1>
+            <h1>{post && post.title}</h1>
             <div className="p-author_container">
               <img src={gao} />
               <div className="p-author_text">
                 <p>ShowGa Hsiao</p>
-                <span>26.07.2024</span>
+                <span>{post && post.createdAt}</span>
               </div>
             </div>
 
@@ -54,7 +74,7 @@ const Post = () => {
           </div>
 
           <div className="p-post_img_container">
-            <img src={slamDunk} />
+            <img src={post && post.banerImg} />
           </div>
         </div>
       </section>
@@ -110,23 +130,10 @@ const Post = () => {
       <section className="p-post-sidebarSec">
         <div className="p-post-sidebarSec_container">
           <div className="p-article_container">
-            <article>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia,
-              officiis quas. Dolore, labore ex veritatis eius a sint neque
-              dolores laudantium! Sed nisi vel blanditiis iste? Deleniti a
-              perferendis vel.
-              <br />
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia,
-              officiis quas. Dolore, labore ex veritatis eius a sint neque
-              dolores laudantium! Sed nisi vel blanditiis iste? Deleniti a
-              perferendis vel.
-              <br />
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia,
-              officiis quas. Dolore, labore ex veritatis eius a sint neque
-              dolores laudantium! Sed nisi vel blanditiis iste? Deleniti a
-              perferendis vel.
-              <br />
-            </article>
+            <div
+              className="p-post"
+              dangerouslySetInnerHTML={{ __html: post && post.content }}
+            ></div>
           </div>
 
           <aside className="max-lg:hidden">

@@ -12,6 +12,10 @@ class PostService {
   getAllPosts() {
     return axios.get(API_URL + "/server/post/getallposts");
   }
+
+  getPost(slug) {
+    return axios.get(API_URL + `/server/post/getpost/${slug}`);
+  }
 }
 
 export default new PostService();
