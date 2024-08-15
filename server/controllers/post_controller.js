@@ -99,3 +99,32 @@ export const getPost = async (req, res) => {
     res.status(500).json({ error: "Internal server error !" });
   }
 };
+
+export const getSidebarPostCard = async (req, res) => {
+  try {
+    const queryContent = req.query;
+
+    const limit = parseInt(queryContent.limit) || 3;
+    const sort = queryContent.sort || "createdAt";
+    const order = queryContent.order || "desc";
+
+    // find target field
+    const foundPost = await Post.find(
+      {
+        ...(queryContent.isFeatured && { isFeatured: queryContent.isFeatured }),
+      },
+      "title banerImg category slug createdAt"
+    )
+      .sort({ [sort]: order })
+      .limit(limit);
+
+    if (!foundPost) {
+      return res.status(400).json({ error: "No relevant article found !" });
+    }
+
+    return res.status(200).json({ foundPost });
+  } catch (e) {
+    console.log("Error in getSidebarPost controller !" + e);
+    return res.status(500).json({ error: "Internal server error !" });
+  }
+};
