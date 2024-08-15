@@ -11,6 +11,7 @@ import "./pages.css";
 // react icons
 import { PiHandsClapping } from "react-icons/pi";
 import { FaRegComment, FaWindowClose } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 // zustand
 import useAuthUserStore from "../zustand/useAuthUser";
 import { Link, useParams } from "react-router-dom";
@@ -24,11 +25,13 @@ const Post = () => {
 
   const [showCommentSec, setShowCommentSec] = useState(false);
   const [post, setpost] = useState(null);
+  const [commentNum, setCommentNum] = useState(null);
 
   const handleGetPost = () => {
     PostService.getPost(params.postId)
       .then((res) => {
         setpost(res.data.foundPost);
+        setCommentNum(res.data.postComments);
       })
       .catch((e) => {
         toast.success("Error occurred when getting article");
@@ -38,7 +41,7 @@ const Post = () => {
 
   useEffect(() => {
     handleGetPost();
-  }, []);
+  }, [params.postId]);
 
   return (
     <div className="max-w-[80%] mx-auto max-md:max-w-[95%]">
@@ -48,19 +51,19 @@ const Post = () => {
           <section>
             <div className="p-post_page_heroSection_container">
               <div className="p-post_title_container">
-                <h1>{post && post.title}</h1>
+                <h1>{post.title}</h1>
                 <div className="p-author_container">
-                  <img src={gao} />
+                  <img src={post.belongAuthorID.avatar} />
                   <div className="p-author_text">
-                    <p>ShowGa Hsiao</p>
-                    <span>{post && post.createdAt}</span>
+                    <p>{post.belongAuthorID.username}</p>
+                    <span>{post.createdAt}</span>
                   </div>
                 </div>
 
                 <div className="p-post_title_function-list">
                   <div className="p-function_clap_container">
                     <PiHandsClapping className="text-xl" />
-                    <p>6969</p>
+                    <p>{post.numOfLikes}</p>
                   </div>
 
                   <div
@@ -70,13 +73,18 @@ const Post = () => {
                     }}
                   >
                     <FaRegComment className="text-xl" />
-                    <p>50</p>
+                    <p>{commentNum}</p>
+                  </div>
+
+                  <div className="p-function_clap_container">
+                    <FaEye className="text-xl" />
+                    <p>{post.views}</p>
                   </div>
                 </div>
               </div>
 
               <div className="p-post_img_container">
-                <img src={post && post.banerImg} />
+                <img src={post.banerImg} />
               </div>
             </div>
           </section>
@@ -134,7 +142,7 @@ const Post = () => {
               <div className="p-article_container">
                 <div
                   className="p-post"
-                  dangerouslySetInnerHTML={{ __html: post && post.content }}
+                  dangerouslySetInnerHTML={{ __html: post.content }}
                 ></div>
               </div>
 
