@@ -22,6 +22,14 @@ const postSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    likes: {
+      type: Array,
+      default: [],
+    },
+    numOfLikes: {
+      type: Number,
+      default: 0,
+    },
     isFeatured: {
       type: Boolean,
       required: true,
