@@ -187,11 +187,11 @@ SideBarPostCard.jsx
 }
 
 .c-sideBarPostCard_img_container {
-  @apply w-[50px] flex-shrink-0;
+  @apply w-12 h-12 flex-shrink-0;
 }
 
 .c-sideBarPostCard_img_container img {
-  @apply border-2 border-gray-400 rounded-full;
+  @apply w-full h-full border-2 border-gray-400 rounded-full object-cover object-center;
 }
 
 .c-sideBarPostCard_text_container {
@@ -199,7 +199,7 @@ SideBarPostCard.jsx
 }
 
 .c-sideBarPostCard_text_container span {
-  @apply px-2 py-[2px] rounded-full bg-orange-300 text-[10px];
+  @apply px-2 py-[2px] rounded-full text-[10px];
 }
 
 .c-sideBarPostCard_text_container p {

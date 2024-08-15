@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// constants
+import { postSmallTag } from "../../constants";
 
 const SideBarPostCard = ({ postData }) => {
   return (
@@ -13,7 +15,13 @@ const SideBarPostCard = ({ postData }) => {
         </div>
 
         <div className="c-sideBarPostCard_text_container">
-          <span className="c-tag_text-color">{postData.category}</span>
+          <span
+            className={`c-tag_text-color ${
+              postSmallTag[postData.category].bgColor
+            }`}
+          >
+            {postData.category}
+          </span>
 
           <h1 className="text-lg font-bold leading-5">{postData.title}</h1>
 
