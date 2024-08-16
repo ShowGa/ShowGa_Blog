@@ -1,0 +1,32 @@
+import User from "../models/userModel.js";
+
+export const updateUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    if (req.user.id !== userId) {
+      return res.status(400).json({ error: "You Sneaky peeky !" });
+    }
+
+    const bodyData = req.body;
+
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: userId },
+      {
+        ...(bodyData.username && { username: bodyData.username }),
+        ...(bodyData.email && { email: bodyData.email }),
+        ...(bodyData.avatar && { avatar: bodyData.avatar }),
+      },
+      { new: true }
+    ).select("-password");
+
+    if (!updatedUser) {
+      return res.status(400).json({ error: "User not found !" });
+    }
+
+    return res.status(201).json({ updatedUser });
+  } catch (e) {
+    console.log("Error in updateUser controller !" + e);
+    return res.status(500).json({ error: "Internal server error !" });
+  }
+};
