@@ -58,13 +58,13 @@ export const getAllPosts = async (req, res) => {
       .limit(limit);
 
     if (!foundPost) {
-      res.status(400).json({ error: "No post founded !" });
+      return res.status(400).json({ error: "No post founded !" });
     }
 
-    res.status(200).json({ foundPost });
+    return res.status(200).json({ foundPost });
   } catch (e) {
     console.log("Error in getAllPosts controller !" + e);
-    res.status(500).json({ error: "Internal server error !" });
+    return res.status(500).json({ error: "Internal server error !" });
   }
 };
 
@@ -93,10 +93,10 @@ export const getPost = async (req, res) => {
       belongPostID: foundPost._id,
     });
 
-    res.status(200).json({ foundPost, postComments });
+    return res.status(200).json({ foundPost, postComments });
   } catch (e) {
     console.log("Error in getPost controller !" + e);
-    res.status(500).json({ error: "Internal server error !" });
+    return res.status(500).json({ error: "Internal server error !" });
   }
 };
 
