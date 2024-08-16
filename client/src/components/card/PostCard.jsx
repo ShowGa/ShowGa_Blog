@@ -5,6 +5,8 @@ import "../components.css";
 // p-post page CSS
 import "../../pages/pages.css";
 import { postSmallTag } from "../../constants";
+// utils
+import { changeTimeZone } from "../../utils/timezone";
 
 const PostCard = ({ post }) => {
   return (
@@ -15,7 +17,7 @@ const PostCard = ({ post }) => {
         </div>
 
         <div className="c-postcard_text_container">
-          <p className="text-sm">{post.createdAt}</p>
+          <p className="text-sm">{changeTimeZone(post.createdAt)}</p>
           <h1 className="text-2xl font-bold max-sm:text-xl">{post.title}</h1>
           <div
             className="text-sm line-clamp-2"

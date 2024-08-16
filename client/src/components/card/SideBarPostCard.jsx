@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 // constants
 import { postSmallTag } from "../../constants";
+// utils
+import { changeTimeZone } from "../../utils/timezone";
 
 const SideBarPostCard = ({ postData }) => {
   return (
@@ -25,7 +27,7 @@ const SideBarPostCard = ({ postData }) => {
 
           <h1 className="text-lg font-bold leading-5">{postData.title}</h1>
 
-          <p className="text-[10px]">{postData.createdAt}</p>
+          <p className="text-[10px]">{changeTimeZone(postData.createdAt)}</p>
         </div>
       </Link>
     </div>

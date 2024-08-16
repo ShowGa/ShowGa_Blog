@@ -17,6 +17,8 @@ import useAuthUserStore from "../zustand/useAuthUser";
 import { Link, useParams } from "react-router-dom";
 import PostService from "../services/post-service";
 import toast from "react-hot-toast";
+// utils
+import { changeTimeZone } from "../utils/timezone";
 
 const Post = () => {
   const params = useParams();
@@ -56,7 +58,7 @@ const Post = () => {
                   <img src={post.belongAuthorID.avatar} />
                   <div className="p-author_text">
                     <p>{post.belongAuthorID.username}</p>
-                    <span>{post.createdAt}</span>
+                    <span>{changeTimeZone(post.createdAt)}</span>
                   </div>
                 </div>
 
