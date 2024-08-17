@@ -8,6 +8,12 @@ class UserService {
       withCredentials: true,
     });
   }
+
+  deleteUser(userId) {
+    return axios.delete(API_URL + `/server/user/delete/${userId}`, {
+      withCredentials: true,
+    });
+  }
 }
 
 export default new UserService();

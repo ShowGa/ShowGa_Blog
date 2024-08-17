@@ -53,6 +53,18 @@ const Profile = () => {
       });
   };
 
+  const handleDeleteAccount = () => {
+    UserService.deleteUser(authUser._id)
+      .then((res) => {
+        loginSetAuthUser(null);
+        toast.success("Delete account successfully !");
+      })
+      .catch((e) => {
+        toast.error("Error occurred when trying delete account !");
+        console.log(e);
+      });
+  };
+
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
@@ -175,6 +187,7 @@ const Profile = () => {
 
       {showModal && (
         <Modal
+          handleDeleteAccount={handleDeleteAccount}
           setShowModal={() => {
             setShowModal(false);
           }}

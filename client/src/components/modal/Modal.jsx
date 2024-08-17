@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Modal = ({ handleDelete, setShowModal }) => {
+const Modal = ({ handleDeleteAccount, setShowModal }) => {
   const [confirmInput, setConfirmInput] = useState("");
 
   return (
@@ -27,7 +27,10 @@ const Modal = ({ handleDelete, setShowModal }) => {
           />
         </div>
 
-        <button disabled={confirmInput !== "delete"} onClick={handleDelete}>
+        <button
+          disabled={confirmInput !== "delete"}
+          onClick={handleDeleteAccount}
+        >
           Delete
         </button>
       </div>
