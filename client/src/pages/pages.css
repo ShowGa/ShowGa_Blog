@@ -287,10 +287,14 @@ Post.jsx
 }
 
 .p-textarea_container textarea {
-  @apply w-full h-[10rem] p-1 border-2 border-black rounded-md text-black;
+  @apply w-full h-[8rem] p-1 border-2 border-black rounded-md text-black;
 }
 .p-textarea_container textarea::-webkit-scrollbar {
   display: none;
+}
+.p-textarea_container button {
+  @apply bg-green-600 p-2 rounded-full text-white text-sm;
+  @apply hover:bg-green-700;
 }
 
 .p-comments_section-effect {

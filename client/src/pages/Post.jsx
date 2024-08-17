@@ -16,9 +16,12 @@ import { FaEye } from "react-icons/fa";
 import useAuthUserStore from "../zustand/useAuthUser";
 import { Link, useParams } from "react-router-dom";
 import PostService from "../services/post-service";
+// react hot toast
 import toast from "react-hot-toast";
 // utils
 import { changeTimeZone } from "../utils/timezone";
+// Service
+import CommentService from "../services/comment-service";
 
 const Post = () => {
   const params = useParams();
@@ -26,6 +29,11 @@ const Post = () => {
   const { authUser } = useAuthUserStore();
 
   const [showCommentSec, setShowCommentSec] = useState(false);
+  const [formData, setFormData] = useState({
+    content: "",
+    belongUserID: authUser._id,
+    belongPostID: null,
+  });
   const [post, setpost] = useState(null);
   const [commentNum, setCommentNum] = useState(null);
 
@@ -33,12 +41,39 @@ const Post = () => {
     PostService.getPost(params.postId)
       .then((res) => {
         setpost(res.data.foundPost);
+        setFormData({ ...formData, belongPostID: res.data.foundPost._id });
         setCommentNum(res.data.postComments);
       })
       .catch((e) => {
         toast.success("Error occurred when getting article");
         console.log(e);
       });
+  };
+
+  const handleSubmitComment = (e) => {
+    e.preventDefault();
+
+    if (formData.content === "") {
+      toast.error("Please type some comments !");
+      return;
+    }
+
+    CommentService.createComment(formData)
+      .then((res) => {
+        toast.success(res.data.message);
+        setFormData({ ...formData, content: "" });
+      })
+      .catch((e) => {
+        toast.error("Error occurred when trying to create comment !");
+        console.log(e);
+      });
+  };
+
+  const handleOnChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
   };
 
   useEffect(() => {
@@ -91,6 +126,7 @@ const Post = () => {
             </div>
           </section>
 
+          {/* comments section */}
           <section
             className={`p-post_comments_section ${
               showCommentSec ? "p-comments_section-effect" : ""
@@ -116,18 +152,27 @@ const Post = () => {
               </div>
 
               <div className="p-textarea_container">
-                {authUser ? (
-                  <textarea name="" id=""></textarea>
-                ) : (
-                  <div>
-                    <p>
-                      <Link to={"/login"} className="link">
-                        Login
-                      </Link>{" "}
-                      to leave comments !
-                    </p>
-                  </div>
-                )}
+                <form onSubmit={handleSubmitComment}>
+                  {authUser ? (
+                    <>
+                      <textarea
+                        onChange={handleOnChange}
+                        value={formData.content}
+                        id="content"
+                      ></textarea>
+                      <button type="submit">Comment</button>
+                    </>
+                  ) : (
+                    <div>
+                      <p>
+                        <Link to={"/login"} className="link">
+                          Login
+                        </Link>{" "}
+                        to leave comments !
+                      </p>
+                    </div>
+                  )}
+                </form>
               </div>
 
               <div>
