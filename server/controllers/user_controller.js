@@ -1,4 +1,5 @@
 import User from "../models/userModel.js";
+import Post from "../models/postModel.js";
 
 export const updateUser = async (req, res) => {
   try {
@@ -28,5 +29,26 @@ export const updateUser = async (req, res) => {
   } catch (e) {
     console.log("Error in updateUser controller !" + e);
     return res.status(500).json({ error: "Internal server error !" });
+  }
+};
+
+export const deleteAccount = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    if (req.user.id !== userId) {
+      return res.status(400).json({ error: "You Sneaky peeky !" });
+    }
+
+    // delete user , posts , comments(later)
+    await Promise.all([
+      User.findOneAndDelete({ _id: userId }),
+      Post.deleteMany({ belongAuthorID: userId }),
+    ]);
+
+    return res.status(201).json({ message: "User Deleted successfully !" });
+  } catch (e) {
+    console.log("Error in deleteUser route !" + e);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
