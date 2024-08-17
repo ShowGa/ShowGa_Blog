@@ -88,8 +88,11 @@ export const loginGoogle = async (req, res) => {
         password: hashedPassword,
         avatar,
       });
+
       const savedUser = await newUser.save();
-      generateTokenAndSetCookie(savedUser._id, res);
+
+      generateTokenAndSetCookie(savedUser._id, savedUser.isAdmin, res);
+
       // take off the password
       const { password: ps, ...rest } = savedUser._doc;
       return res.status(200).json(rest);
