@@ -219,17 +219,17 @@ Post.jsx
 */
 .p-post_page_heroSection_container {
   @apply flex items-center gap-3 pt-11;
-  @apply max-md:flex-col;
+  @apply max-lg:flex-col;
 }
 
 .p-post_title_container {
   @apply flex flex-col flex-1 justify-center gap-10;
-  @apply max-lg:gap-3;
+  @apply max-lg:gap-3 max-lg:border-b max-lg:w-full;
 }
 
 .p-post_title_container h1 {
-  @apply text-5xl font-bold;
-  @apply max-lg:text-4xl max-lg:text-3xl max-md:text-2xl;
+  @apply text-4xl font-bold;
+  @apply max-md:text-3xl max-sm:text-2xl;
 }
 
 .p-author_container {
