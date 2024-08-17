@@ -55,7 +55,7 @@ const RecommendSideBar = () => {
         <div className="c-recommendSideBar_post-container">
           {trendyPost &&
             trendyPost.map((post) => {
-              return <SideBarPostCard postData={post} />;
+              return <SideBarPostCard key={post._id} postData={post} />;
             })}
         </div>
       </div>
@@ -82,7 +82,7 @@ const RecommendSideBar = () => {
         <div className="c-recommendSideBar_post-container">
           {FeaturedPost &&
             FeaturedPost.map((post) => {
-              return <SideBarPostCard postData={post} />;
+              return <SideBarPostCard key={post._id} postData={post} />;
             })}
         </div>
       </div>
