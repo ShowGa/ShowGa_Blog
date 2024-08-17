@@ -17,19 +17,44 @@ import toast from "react-hot-toast";
 // progressbar
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+// User-service
+import UserService from "../services/user-service";
 
 const Profile = () => {
   const filePickerRef = useRef();
 
-  const { authUser } = useAuthUserStore();
+  const { authUser, loginSetAuthUser } = useAuthUserStore();
 
   const [showModal, setShowModal] = useState(false);
   const [imgFile, setImgFile] = useState(null);
   const [imgUrl, setImgUrl] = useState("");
   const [imgUploadProgress, setImguploadProgress] = useState(null);
+  const [formData, setFormData] = useState({});
 
   const handleImgChange = (e) => {
     setImgFile(e.target.files[0]);
+  };
+
+  const handleUpdateSubmit = (e) => {
+    e.preventDefault();
+
+    if (checkFormData() === "error") {
+      return;
+    }
+
+    UserService.updateUser(authUser._id, formData)
+      .then((res) => {
+        loginSetAuthUser(res.data.updatedUser);
+        toast.success("Update user profile successfully !");
+      })
+      .catch((e) => {
+        toast.error("Error occurred when trying to update user profile !");
+        console.log(error);
+      });
+  };
+
+  const handleFormChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
   const uploadImg = () => {
@@ -54,10 +79,23 @@ const Profile = () => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           setImgUrl(downloadURL);
+          setFormData({ ...formData, avatar: downloadURL });
           setImguploadProgress(null);
         });
       }
     );
+  };
+
+  const checkFormData = () => {
+    // check if there's new user info
+    if (Object.keys(formData).length === 0) {
+      toast.error("No changes of user information !");
+      return "error";
+    }
+    if (formData.username.length > 20) {
+      toast.error("Username should be less than 20 characters !");
+      return "error";
+    }
   };
 
   useEffect(() => {
@@ -98,7 +136,7 @@ const Profile = () => {
         )}
       </div>
 
-      <form className="p-profile-body_container">
+      <form onSubmit={handleUpdateSubmit} className="p-profile-body_container">
         <input
           type="file"
           accept="image/*"
@@ -108,10 +146,20 @@ const Profile = () => {
         />
 
         <label>Name</label>
-        <input id="username" type="text" defaultValue={authUser.username} />
+        <input
+          onChange={handleFormChange}
+          id="username"
+          type="text"
+          defaultValue={authUser.username}
+        />
 
-        <label>Password</label>
-        <input id="password" type="password" />
+        <label>Email</label>
+        <input
+          onChange={handleFormChange}
+          id="email"
+          type="email"
+          defaultValue={authUser.email}
+        />
 
         <button type="submit">Update</button>
       </form>
