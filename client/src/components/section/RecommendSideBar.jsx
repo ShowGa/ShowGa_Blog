@@ -37,9 +37,11 @@ const RecommendSideBar = () => {
   };
 
   useEffect(() => {
-    handleTrendyPost();
+    if (trendyPost === null && FeaturedPost === null) {
+      handleTrendyPost();
 
-    handleFeaturedPost();
+      handleFeaturedPost();
+    }
   }, []);
 
   return (
