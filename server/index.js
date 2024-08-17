@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth_route.js";
 import postRouter from "./routes/post_route.js";
 import userRouter from "./routes/user_route.js";
+import commentRouter from "./routes/comment_route.js";
 
 dotenv.config();
 const app = express();
@@ -34,6 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/server/auth", authRouter);
 app.use("/server/post", postRouter);
 app.use("/server/user", userRouter);
+app.use("/server/comment", commentRouter);
 
 app.listen(8080, () => {
   console.log("Server listening to Port 8080");
