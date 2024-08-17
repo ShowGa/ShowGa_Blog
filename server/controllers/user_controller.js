@@ -46,6 +46,7 @@ export const deleteAccount = async (req, res) => {
       Post.deleteMany({ belongAuthorID: userId }),
     ]);
 
+    res.clearCookie("jwt");
     return res.status(201).json({ message: "User Deleted successfully !" });
   } catch (e) {
     console.log("Error in deleteUser route !" + e);
