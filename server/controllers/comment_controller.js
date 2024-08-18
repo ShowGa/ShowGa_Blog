@@ -39,7 +39,11 @@ export const getPostComments = async (req, res) => {
     const foundComments = await Comment.find({ belongPostID })
       .sort({ [sort]: order })
       .skip(startIndex)
-      .limit(limit);
+      .limit(limit)
+      .populate({
+        path: "belongUserID",
+        select: "username avatar",
+      });
 
     const totalComments = await Post.countDocuments({
       belongPostID,
