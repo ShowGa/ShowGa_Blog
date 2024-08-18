@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // i18next
 import { useTranslation } from "react-i18next";
 // components
@@ -27,6 +27,8 @@ const Post = () => {
   const params = useParams();
 
   const { authUser } = useAuthUserStore();
+
+  const selectRef = useRef(null);
 
   const [showCommentSec, setShowCommentSec] = useState(false);
   const [formData, setFormData] = useState({
@@ -79,6 +81,26 @@ const Post = () => {
     }
 
     CommentService.getPostComments(post._id, "")
+      .then((res) => {
+        setComments(res.data.foundComments);
+        setIsEnd(res.data.isEnd);
+      })
+      .catch((e) => {
+        toast.success("Error occurred when getting comment !");
+        console.log(e);
+      });
+  };
+
+  // for select get comments
+  const handleSelectGetComments = () => {
+    const urlParams = new URLSearchParams();
+    const sort_order = selectRef.current.value.split("_");
+    urlParams.set("sort", sort_order[0]);
+    urlParams.set("order", sort_order[1]);
+
+    const query = urlParams.toString();
+
+    CommentService.getPostComments(post._id, `/?${query}`)
       .then((res) => {
         setComments(res.data.foundComments);
         setIsEnd(res.data.isEnd);
@@ -215,6 +237,18 @@ const Post = () => {
               </div>
 
               <div>
+                {comments && comments.length !== 0 && (
+                  <div>
+                    <select
+                      onChange={handleSelectGetComments}
+                      ref={selectRef}
+                      className="p-commentSec_select"
+                    >
+                      <option value="createdAt_desc">Most Recent</option>
+                      <option value="numOfLikes_desc">Most Likes</option>
+                    </select>
+                  </div>
+                )}
                 {comments &&
                   comments.map((comment) => {
                     return <CommentCard key={comment._id} comment={comment} />;

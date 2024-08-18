@@ -297,6 +297,13 @@ Post.jsx
   @apply hover:bg-green-700;
 }
 
+.p-commentSec_select {
+  @apply bg-transparent font-bold text-xl;
+}
+.p-commentSec_select option {
+  @apply text-black;
+}
+
 .p-plus-button_container {
   @apply text-3xl text-center mt-6;
 }
