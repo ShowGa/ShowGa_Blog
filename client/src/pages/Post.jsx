@@ -29,7 +29,7 @@ const Post = () => {
   const [showCommentSec, setShowCommentSec] = useState(false);
   const [formData, setFormData] = useState({
     content: "",
-    belongUserID: authUser._id,
+    belongUserID: authUser && authUser._id,
     belongPostID: null,
   });
   const [post, setpost] = useState(null);
