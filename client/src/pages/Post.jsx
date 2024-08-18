@@ -114,7 +114,10 @@ const Post = () => {
   // Show More Button
   const handleShowMore = () => {
     const urlParams = new URLSearchParams();
+    const sort_order = selectRef.current.value.split("_");
     urlParams.set("startIndex", comments.length);
+    urlParams.set("sort", sort_order[0]);
+    urlParams.set("order", sort_order[1]);
 
     const query = urlParams.toString();
 
