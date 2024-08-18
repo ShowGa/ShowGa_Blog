@@ -297,6 +297,10 @@ Post.jsx
   @apply hover:bg-green-700;
 }
 
+.p-plus-button_container {
+  @apply text-3xl text-center mt-6;
+}
+
 .p-comments_section-effect {
   @apply opacity-100 pointer-events-auto;
 }

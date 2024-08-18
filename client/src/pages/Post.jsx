@@ -20,6 +20,8 @@ import toast from "react-hot-toast";
 import { changeTimeZone } from "../utils/timezone";
 // Service
 import CommentService from "../services/comment-service";
+// react icons
+import { FaSquarePlus } from "react-icons/fa6";
 
 const Post = () => {
   const params = useParams();
@@ -83,6 +85,24 @@ const Post = () => {
       })
       .catch((e) => {
         toast.success("Error occurred when getting comment !");
+        console.log(e);
+      });
+  };
+
+  // Show More Button
+  const handleShowMore = () => {
+    const urlParams = new URLSearchParams();
+    urlParams.set("startIndex", comments.length);
+
+    const query = urlParams.toString();
+
+    CommentService.getPostComments(post._id, `/?${query}`)
+      .then((res) => {
+        setComments([...comments, ...res.data.foundComments]);
+        setIsEnd(res.data.isEnd);
+      })
+      .catch((e) => {
+        toast.success("Error occurred when showing more comment !");
         console.log(e);
       });
   };
@@ -199,6 +219,16 @@ const Post = () => {
                   comments.map((comment) => {
                     return <CommentCard key={comment._id} comment={comment} />;
                   })}
+                {comments && !isEnd && (
+                  <div className="p-plus-button_container">
+                    <button onClick={handleShowMore}>
+                      <FaSquarePlus />
+                    </button>
+                  </div>
+                )}
+                {comments.length === 0 && (
+                  <p>No comment yet ! Be the first one to leave a comment .</p>
+                )}
               </div>
             </div>
           </section>
