@@ -1,5 +1,5 @@
 import Post from "../models/postModel.js";
-import Comment from "../models/postModel.js";
+import Comment from "../models/commentModel.js";
 
 export const createPost = async (req, res) => {
   if (!req.user.isAdmin) {
