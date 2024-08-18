@@ -226,7 +226,7 @@ const Post = () => {
                     </button>
                   </div>
                 )}
-                {comments.length === 0 && (
+                {comments && comments.length === 0 && (
                   <p>No comment yet ! Be the first one to leave a comment .</p>
                 )}
               </div>

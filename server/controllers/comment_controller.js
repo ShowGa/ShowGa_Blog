@@ -31,7 +31,7 @@ export const getPostComments = async (req, res) => {
     const { belongPostID } = req.params;
     const queryContent = req.query;
 
-    const startIndex = parseInt(queryContent) || 0;
+    const startIndex = parseInt(queryContent.startIndex) || 0;
     const limit = parseInt(queryContent.limit) || 8;
     const sort = queryContent.sort || "createdAt";
     const order = queryContent.order || "desc";
@@ -45,7 +45,7 @@ export const getPostComments = async (req, res) => {
         select: "username avatar",
       });
 
-    const totalComments = await Post.countDocuments({
+    const totalComments = await Comment.countDocuments({
       belongPostID,
     });
 
