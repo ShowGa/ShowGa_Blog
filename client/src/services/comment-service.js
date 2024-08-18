@@ -8,6 +8,12 @@ class CommentService {
       withCredentials: true,
     });
   }
+
+  getPostComments(belongPostID, query) {
+    return axios.get(
+      API_URL + `/server/comment/getpostcomments/${belongPostID}` + query
+    );
+  }
 }
 
 export default new CommentService();

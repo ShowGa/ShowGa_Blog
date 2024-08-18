@@ -4,8 +4,6 @@ import { useTranslation } from "react-i18next";
 // components
 import RecommendSideBar from "../components/section/RecommendSideBar";
 import CommentCard from "../components/card/CommentCard";
-// images
-import { gao, slamDunk, slamDunk2 } from "../assets";
 // CSS
 import "./pages.css";
 // react icons
@@ -36,6 +34,8 @@ const Post = () => {
   });
   const [post, setpost] = useState(null);
   const [commentNum, setCommentNum] = useState(null);
+  const [comments, setComments] = useState(null);
+  const [isEnd, setIsEnd] = useState(false);
 
   const handleGetPost = () => {
     PostService.getPost(params.postId)
@@ -65,6 +65,24 @@ const Post = () => {
       })
       .catch((e) => {
         toast.error("Error occurred when trying to create comment !");
+        console.log(e);
+      });
+  };
+
+  // for first time click comment button
+  const handleGetComments = () => {
+    // click comment button check
+    if (comments) {
+      return;
+    }
+
+    CommentService.getPostComments(post._id, "")
+      .then((res) => {
+        setComments(res.data.foundComments);
+        setIsEnd(res.data.isEnd);
+      })
+      .catch((e) => {
+        toast.success("Error occurred when getting comment !");
         console.log(e);
       });
   };
@@ -107,6 +125,7 @@ const Post = () => {
                     className="p-function_comments_container"
                     onClick={() => {
                       setShowCommentSec(!showCommentSec);
+                      handleGetComments();
                     }}
                   >
                     <FaRegComment className="text-xl" />
@@ -176,9 +195,10 @@ const Post = () => {
               </div>
 
               <div>
-                <CommentCard />
-                <CommentCard />
-                <CommentCard />
+                {comments &&
+                  comments.map((comment) => {
+                    return <CommentCard key={comment._id} comment={comment} />;
+                  })}
               </div>
             </div>
           </section>
