@@ -3,16 +3,17 @@ import React from "react";
 import { gao } from "../../assets";
 // react icons
 import { PiHandsClapping } from "react-icons/pi";
+import { changeTimeZone } from "../../utils/timezone";
 
 const CommentCard = ({ comment }) => {
   return (
     <div className="c-comment-card_container">
       <div className="c-comment-card_author_container">
-        <img src={gao} alt="" />
+        <img src={comment.belongUserID.avatar} alt="" />
 
         <div>
-          <p>ShowGa Hsiao</p>
-          <span>27.07.2024</span>
+          <p>{comment.belongUserID.username}</p>
+          <span>{changeTimeZone(comment.createdAt)}</span>
         </div>
       </div>
 
