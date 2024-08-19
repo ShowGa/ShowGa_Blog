@@ -22,10 +22,10 @@ const CommentCard = ({ comment }) => {
       </div>
 
       <div>
-        <div className="c-comment-card_function">
+        <button className="c-comment-card_function">
           <PiHandsClapping className="text-lg" />
           <p>{comment.numOfLikes}</p>
-        </div>
+        </button>
       </div>
     </div>
   );

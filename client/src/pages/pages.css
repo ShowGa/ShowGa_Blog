@@ -298,7 +298,7 @@ Post.jsx
 }
 
 .p-commentSec_select {
-  @apply bg-transparent font-bold text-xl;
+  @apply bg-transparent font-bold text-xl cursor-pointer;
 }
 .p-commentSec_select option {
   @apply text-black;
