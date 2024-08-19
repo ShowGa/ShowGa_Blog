@@ -12,20 +12,6 @@ import "./pages.css";
 import { FaSquarePlus } from "react-icons/fa6";
 
 const Search = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [formTag, setFormTag] = useState("");
-  const [formSort, setFormSort] = useState("Oldest");
-
-  const handleTagSelect = (tag) => {
-    setFormTag(formTag === tag ? null : tag);
-  };
-  const handleFormSelect = (event) => {
-    setFormSort(event.target.value);
-  };
-  const handleSearchTerm = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
   return (
     <div className="max-w-[80%] mx-auto max-md:max-w-[95%]">
       {/* Hero section */}
@@ -45,7 +31,7 @@ const Search = () => {
         <form className="p-search_section_system_form">
           <div className="p-search_form_Term">
             <label>Search Term :</label>
-            <input type="text" onChange={handleSearchTerm} />
+            <input type="text" />
           </div>
 
           <div className="p-search_form_tag">
@@ -55,9 +41,6 @@ const Search = () => {
                 return (
                   <span
                     key={info.tagName}
-                    onClick={() => {
-                      handleTagSelect(info.tagName);
-                    }}
                     className={`p-span_item ${info.bgColor} ${
                       formTag === info.tagName ? `scale-75` : ""
                     }`}
@@ -71,7 +54,7 @@ const Search = () => {
 
           <div className="p-search_form_sort">
             <label>Sort :</label>
-            <select onChange={handleFormSelect}>
+            <select>
               <option value="Oldest">Oldest</option>
               <option value="Latest">Latest</option>
               <option value="Popular">Most popular</option>
