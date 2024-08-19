@@ -1,5 +1,4 @@
 import axios from "axios";
-import { query } from "express";
 
 const API_URL = import.meta.env.API_URL || "http://localhost:8080";
 

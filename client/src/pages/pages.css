@@ -144,9 +144,6 @@ Home.jsx
 Search.jsx
 ==================
 */
-.p-post_searchResult_title_container {
-  @apply flex items-center gap-6;
-}
 
 .p-search_section_container {
   @apply border-b-2 border-red-400;
@@ -190,21 +187,20 @@ Search.jsx
 }
 
 .p-search_form_sort select {
-  @apply border-2 border-gray-500 rounded-md p-1;
+  @apply border-2 border-gray-500 rounded-md p-1 text-black;
 }
 
-.p-search_form_sort select {
-  @apply text-black;
+.p-search_form_featured {
+  @apply flex items-center gap-3;
+}
+.p-search_form_featured select {
+  @apply border-2 border-gray-500 rounded-md p-1 text-black;
 }
 
 .p-search_button {
   @apply text-xl border-2 py-1 border-orange-400 w-[60%] m-auto;
   @apply transition-all duration-100;
   @apply hover:bg-orange-400 hover:text-gray-800;
-}
-
-.p-selected_tag_container span {
-  @apply text-lg pr-3;
 }
 
 .p-load_more_button {
