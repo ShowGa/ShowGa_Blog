@@ -213,7 +213,8 @@ const Search = () => {
       {/* Post and Sidebar section */}
       <section className="p-post-sidebarSec">
         <div className="p-post-sidebarSec_container">
-          <main>
+          <main className="flex-1">
+            <h1 className="font-bold text-2xl">Recent Posts :</h1>
             <div className="p-post-main_postcards_container">
               {searchPosts &&
                 searchPosts.map((post) => {

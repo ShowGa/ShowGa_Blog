@@ -107,7 +107,7 @@ const Home = () => {
       {/* Post and Sidebar section */}
       <section className="p-post-sidebarSec">
         <div className="p-post-sidebarSec_container">
-          <main>
+          <main className="flex-1">
             <h1 className="p-post_main_title">Recent Posts</h1>
             <div className="p-post-main_postcards_container">
               {recentPosts &&
