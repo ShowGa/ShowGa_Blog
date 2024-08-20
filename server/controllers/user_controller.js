@@ -3,13 +3,21 @@ import Post from "../models/postModel.js";
 
 export const updateUser = async (req, res) => {
   try {
+    const bodyData = req.body;
     const { userId } = req.params;
 
     if (req.user.id !== userId) {
       return res.status(400).json({ error: "You Sneaky peeky !" });
     }
 
-    const bodyData = req.body;
+    // check if update profile data duplicate
+    const checkedUser = await User.find({ username: bodyData.username });
+
+    if (checkedUser && checkedUser.length !== 0) {
+      return res.status(400).json({
+        error: "Username had been used ! Please change another one .",
+      });
+    }
 
     const updatedUser = await User.findOneAndUpdate(
       { _id: userId },
