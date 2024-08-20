@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // i18next
 import { useTranslation } from "react-i18next";
 // components
@@ -12,18 +12,86 @@ import "./pages.css";
 import { FaSquarePlus } from "react-icons/fa6";
 // react-router-dom
 import { useLocation, useNavigate } from "react-router-dom";
+// serviece
+import PostService from "../services/post-service";
+// react hot toast
+import toast from "react-hot-toast";
 
 const Search = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [searchPosts, setSearchPosts] = useState(null);
+  const [isEnd, setIsEnd] = useState(false);
+
   const [searchCondition, setSearchCondition] = useState({
     searchTerm: "",
     isFeatured: false,
     category: "",
-    sort: "desc",
-    order: "createdAt",
+    sort: "createdAt",
+    order: "desc",
   });
+
+  const handleDefaultSearch = () => {
+    const urlParams = new URLSearchParams(location.search);
+    const searchTermURL = urlParams.get("searchTerm") || "";
+    const sortURL = urlParams.get("sort") || "createdAt";
+    const orderURL = urlParams.get("order") || "desc";
+    const categoryURL = urlParams.get("category") || "";
+    const isFeaturedURL = urlParams.get("isFeatured") || false;
+    setSearchCondition({
+      ...searchCondition,
+      searchTerm: searchTermURL,
+      isFeatured: isFeaturedURL,
+      category: categoryURL,
+      sort: sortURL,
+      order: orderURL,
+    });
+    const searchQuery = urlParams.toString();
+
+    PostService.getAllPosts(`/?${searchQuery}`)
+      .then((res) => {
+        setSearchPosts(res.data.foundPost);
+        setIsEnd(res.data.isEnd);
+      })
+      .catch((e) => {
+        toast.error("Error occurred when searching posts !");
+        console.log(e);
+      });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams();
+    urlParams.set("searchTerm", searchCondition.searchTerm);
+    urlParams.set("isFeatured", searchCondition.isFeatured);
+    urlParams.set("category", searchCondition.category);
+    urlParams.set("sort", searchCondition.sort);
+    urlParams.set("order", searchCondition.order);
+    const searchQuery = urlParams.toString();
+
+    navigate(`/search?${searchQuery}`);
+  };
+
+  const handleShowMore = () => {
+    const startIndex = searchPosts.length;
+
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set("startIndex", startIndex);
+
+    const searchQuery = urlParams.toString();
+
+    PostService.getAllPosts(`/?${searchQuery}`)
+      .then((res) => {
+        console.log(res.data.foundPost);
+        setSearchPosts([...searchPosts, ...res.data.foundPost]);
+        setIsEnd(res.data.isEnd);
+      })
+      .catch((e) => {
+        toast.error("Error occurred when searching posts !");
+        console.log(e);
+      });
+  };
 
   const handleChange = (e) => {
     if (e.target.id === "searchTerm") {
@@ -59,6 +127,10 @@ const Search = () => {
     }
   };
 
+  useEffect(() => {
+    handleDefaultSearch();
+  }, [location.search]);
+
   return (
     <div className="max-w-[80%] mx-auto max-md:max-w-[95%]">
       {/* Hero section */}
@@ -75,10 +147,15 @@ const Search = () => {
           <h1>Searching :</h1>
         </div>
 
-        <form className="p-search_section_system_form">
+        <form onSubmit={handleSubmit} className="p-search_section_system_form">
           <div className="p-search_form_Term">
             <label>Search Term :</label>
-            <input onChange={handleChange} id="searchTerm" type="text" />
+            <input
+              onChange={handleChange}
+              id="searchTerm"
+              type="text"
+              value={searchCondition.searchTerm}
+            />
           </div>
 
           <div className="p-search_form_tag">
@@ -104,7 +181,11 @@ const Search = () => {
 
           <div className="p-search_form_sort">
             <label>Sort :</label>
-            <select onChange={handleChange} id="sort_order">
+            <select
+              onChange={handleChange}
+              id="sort_order"
+              value={searchCondition.category}
+            >
               <option value="createdAt_asc">Oldest</option>
               <option value="createdAt_desc">Latest</option>
               <option value="views_desc">Most popular</option>
@@ -113,13 +194,19 @@ const Search = () => {
 
           <div className="p-search_form_featured">
             <label>Featured by Author : </label>
-            <select onChange={handleChange} id="isFeatured">
+            <select
+              onChange={handleChange}
+              id="isFeatured"
+              value={searchCondition.isFeatured}
+            >
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
           </div>
 
-          <button className="p-search_button">Search</button>
+          <button type="submit" className="p-search_button">
+            Search
+          </button>
         </form>
       </section>
 
@@ -128,9 +215,25 @@ const Search = () => {
         <div className="p-post-sidebarSec_container">
           <main>
             <div className="p-post-main_postcards_container">
-              <div>
-                <FaSquarePlus className="p-load_more_button" />
-              </div>
+              {searchPosts &&
+                searchPosts.map((post) => {
+                  return <PostCard key={post._id} post={post} />;
+                })}
+
+              {searchPosts && !isEnd && (
+                <div>
+                  <FaSquarePlus
+                    onClick={handleShowMore}
+                    className="p-load_more_button"
+                  />
+                </div>
+              )}
+
+              {searchPosts && searchPosts.length === 0 && (
+                <div>
+                  <p>Sadly, there no result</p>
+                </div>
+              )}
             </div>
           </main>
 
