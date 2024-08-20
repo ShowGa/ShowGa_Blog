@@ -7,7 +7,7 @@ import useAuthUserStore from "../zustand/useAuthUser";
 const AdminRoute = () => {
   const { authUser } = useAuthUserStore();
 
-  return authUser.isAdmin ? <Outlet /> : <Navigate to={"/login"} />;
+  return authUser?.isAdmin ? <Outlet /> : <Navigate to={"/login"} />;
 };
 
 export default AdminRoute;
