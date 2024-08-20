@@ -20,6 +20,14 @@ class PostService {
   getSidebarPost(query) {
     return axios.get(API_URL + `/server/post/getsidebarpost/?${query}`);
   }
+
+  updatePost(slug, postContent) {
+    return axios.patch(
+      API_URL + `/server/post/updatePost/${slug}`,
+      postContent,
+      { withCredentials: true }
+    );
+  }
 }
 
 export default new PostService();

@@ -125,20 +125,20 @@ const EditorUpdate = () => {
     setEditorContent(editorContent + imgContent);
   };
 
-  const handleSubmitPost = () => {
+  const handleUpdateSubmitPost = () => {
     const { title, banerImg, content } = postContent;
 
     if (title === "" || banerImg === "" || content === "") {
       return toast.error("Please fullfilled all the required content !");
     }
 
-    PostService.createPost(postContent)
+    PostService.updatePost(slug, postContent)
       .then((res) => {
-        toast.success("Create post successfully !");
+        toast.success("Update successfully");
         navigate("/");
       })
       .catch((e) => {
-        toast.error("Error occurred when try to create post !");
+        toast.error("Error occurred when updating post !");
         console.log(e);
       });
   };
@@ -241,8 +241,11 @@ const EditorUpdate = () => {
         )}
       </div>
 
-      <button onClick={handleSubmitPost} className="p-editor-publish_button">
-        Publish
+      <button
+        onClick={handleUpdateSubmitPost}
+        className="p-editor-publish_button"
+      >
+        Update
       </button>
 
       <div
