@@ -142,3 +142,22 @@ export const getSidebarPostCard = async (req, res) => {
     return res.status(500).json({ error: "Internal server error !" });
   }
 };
+
+export const updatePost = async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    if (!req.user.isAdmin) {
+      return res
+        .status(402)
+        .json({ message: "Sorry ! Only admin allow to create post ." });
+    }
+
+    await Post.findOneAndUpdate({ slug }, { ...req.body });
+
+    return res.status(201).json({ message: "Update post successfully !" });
+  } catch (e) {
+    console.log("Error in updatePost controller !" + e);
+    return res.status(500).json({ error: "Internal server error !" });
+  }
+};

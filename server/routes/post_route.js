@@ -5,6 +5,7 @@ import {
   getAllPosts,
   getPost,
   getSidebarPostCard,
+  updatePost,
 } from "../controllers/post_controller.js";
 
 const router = express.Router();
@@ -18,5 +19,7 @@ router.get("/getpost/:slug", getPost);
 
 // get recommend sidebar posts
 router.get("/getsidebarpost", getSidebarPostCard);
+
+router.patch("/updatepost/:slug", verifyUser, updatePost);
 
 export default router;
