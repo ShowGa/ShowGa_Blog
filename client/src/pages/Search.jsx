@@ -101,6 +101,7 @@ const Search = () => {
 
     if (e.target.id === "sort_order") {
       const sort_order = e.target.value.split("_");
+      console.log(sort_order);
       setSearchCondition({
         ...searchCondition,
         sort: sort_order[0],
@@ -184,7 +185,7 @@ const Search = () => {
             <select
               onChange={handleChange}
               id="sort_order"
-              value={searchCondition.category}
+              defaultValue={"createdAt_asc"}
             >
               <option value="createdAt_asc">Oldest</option>
               <option value="createdAt_desc">Latest</option>
