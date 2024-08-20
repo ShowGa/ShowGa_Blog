@@ -161,3 +161,16 @@ export const updatePost = async (req, res) => {
     return res.status(500).json({ error: "Internal server error !" });
   }
 };
+
+export const postClickLike = async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    await Post.findOneAndUpdate({ slug }, { $inc: { numOfLikes: 1 } });
+
+    return res.status(201).json({ message: "Click like successfully !" });
+  } catch (e) {
+    console.log("Error in postClickLike controller !" + e);
+    return res.status(500).json({ error: "Internal server error !" });
+  }
+};

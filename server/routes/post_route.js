@@ -5,6 +5,7 @@ import {
   getAllPosts,
   getPost,
   getSidebarPostCard,
+  postClickLike,
   updatePost,
 } from "../controllers/post_controller.js";
 
@@ -21,5 +22,8 @@ router.get("/getpost/:slug", getPost);
 router.get("/getsidebarpost", getSidebarPostCard);
 
 router.patch("/updatepost/:slug", verifyUser, updatePost);
+
+// Like
+router.get("/postclicklike/:slug", postClickLike);
 
 export default router;
