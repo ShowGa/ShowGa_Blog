@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 // react-router-dom
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // React icons
 import { CiCirclePlus } from "react-icons/ci";
 import { AiOutlinePicture } from "react-icons/ai";
@@ -26,6 +26,7 @@ import toast from "react-hot-toast";
 import PostService from "../services/post-service";
 
 const EditorUpdate = () => {
+  const { slug } = useParams();
   const navigate = useNavigate();
 
   const { t } = useTranslation();
@@ -142,12 +143,28 @@ const EditorUpdate = () => {
       });
   };
 
+  // get target post default
+  const handleGetPostDefault = () => {
+    PostService.getPost(slug)
+      .then((res) => {
+        setEditorContent(res.data.foundPost.content);
+      })
+      .catch((e) => {
+        toast.error("Error occurred when updating post !");
+        console.log(e);
+      });
+  };
+
   useEffect(() => {
     setPostContent({
       ...postContent,
       content: editorContent,
     });
   }, [editorContent]);
+
+  useEffect(() => {
+    handleGetPostDefault();
+  }, []);
 
   return (
     <div className="max-w-[50%] min-h-[100vh] mx-auto max-md:max-w-[95%] pt-11">
