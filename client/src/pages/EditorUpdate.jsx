@@ -147,10 +147,17 @@ const EditorUpdate = () => {
   const handleGetPostDefault = () => {
     PostService.getPost(slug)
       .then((res) => {
-        setEditorContent(res.data.foundPost.content);
+        const { foundPost } = res.data;
+        setEditorContent(foundPost.content);
+        setPostContent({
+          title: foundPost.title,
+          banerImg: foundPost.banerImg,
+          category: foundPost.category,
+          isFeatured: foundPost.isFeatured,
+        });
       })
       .catch((e) => {
-        toast.error("Error occurred when updating post !");
+        toast.error("Error occurred when getting post !");
         console.log(e);
       });
   };
@@ -170,6 +177,7 @@ const EditorUpdate = () => {
     <div className="max-w-[50%] min-h-[100vh] mx-auto max-md:max-w-[95%] pt-11">
       <input
         onChange={handleChange}
+        value={postContent.title}
         id="title"
         type="text"
         placeholder="Title"
@@ -189,7 +197,12 @@ const EditorUpdate = () => {
       <div className="p-select_container">
         <div>
           <label className="font-bold">Featured :</label>
-          <select onChange={handleChange} name="Featured" id="isFeature">
+          <select
+            onChange={handleChange}
+            value={postContent.isFeatured}
+            name="Featured"
+            id="isFeature"
+          >
             <option value="false">False</option>
             <option value="true">True</option>
           </select>
@@ -197,7 +210,12 @@ const EditorUpdate = () => {
 
         <div>
           <label className="font-bold">Category :</label>
-          <select onChange={handleChange} name="Category" id="category">
+          <select
+            onChange={handleChange}
+            value={postContent.category}
+            name="Category"
+            id="category"
+          >
             {tagInfo.map((tag) => {
               return (
                 <option
