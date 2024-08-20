@@ -58,3 +58,19 @@ export const getPostComments = async (req, res) => {
     return res.status(500).json({ error: "Internal server error !" });
   }
 };
+
+export const commentClickLike = async (req, res) => {
+  try {
+    const { commentID } = req.params;
+
+    await Comment.findOneAndUpdate(
+      { _id: commentID },
+      { $inc: { numOfLikes: 1 } }
+    );
+
+    return res.status(201).json({ message: "Click like successfully !" });
+  } catch (e) {
+    console.log("Error in postClickLike controller !" + e);
+    return res.status(500).json({ error: "Internal server error !" });
+  }
+};
