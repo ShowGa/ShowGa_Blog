@@ -38,7 +38,7 @@ const Search = () => {
     const sortURL = urlParams.get("sort") || "createdAt";
     const orderURL = urlParams.get("order") || "desc";
     const categoryURL = urlParams.get("category") || "";
-    const isFeaturedURL = urlParams.get("isFeatured") || false;
+    const isFeaturedURL = urlParams.get("isFeatured") || "";
     setSearchCondition({
       ...searchCondition,
       searchTerm: searchTermURL,
@@ -113,7 +113,12 @@ const Search = () => {
     if (e.target.id === "isFeatured") {
       setSearchCondition({
         ...searchCondition,
-        isFeatured: e.target.value === "true" ? true : false,
+        isFeatured:
+          e.target.value === "true"
+            ? true
+            : e.target.value === "false"
+            ? false
+            : "",
       });
     }
 
@@ -122,7 +127,7 @@ const Search = () => {
         ...searchCondition,
         category:
           searchCondition.category === e.target.innerText
-            ? null
+            ? ""
             : e.target.innerText,
       });
     }
@@ -185,7 +190,7 @@ const Search = () => {
             <select
               onChange={handleChange}
               id="sort_order"
-              defaultValue={"createdAt_asc"}
+              value={`${searchCondition.sort}_${searchCondition.order}`}
             >
               <option value="createdAt_asc">Oldest</option>
               <option value="createdAt_desc">Latest</option>
@@ -202,6 +207,7 @@ const Search = () => {
             >
               <option value="true">Yes</option>
               <option value="false">No</option>
+              <option value="">No Limitation</option>
             </select>
           </div>
 

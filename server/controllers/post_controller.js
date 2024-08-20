@@ -38,7 +38,7 @@ export const getAllPosts = async (req, res) => {
   try {
     const queryContent = req.query;
 
-    const startIndex = parseInt(queryContent) || 0;
+    const startIndex = parseInt(queryContent.startIndex) || 0;
     const limit = parseInt(queryContent.limit) || 6;
     const sort = queryContent.sort || "createdAt";
     const order = queryContent.order || "desc";
