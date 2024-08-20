@@ -7,6 +7,7 @@ import {
   About,
   Profile,
   Dashboard,
+  EditorUpdate,
 } from "./pages/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
@@ -30,6 +31,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
           </Route>
           <Route element={<AdminRoute />}>
+            <Route path="/update-editor/:postId" element={<EditorUpdate />} />
             <Route path="/editor" element={<Editor />} />
             <Route path="/dashboard" element={<Dashboard />}>
               <Route index element={<DashInfo />} />
