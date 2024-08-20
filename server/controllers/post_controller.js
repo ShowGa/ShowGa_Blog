@@ -61,7 +61,21 @@ export const getAllPosts = async (req, res) => {
       return res.status(400).json({ error: "No post founded !" });
     }
 
-    return res.status(200).json({ foundPost });
+    const totalPosts = await Post.countDocuments({
+      ...(queryContent.category && { category: queryContent.category }),
+      ...(queryContent.isFeatured && { isFeatured: queryContent.isFeatured }),
+      ...(queryContent.searchTerm && {
+        $or: [
+          { title: { $regex: queryContent.searchTerm, $options: "i" } },
+          { content: { $regex: queryContent.searchTerm, $options: "i" } },
+        ],
+      }),
+    });
+
+    // check is there any more post
+    const isEnd = startIndex + limit >= totalPosts;
+
+    return res.status(200).json({ foundPost, isEnd });
   } catch (e) {
     console.log("Error in getAllPosts controller !" + e);
     return res.status(500).json({ error: "Internal server error !" });
