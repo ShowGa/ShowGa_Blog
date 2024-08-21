@@ -1,7 +1,21 @@
 import React, { useState } from "react";
 
-const Modal = ({ handleDeleteAccount, setShowModal }) => {
+const Modal = ({ handleAction, setShowModal, condition }) => {
   const [confirmInput, setConfirmInput] = useState("");
+
+  const handleCondition = () => {
+    if (condition === "delete profile") {
+      return {
+        word: "Sad to see you go. Once your account is deleted, all of your content will be permanently gone, including your profile and comments.",
+      };
+    }
+
+    if (condition === "delete post") {
+      return {
+        word: "Are you sure delete post ?",
+      };
+    }
+  };
 
   return (
     <div className="c-delete-modal_wrapper" onClick={setShowModal}>
@@ -12,10 +26,7 @@ const Modal = ({ handleDeleteAccount, setShowModal }) => {
         className="c-delete-modal_container"
       >
         <span onClick={setShowModal}>X</span>
-        <h3>
-          Sad to see you go. Once your account is deleted, all of your content
-          will be permanently gone, including your profile and comments.{" "}
-        </h3>
+        <h3>{handleCondition().word}</h3>
 
         <div className="c-delete-confirmation">
           <p>Type "delete" for deletion</p>
@@ -27,10 +38,7 @@ const Modal = ({ handleDeleteAccount, setShowModal }) => {
           />
         </div>
 
-        <button
-          disabled={confirmInput !== "delete"}
-          onClick={handleDeleteAccount}
-        >
+        <button disabled={confirmInput !== "delete"} onClick={handleAction}>
           Delete
         </button>
       </div>
