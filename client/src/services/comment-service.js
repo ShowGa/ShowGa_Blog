@@ -14,6 +14,13 @@ class CommentService {
       API_URL + `/server/comment/getpostcomments/${belongPostID}` + query
     );
   }
+
+  commentClap(commentID, data) {
+    return axios.get(
+      API_URL + `/server/comment/commentclicklike/${commentID}`,
+      data
+    );
+  }
 }
 
 export default new CommentService();
