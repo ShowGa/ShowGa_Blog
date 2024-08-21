@@ -61,11 +61,11 @@ export const getPostComments = async (req, res) => {
 
 export const commentClickLike = async (req, res) => {
   try {
-    const { commentID } = req.params;
+    const { commentID, addLike } = req.body;
 
     await Comment.findOneAndUpdate(
       { _id: commentID },
-      { $inc: { numOfLikes: 1 } }
+      { $inc: { numOfLikes: addLike } }
     );
 
     return res.status(201).json({ message: "Click like successfully !" });

@@ -12,6 +12,6 @@ router.post("/create", verifyUser, createComment);
 
 router.get("/getpostcomments/:belongPostID", getPostComments);
 
-router.get("/commentclicklike/:commentID", commentClickLike);
+router.patch("/commentclicklike", commentClickLike);
 
 export default router;
