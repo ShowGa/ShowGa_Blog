@@ -24,6 +24,6 @@ router.get("/getsidebarpost", getSidebarPostCard);
 router.patch("/updatepost/:slug", verifyUser, updatePost);
 
 // Like
-router.get("/postclicklike/:slug", postClickLike);
+router.patch("/postclicklike", postClickLike);
 
 export default router;

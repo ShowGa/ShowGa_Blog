@@ -164,9 +164,9 @@ export const updatePost = async (req, res) => {
 
 export const postClickLike = async (req, res) => {
   try {
-    const { slug } = req.params;
+    const { slug, addLike } = req.body;
 
-    await Post.findOneAndUpdate({ slug }, { $inc: { numOfLikes: 1 } });
+    await Post.findOneAndUpdate({ slug }, { $inc: { numOfLikes: addLike } });
 
     return res.status(201).json({ message: "Click like successfully !" });
   } catch (e) {
