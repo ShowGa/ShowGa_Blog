@@ -187,10 +187,11 @@ const Profile = () => {
 
       {showModal && (
         <Modal
-          handleDeleteAccount={handleDeleteAccount}
+          handleAction={handleDeleteAccount}
           setShowModal={() => {
             setShowModal(false);
           }}
+          condition={"delete profile"}
         />
       )}
     </main>
