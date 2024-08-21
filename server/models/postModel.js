@@ -22,10 +22,13 @@ const postSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    likes: {
-      type: Array,
-      default: [],
-    },
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        default: [],
+      },
+    ],
     numOfLikes: {
       type: Number,
       default: 0,
