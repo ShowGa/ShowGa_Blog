@@ -13,12 +13,12 @@ import { FaEye } from "react-icons/fa";
 // zustand
 import useAuthUserStore from "../zustand/useAuthUser";
 import { Link, useParams } from "react-router-dom";
-import PostService from "../services/post-service";
 // react hot toast
 import toast from "react-hot-toast";
 // utils
 import { changeTimeZone } from "../utils/timezone";
 // Service
+import PostService from "../services/post-service";
 import CommentService from "../services/comment-service";
 // react icons
 import { FaSquarePlus } from "react-icons/fa6";
@@ -29,6 +29,8 @@ const Post = () => {
   const { authUser } = useAuthUserStore();
 
   const selectRef = useRef(null);
+  const timeoutID = useRef(null);
+  const waitingLike = useRef(0);
 
   const [showCommentSec, setShowCommentSec] = useState(false);
   const [formData, setFormData] = useState({
@@ -140,9 +142,28 @@ const Post = () => {
   };
 
   const handleClickClap = () => {
-    toast("Applaud feature upcoming!", {
-      icon: "👏",
-    });
+    setpost({ ...post, numOfLikes: post.numOfLikes + 1 });
+    waitingLike.current++;
+
+    if (timeoutID.current) {
+      clearTimeout(timeoutID.current);
+    }
+
+    timeoutID.current = setTimeout(() => {
+      const data = {
+        slug: post.slug,
+        addLike: waitingLike.current,
+      };
+
+      PostService.postClap(data)
+        .then((res) => {
+          waitingLike.current = 0;
+        })
+        .catch((e) => {
+          toast.error("Error occurred when clapping comment !");
+          console.log(e);
+        });
+    }, 800);
   };
 
   useEffect(() => {

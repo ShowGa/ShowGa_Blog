@@ -28,6 +28,10 @@ class PostService {
       { withCredentials: true }
     );
   }
+
+  postClap(data) {
+    return axios.patch(API_URL + "/server/post/postclicklike", data);
+  }
 }
 
 export default new PostService();

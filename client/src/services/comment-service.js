@@ -15,11 +15,8 @@ class CommentService {
     );
   }
 
-  commentClap(commentID, data) {
-    return axios.get(
-      API_URL + `/server/comment/commentclicklike/${commentID}`,
-      data
-    );
+  commentClap(data) {
+    return axios.patch(API_URL + "/server/comment/commentclicklike", data);
   }
 }
 

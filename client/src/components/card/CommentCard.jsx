@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 // Images
 import { gao } from "../../assets";
 // react icons
@@ -10,32 +10,34 @@ import toast from "react-hot-toast";
 import CommentService from "../../services/comment-service";
 
 const CommentCard = ({ comment }) => {
-  let timeoutID = 0;
-  let waitingLike = 0;
-  const [likeAmount, setLikeAmount] = useState(0);
+  const timeoutID = useRef(null);
+  const waitingLike = useRef(0);
+
+  const [likeAmount, setLikeAmount] = useState(comment.numOfLikes);
 
   const handleClickClap = () => {
     setLikeAmount(likeAmount + 1);
-    waitingLike++;
+    waitingLike.current++;
 
-    if (timeoutID) {
-      clearTimeout(timeoutID);
+    if (timeoutID.current) {
+      clearTimeout(timeoutID.current);
     }
 
-    timeoutID = setTimeout(() => {
+    timeoutID.current = setTimeout(() => {
       const data = {
-        addLike: waitingLike,
+        commentID: comment._id,
+        addLike: waitingLike.current,
       };
 
-      CommentService.commentClap(comment._id, data)
+      CommentService.commentClap(data)
         .then((res) => {
-          waitingLike = 0;
+          waitingLike.current = 0;
         })
         .catch((e) => {
           toast.error("Error occurred when clapping comment !");
           console.log(e);
         });
-    }, 500);
+    }, 800);
   };
 
   return (
@@ -56,7 +58,7 @@ const CommentCard = ({ comment }) => {
       <div>
         <button onClick={handleClickClap} className="c-comment-card_function">
           <PiHandsClapping className="text-lg" />
-          <p>{likeAmount !== 0 ? likeAmount : comment.numOfLikes}</p>
+          <p>{likeAmount}</p>
         </button>
       </div>
     </div>
