@@ -4,6 +4,14 @@ import { gao } from "../../assets";
 // react icons
 import { PiHandsClapping } from "react-icons/pi";
 import { changeTimeZone } from "../../utils/timezone";
+//react hot toast
+import toast from "react-hot-toast";
+
+const handleClickClap = () => {
+  toast("Applaud feature upcoming!", {
+    icon: "👏",
+  });
+};
 
 const CommentCard = ({ comment }) => {
   return (
@@ -22,7 +30,7 @@ const CommentCard = ({ comment }) => {
       </div>
 
       <div>
-        <button className="c-comment-card_function">
+        <button onClick={handleClickClap} className="c-comment-card_function">
           <PiHandsClapping className="text-lg" />
           <p>{comment.numOfLikes}</p>
         </button>

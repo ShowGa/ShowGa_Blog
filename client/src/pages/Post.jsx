@@ -139,6 +139,12 @@ const Post = () => {
     });
   };
 
+  const handleClickClap = () => {
+    toast("Applaud feature upcoming!", {
+      icon: "👏",
+    });
+  };
+
   useEffect(() => {
     handleGetPost();
   }, [params.postId]);
@@ -161,7 +167,10 @@ const Post = () => {
                 </div>
 
                 <div className="p-post_title_function-list">
-                  <div className="p-function_clap_container">
+                  <div
+                    onClick={handleClickClap}
+                    className="p-function_clap_container"
+                  >
                     <PiHandsClapping className="text-xl" />
                     <p>{post.numOfLikes}</p>
                   </div>
