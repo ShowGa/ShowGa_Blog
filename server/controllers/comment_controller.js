@@ -37,7 +37,7 @@ export const getPostComments = async (req, res) => {
     const order = queryContent.order || "desc";
 
     const foundComments = await Comment.find({ belongPostID })
-      .sort({ [sort]: order })
+      .sort({ [sort]: order, _id: -1 })
       .skip(startIndex)
       .limit(limit)
       .populate({
