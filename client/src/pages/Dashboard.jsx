@@ -4,7 +4,7 @@ import { MdSpaceDashboard } from "react-icons/md";
 import { PiArticleNyTimesFill } from "react-icons/pi";
 import { FaSignOutAlt } from "react-icons/fa";
 // react router dom
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 // react toast
 import toast from "react-hot-toast";
 // zustand
@@ -14,12 +14,7 @@ import AuthService from "../services/auth-service";
 
 const Dashboard = () => {
   const { logoutSetAuthUser } = useAuthUserStore();
-
-  const [activeItem, setActiveItem] = useState("dash");
-
-  const handleActiveItems = (e) => {
-    setActiveItem(e.target.id);
-  };
+  const { pathname } = useLocation();
 
   const handleLogOut = () => {
     AuthService.logOut()
@@ -38,10 +33,9 @@ const Dashboard = () => {
       <section className="p-dashboard-sidebar_sec">
         <Link
           to={""}
-          onClick={handleActiveItems}
           id="dash"
           className={`p-sidebar-items ${
-            activeItem === "dash" ? "p-items_active" : ""
+            pathname === "/dashboard" ? "p-items_active" : ""
           }`}
         >
           <MdSpaceDashboard className="text-2xl" />
@@ -50,10 +44,9 @@ const Dashboard = () => {
 
         <Link
           to={"posts"}
-          onClick={handleActiveItems}
           id="posts"
           className={`p-sidebar-items ${
-            activeItem === "posts" ? "p-items_active" : ""
+            pathname === "/dashboard/posts" ? "p-items_active" : ""
           }`}
         >
           <PiArticleNyTimesFill className="text-2xl" />
