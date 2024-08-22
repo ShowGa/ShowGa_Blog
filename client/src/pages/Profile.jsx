@@ -167,6 +167,7 @@ const Profile = () => {
 
         <label>Email</label>
         <input
+          disabled={true}
           onChange={handleFormChange}
           id="email"
           type="email"
