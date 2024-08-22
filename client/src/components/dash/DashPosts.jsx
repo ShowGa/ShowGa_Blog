@@ -24,9 +24,9 @@ const DashPosts = () => {
       return;
     }
 
-    const searchQuery = `?searchTerm=${searchData.current.value}`;
+    const postID = searchData.current.value;
 
-    PostService.getAllPosts(searchQuery)
+    PostService.getPostAdmin(postID)
       .then((res) => {
         setPost(res.data.foundPost);
       })
@@ -66,9 +66,9 @@ const DashPosts = () => {
       <section>
         {post && (
           <>
-            <PostCard key={post._id} post={post[0]} />
+            <PostCard key={post._id} post={post} />
             <div>
-              <Link to={`/update-editor/${post[0].slug}`}>Modify</Link>
+              <Link to={`/update-editor/${post.slug}`}>Modify</Link>
 
               <button
                 className="ml-2"

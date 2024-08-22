@@ -164,6 +164,29 @@ export const getSidebarPostCard = async (req, res) => {
   }
 };
 
+export const getPostAdmin = async (req, res) => {
+  try {
+    if (!req.user.isAdmin) {
+      return res
+        .status(402)
+        .json({ message: "Sorry ! Only admin allow to create post ." });
+    }
+
+    const { postID } = req.params;
+
+    const foundPost = await Post.findOne({ _id: postID });
+
+    if (!foundPost) {
+      return res.status(400).json({ error: "Post not found !" });
+    }
+
+    return res.status(200).json({ foundPost });
+  } catch (e) {
+    console.log("Error in getPostAdmin controller !" + e);
+    return res.status(500).json({ error: "Internal server error !" });
+  }
+};
+
 export const updatePost = async (req, res) => {
   try {
     const { slug } = req.params;

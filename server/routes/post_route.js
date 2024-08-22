@@ -5,6 +5,7 @@ import {
   deletePost,
   getAllPosts,
   getPost,
+  getPostAdmin,
   getSidebarPostCard,
   postClickLike,
   updatePost,
@@ -23,6 +24,9 @@ router.get("/getpost/:slug", getPost);
 
 // get recommend sidebar posts
 router.get("/getsidebarpost", getSidebarPostCard);
+
+// get post in admin dashboard
+router.get("/getpostadmin/:postID", verifyUser, getPostAdmin);
 
 router.patch("/updatepost/:slug", verifyUser, updatePost);
 

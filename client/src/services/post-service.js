@@ -27,6 +27,12 @@ class PostService {
     return axios.get(API_URL + `/server/post/getsidebarpost/?${query}`);
   }
 
+  getPostAdmin(postID) {
+    return axios.get(API_URL + `/server/post/getpostadmin/${postID}`, {
+      withCredentials: true,
+    });
+  }
+
   updatePost(slug, postContent) {
     return axios.patch(
       API_URL + `/server/post/updatePost/${slug}`,
