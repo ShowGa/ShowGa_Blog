@@ -31,6 +31,7 @@ const Post = () => {
   const selectRef = useRef(null);
   const timeoutID = useRef(null);
   const waitingLike = useRef(0);
+  const totalLikes = useRef(0);
 
   const [showCommentSec, setShowCommentSec] = useState(false);
   const [formData, setFormData] = useState({
@@ -143,8 +144,14 @@ const Post = () => {
   };
 
   const handleClickClap = () => {
+    // set maximum clap
+    if (totalLikes.current >= 20) {
+      return;
+    }
+
     setpost({ ...post, numOfLikes: post.numOfLikes + 1 });
     waitingLike.current++;
+    totalLikes.current++;
 
     if (timeoutID.current) {
       clearTimeout(timeoutID.current);
