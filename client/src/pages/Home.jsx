@@ -53,11 +53,11 @@ const Home = () => {
       <section>
         <div className="p-heroSec_intro_head_container">
           <h1>
-            Hi,
-            <br /> ShowGa here
+            {t("title")}
+            {t("title_name")}
           </h1>
 
-          <p>I'm a software engineering learner live in Taiwan .</p>
+          <p>{t("title_des")}</p>
         </div>
 
         <div className="p-swiper_container">
@@ -96,7 +96,7 @@ const Home = () => {
 
       {/* Tag section */}
       <section className="p-tagSec">
-        <h1>Categories</h1>
+        <h1>{t("tag_title")}</h1>
         <div className="p-tagSec_tags_container">
           {tagInfo.map((info) => {
             return <Tag key={info.tagName} {...info} />;
@@ -108,7 +108,7 @@ const Home = () => {
       <section className="p-post-sidebarSec">
         <div className="p-post-sidebarSec_container">
           <main className="flex-1">
-            <h1 className="p-post_main_title">Recent Posts</h1>
+            <h1 className="p-post_main_title">{t("post_title_recent")}</h1>
             <div className="p-post-main_postcards_container">
               {recentPosts &&
                 recentPosts.map((post) => {

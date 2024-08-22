@@ -18,6 +18,8 @@ import PostService from "../services/post-service";
 import toast from "react-hot-toast";
 
 const Search = () => {
+  const { t } = useTranslation();
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -142,20 +144,20 @@ const Search = () => {
       {/* Hero section */}
       <section>
         <div className="p-heroSec_intro_head_container">
-          <h1>Explore what you interest</h1>
+          <h1>{t("search_title")}</h1>
 
-          <p>Search by Search Term, Category and Sorting</p>
+          <p>{t("search_title_des")}</p>
         </div>
       </section>
 
       <section>
         <div className="p-search_section_container">
-          <h1>Searching :</h1>
+          <h1>{t("searching_text")}</h1>
         </div>
 
         <form onSubmit={handleSubmit} className="p-search_section_system_form">
           <div className="p-search_form_Term">
-            <label>Search Term :</label>
+            <label>{t("searchTerm_text")}</label>
             <input
               onChange={handleChange}
               id="searchTerm"
@@ -165,7 +167,7 @@ const Search = () => {
           </div>
 
           <div className="p-search_form_tag">
-            <label>Categories :</label>
+            <label>{t("categories_text")}</label>
             <div className="p-tag_span_container">
               {tagInfo.map((info) => {
                 return (
@@ -186,33 +188,33 @@ const Search = () => {
           </div>
 
           <div className="p-search_form_sort">
-            <label>Sort :</label>
+            <label>{t("sort_text")}</label>
             <select
               onChange={handleChange}
               id="sort_order"
               value={`${searchCondition.sort}_${searchCondition.order}`}
             >
-              <option value="createdAt_asc">Oldest</option>
-              <option value="createdAt_desc">Latest</option>
-              <option value="views_desc">Most popular</option>
+              <option value="createdAt_asc">{t("select_old")}</option>
+              <option value="createdAt_desc">{t("select_late")}</option>
+              <option value="views_desc">{t("select_popular")}</option>
             </select>
           </div>
 
           <div className="p-search_form_featured">
-            <label>Featured by Author : </label>
+            <label>{t("featured_text")} </label>
             <select
               onChange={handleChange}
               id="isFeatured"
               value={searchCondition.isFeatured}
             >
-              <option value="true">Yes</option>
-              <option value="false">No</option>
-              <option value="">No Limitation</option>
+              <option value="true">{t("select_yes")}</option>
+              <option value="false">{t("select_no")}</option>
+              <option value="">{t("select_no_limit")}</option>
             </select>
           </div>
 
           <button type="submit" className="p-search_button">
-            Search
+            {t("search_text")}
           </button>
         </form>
       </section>
@@ -221,7 +223,7 @@ const Search = () => {
       <section className="p-post-sidebarSec">
         <div className="p-post-sidebarSec_container">
           <main className="flex-1">
-            <h1 className="font-bold text-2xl">Recent Posts :</h1>
+            <h1 className="font-bold text-2xl">{t("select_result")}</h1>
             <div className="p-post-main_postcards_container">
               {searchPosts &&
                 searchPosts.map((post) => {

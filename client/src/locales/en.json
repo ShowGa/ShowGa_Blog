@@ -1,3 +1,35 @@
 {
-  "test": "Test"
+  "Header.jsx": "----------------------",
+  "post_title_recent": "Recent Posts",
+
+  "Home.jsx": "----------------------",
+  "title": "Hi,",
+  "title_name": "ShowGa here",
+  "title_des": "This is a blog built with thousands of lines of code, recording the thoughts and experiences of everyday life.",
+  "tag_title": "Categories",
+
+  "RecommendSideBar.jsx": "----------------------",
+  "post_title_popular": "Most Popular",
+  "post_title_popular_des": "See the trendy post",
+  "post_title_category": "Category",
+  "post_title_category_des": "Search post with by category with search engine",
+  "post_title_featured": "Feature posts chosen by ShowGa",
+  "post_title_featured_des": "Don't miss",
+
+  "Search.jsx": "----------------------",
+  "search_title": "Explore what you interest",
+  "search_title_des": "Search by Search Term, Category and Sorting",
+  "searching_text": "Searching :",
+  "searchTerm_text": "Search Term :",
+  "categories_text": "Categories:",
+  "sort_text": "Sort :",
+  "featured_text": "Featured by Author:",
+  "search_text": "Search",
+  "select_old": "Oldest",
+  "select_late": "Latest",
+  "select_popular": "Most popular",
+  "select_yes": "Yes",
+  "select_no": "No",
+  "select_no_limit": "No limitation",
+  "select_result": "Result :"
 }

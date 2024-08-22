@@ -10,8 +10,12 @@ import useSidebarPostStore from "../../zustand/useSidebarPost";
 import PostService from "../../services/post-service";
 // react hot toast
 import toast from "react-hot-toast";
+// i18next
+import { useTranslation } from "react-i18next";
 
 const RecommendSideBar = () => {
+  const { t } = useTranslation();
+
   const { trendyPost, FeaturedPost, setTrendyPost, setFeaturedPost } =
     useSidebarPostStore();
 
@@ -48,8 +52,8 @@ const RecommendSideBar = () => {
     <div className="c-recommendSideBar_wrapper">
       <div className="c-recommendSideBar_topic_container">
         <div className="c-recommendSideBar_text_container">
-          <p>See the trendy post</p>
-          <h1>Most Popular</h1>
+          <p>{t("post_title_popular_des")}</p>
+          <h1>{t("post_title_popular")}</h1>
         </div>
 
         <div className="c-recommendSideBar_post-container">
@@ -62,8 +66,8 @@ const RecommendSideBar = () => {
 
       <div className="c-recommendSideBar_topic_container">
         <div className="c-recommendSideBar_text_container">
-          <p>Discovering by topic</p>
-          <h1>Categories</h1>
+          <p>{t("post_title_category_des")}</p>
+          <h1>{t("post_title_category")}</h1>
         </div>
 
         <div className="flex flex-wrap gap-2">
@@ -75,8 +79,8 @@ const RecommendSideBar = () => {
 
       <div className="c-recommendSideBar_topic_container">
         <div className="c-recommendSideBar_text_container">
-          <p>Features</p>
-          <h1>Feature posts chosen by ShowGa</h1>
+          <p>{t("post_title_featured_des")}</p>
+          <h1>{t("post_title_featured")}</h1>
         </div>
 
         <div className="c-recommendSideBar_post-container">
