@@ -201,7 +201,7 @@ const EditorUpdate = () => {
             onChange={handleChange}
             value={postContent.isFeatured}
             name="Featured"
-            id="isFeature"
+            id="isFeatured"
           >
             <option value="false">False</option>
             <option value="true">True</option>
