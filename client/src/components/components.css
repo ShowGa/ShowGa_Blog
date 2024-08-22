@@ -330,11 +330,17 @@ components.jsx
 ==================
 */
 .c-dash-search_form {
-  @apply flex gap-4;
+  @apply flex flex-col gap-4;
+}
+.c-dash-search_form div {
+  @apply flex flex gap-2 items-center;
 }
 .c-dash-search_form label {
   @apply text-3xl;
 }
 .c-dash-search_form input {
-  @apply px-2 rounded-md text-black;
+  @apply px-2 rounded-md border-2 border-gray-400 text-black;
+}
+.c-dash-search_form button {
+  @apply w-fit mx-auto border border-gray-500 p-2 rounded-full;
 }
