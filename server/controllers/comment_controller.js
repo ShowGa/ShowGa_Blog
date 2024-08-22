@@ -15,9 +15,14 @@ export const createComment = async (req, res) => {
       belongPostID,
     });
 
-    await newComment.save();
+    const savedComment = await newComment.save();
 
-    return res.status(201).json({ message: "Create comment successfully !" });
+    const populateComment = await savedComment.populate({
+      path: "belongUserID",
+      select: "username avatar",
+    });
+
+    return res.status(201).json({ populateComment });
   } catch (e) {
     console.log("Error in createComment controller !" + e);
     res

@@ -66,8 +66,9 @@ const Post = () => {
 
     CommentService.createComment(formData)
       .then((res) => {
-        toast.success(res.data.message);
+        toast.success("Submit comment successfully !");
         setFormData({ ...formData, content: "" });
+        setComments([res.data.populateComment, ...comments]);
       })
       .catch((e) => {
         toast.error("Error occurred when trying to create comment !");
