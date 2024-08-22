@@ -323,3 +323,18 @@ Modal.jsx
 .c-delete-confirmation input {
   @apply w-full bg-gray-100 rounded-sm p-1;
 }
+
+/*
+==================
+components.jsx
+==================
+*/
+.c-dash-search_form {
+  @apply flex gap-4;
+}
+.c-dash-search_form label {
+  @apply text-3xl;
+}
+.c-dash-search_form input {
+  @apply px-2 rounded-md text-black;
+}
