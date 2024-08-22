@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import "../components.css";
 // components
 import PostCard from "../card/PostCard";
+import Modal from "../modal/Modal.jsx";
 // service
 import PostService from "../../services/post-service.js";
 // hot toast
@@ -11,6 +12,8 @@ import { Link } from "react-router-dom";
 
 const DashPosts = () => {
   const [post, setPost] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
   const searchData = useRef();
 
   const handleSubmitForm = (e) => {
@@ -33,6 +36,21 @@ const DashPosts = () => {
       });
   };
 
+  const handleDeletePost = () => {
+    const postID = post[0]._id;
+
+    PostService.deletePost(postID)
+      .then((res) => {
+        toast.success(res.data.message);
+        setPost(null);
+        setShowModal(false);
+      })
+      .catch((e) => {
+        toast.error("Error occurred when deleting posts !");
+        console.log(e);
+      });
+  };
+
   return (
     <main className="w-[80%] mx-auto mt-12">
       <section className="w-full">
@@ -49,10 +67,31 @@ const DashPosts = () => {
         {post && (
           <>
             <PostCard key={post._id} post={post[0]} />
-            <Link to={`/update-editor/${post[0].slug}`}>Modify</Link>
+            <div>
+              <Link to={`/update-editor/${post[0].slug}`}>Modify</Link>
+
+              <button
+                className="ml-2"
+                onClick={() => {
+                  setShowModal(true);
+                }}
+              >
+                Delete
+              </button>
+            </div>
           </>
         )}
       </section>
+
+      {showModal && (
+        <Modal
+          handleAction={handleDeletePost}
+          setShowModal={() => {
+            setShowModal(false);
+          }}
+          condition={"delete post"}
+        />
+      )}
     </main>
   );
 };

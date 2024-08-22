@@ -9,6 +9,12 @@ class PostService {
     });
   }
 
+  deletePost(postID) {
+    return axios.delete(API_URL + `/server/post/delete/${postID}`, {
+      withCredentials: true,
+    });
+  }
+
   getAllPosts(query = "") {
     return axios.get(API_URL + `/server/post/getallposts${query}`);
   }

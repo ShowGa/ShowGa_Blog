@@ -34,6 +34,27 @@ export const createPost = async (req, res) => {
   }
 };
 
+export const deletePost = async (req, res) => {
+  try {
+    if (!req.user.isAdmin) {
+      return res
+        .status(402)
+        .json({ message: "Sorry ! Only admin allow to delete post ." });
+    }
+
+    const { postID } = req.params;
+
+    await Post.findOneAndDelete({ _id: postID });
+
+    return res.status(201).json({ message: "Delete user successfully !" });
+  } catch (e) {
+    console.log("Error in deletePost controller !" + e);
+    res
+      .status(500)
+      .json({ error: "Internal server error ! Please contact us ." });
+  }
+};
+
 export const getAllPosts = async (req, res) => {
   try {
     const queryContent = req.query;

@@ -2,6 +2,7 @@ import express from "express";
 import { verifyUser } from "../utils/verifyUser.js";
 import {
   createPost,
+  deletePost,
   getAllPosts,
   getPost,
   getSidebarPostCard,
@@ -12,6 +13,8 @@ import {
 const router = express.Router();
 
 router.post("/create", verifyUser, createPost);
+
+router.delete("/delete/:postID", verifyUser, deletePost);
 
 // for public search
 router.get("/getallposts", getAllPosts);
