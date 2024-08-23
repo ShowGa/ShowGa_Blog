@@ -22,6 +22,8 @@ import PostService from "../services/post-service";
 import CommentService from "../services/comment-service";
 // react icons
 import { FaSquarePlus } from "react-icons/fa6";
+// utils conffeti
+import { confettiAction } from "../utils/conffeti";
 
 const Post = () => {
   const { t } = useTranslation();
@@ -154,6 +156,10 @@ const Post = () => {
     setpost({ ...post, numOfLikes: post.numOfLikes + 1 });
     waitingLike.current++;
     totalLikes.current++;
+
+    if (totalLikes.current % 5 === 1) {
+      confettiAction({ y: 0.6, x: 0.2 });
+    }
 
     if (timeoutID.current) {
       clearTimeout(timeoutID.current);

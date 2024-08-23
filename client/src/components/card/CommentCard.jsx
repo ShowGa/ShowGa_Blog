@@ -8,6 +8,8 @@ import { changeTimeZone } from "../../utils/timezone";
 import toast from "react-hot-toast";
 // Comment-Service
 import CommentService from "../../services/comment-service";
+// utils conffeti
+import { confettiAction } from "../../utils/conffeti";
 
 const CommentCard = ({ comment }) => {
   const timeoutID = useRef(null);
@@ -24,6 +26,10 @@ const CommentCard = ({ comment }) => {
     setLikeAmount(likeAmount + 1);
     waitingLike.current++;
     totalLikes.current++;
+
+    if (totalLikes.current % 5 === 1) {
+      confettiAction({ y: 0.7, x: 0.7 });
+    }
 
     if (timeoutID.current) {
       clearTimeout(timeoutID.current);
