@@ -8,13 +8,8 @@ import food from "./food.jpg";
 import gaming from "./gaming.jpg";
 import magic from "./magic.jpg";
 import travel from "./travel.jpg";
-import postTest from "./postTest.png";
 import gao from "./gao.jpg";
-import slamDunk from "./TheFirstSlamDunk.jpg";
-import slamDunk2 from "./slamdunk.jpg";
-import github from "./github.png";
 import google from "./google.png";
-import facebook from "./facebook.png";
 import steam from "./steam.png";
 
 export {
@@ -24,16 +19,11 @@ export {
   me2,
   me3,
   code,
-  postTest,
   gao,
-  slamDunk,
-  slamDunk2,
   food,
   gaming,
   magic,
   travel,
-  github,
   google,
-  facebook,
   steam,
 };
