@@ -61,7 +61,7 @@ const Post = () => {
         setCommentNum(res.data.postComments);
       })
       .catch((e) => {
-        toast.success("Error occurred when getting article");
+        toast.error("Error occurred when getting article");
         console.log(e);
       });
   };
@@ -194,7 +194,7 @@ const Post = () => {
   }, [params.postId]);
 
   return (
-    <div className="max-w-[80%] mx-auto max-md:max-w-[95%]">
+    <div className="min-h-screen max-w-[80%] mx-auto max-md:max-w-[95%]">
       {/* Hero section */}
       {post && (
         <>

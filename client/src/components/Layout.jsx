@@ -21,7 +21,6 @@ const Layout = () => {
     <div className={`page_container ${theme}`}>
       <Header changeLanguage={changeLanguage} />
       <Outlet />
-      <Footer />
       <Toaster />
     </div>
   );
