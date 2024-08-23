@@ -23,8 +23,11 @@ import PostService from "../services/post-service";
 import CommentService from "../services/comment-service";
 // react icons
 import { FaSquarePlus } from "react-icons/fa6";
-// utils conffeti
+// utils
 import { confettiAction } from "../utils/conffeti";
+import { clapPlay } from "../utils/clapSound";
+// assest
+import clapAudio from "../assets/fireworks_pang01.mp3";
 
 const Post = () => {
   const { t } = useTranslation();
@@ -37,6 +40,7 @@ const Post = () => {
   const timeoutID = useRef(null);
   const waitingLike = useRef(0);
   const totalLikes = useRef(0);
+  const clap = useRef(new Audio(clapAudio));
 
   const [showCommentSec, setShowCommentSec] = useState(false);
   const [formData, setFormData] = useState({
@@ -160,6 +164,8 @@ const Post = () => {
 
     if (totalLikes.current % 5 === 1) {
       confettiAction({ y: 0.6, x: 0.2 });
+      // clap sound
+      clapPlay(clap, 0.3);
     }
 
     if (timeoutID.current) {

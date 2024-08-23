@@ -11,11 +11,15 @@ import toast from "react-hot-toast";
 import CommentService from "../../services/comment-service";
 // utils conffeti
 import { confettiAction } from "../../utils/conffeti";
+import { clapPlay } from "../../utils/clapSound";
+// assest
+import clapAudio from "../../assets/fireworks_pang01.mp3";
 
 const CommentCard = ({ comment }) => {
   const timeoutID = useRef(null);
   const waitingLike = useRef(0);
   const totalLikes = useRef(0);
+  const clap = useRef(new Audio(clapAudio));
 
   const [likeAmount, setLikeAmount] = useState(comment.numOfLikes);
 
@@ -30,6 +34,8 @@ const CommentCard = ({ comment }) => {
 
     if (totalLikes.current % 5 === 1) {
       confettiAction({ y: 0.7, x: 0.7 });
+      // clap sound
+      clapPlay(clap, 0.3);
     }
 
     if (timeoutID.current) {
