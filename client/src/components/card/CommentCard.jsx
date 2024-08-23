@@ -12,12 +12,18 @@ import CommentService from "../../services/comment-service";
 const CommentCard = ({ comment }) => {
   const timeoutID = useRef(null);
   const waitingLike = useRef(0);
+  const totalLikes = useRef(0);
 
   const [likeAmount, setLikeAmount] = useState(comment.numOfLikes);
 
   const handleClickClap = () => {
+    if (totalLikes.current >= 20) {
+      return;
+    }
+
     setLikeAmount(likeAmount + 1);
     waitingLike.current++;
+    totalLikes.current++;
 
     if (timeoutID.current) {
       clearTimeout(timeoutID.current);
