@@ -1,6 +1,14 @@
 {
-  "Header.jsx": "----------------------",
+  "frequently": "----------------------",
   "post_title_recent": "Recent Posts",
+
+  "Header.jsx": "----------------------",
+  "burger_home": "Home",
+  "burger_about": "About",
+  "burger_login": "Login",
+  "profile_dashboard": "Dashboard",
+  "profile": "Profile",
+  "profile_signout": "Sign out",
 
   "Home.jsx": "----------------------",
   "title": "Hi,",
@@ -31,5 +39,27 @@
   "select_yes": "Yes",
   "select_no": "No",
   "select_no_limit": "No limitation",
-  "select_result": "Result :"
+  "select_result": "Result :",
+
+  "Post.jsx": "----------------------",
+  "comment_text": "Comments",
+  "comment_comment": "Comment",
+  "comment_login": "Login",
+  "comment_login_des": "to leave a comment !",
+  "comment_select_recent": "Most Recent",
+  "comment_select_like": "Most Likes",
+  "comment_nocommentYet": "No comment yet ! Be the first one to leave a comment . !",
+
+  "Profile.jsx": "----------------------",
+  "profile_title": "Profile Informations",
+  "profile_name": "Name",
+  "profile_email": "Email",
+  "profile_update": "Update",
+  "delete_account": "Delete account",
+
+  "Modal.jsx": "----------------------",
+  "delete_profile_des": "Sad to see you go. Once your account is deleted, all of your content will be permanently gone, including your profile and comments.",
+  "delete_post_des": "Are you sure delete post ?",
+  "delete_confirm": "Type \"delete\" for deletion",
+  "delete_text": "DELETE"
 }

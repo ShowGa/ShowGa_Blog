@@ -21,8 +21,12 @@ import AuthService from "../services/auth-service";
 import toast from "react-hot-toast";
 // zustand
 import useAuthUserStore from "../zustand/useAuthUser";
+// i18next
+import { useTranslation } from "react-i18next";
 
 const Header = ({ changeLanguage }) => {
+  const { t } = useTranslation();
+
   const { authUser, logoutSetAuthUser } = useAuthUserStore();
   const { theme } = useThemeStore();
 
@@ -112,14 +116,14 @@ const Header = ({ changeLanguage }) => {
 
           <ul className="c-nav_list">
             <Link to={"/"} className="btn_hover_effect cursor-pointer">
-              Home
+              {t("burger_home")}
             </Link>
             <Link to={"/about"} className="btn_hover_effect cursor-pointer">
-              About
+              {t("burger_about")}
             </Link>
             {!authUser && (
               <Link to={"/login"} className="btn_hover_effect cursor-pointer">
-                Login
+                {t("burger_login")}
               </Link>
             )}
           </ul>
@@ -148,14 +152,14 @@ const Header = ({ changeLanguage }) => {
                 className="font-bold"
               >
                 <Link to={"/"}>
-                  <li className="dropdown_items">Home</li>
+                  <li className="dropdown_items">{t("")}</li>
                 </Link>
                 <Link to={"/About"}>
-                  <li className="dropdown_items">About</li>
+                  <li className="dropdown_items">{t("")}</li>
                 </Link>
                 {!authUser && (
                   <Link to={"/login"}>
-                    <li className="dropdown_items">Login</li>
+                    <li className="dropdown_items">{t("")}</li>
                   </Link>
                 )}
               </ul>
@@ -250,17 +254,17 @@ const Header = ({ changeLanguage }) => {
                 <div className="c-dropdown-list_container">
                   {authUser && authUser.isAdmin && (
                     <Link to={"/dashboard"}>
-                      <p className="dropdown_items">Dashboard</p>
+                      <p className="dropdown_items">{t("profile_dashboard")}</p>
                     </Link>
                   )}
 
                   <Link to={"/profile"}>
-                    <p className="dropdown_items">Profile</p>
+                    <p className="dropdown_items">{t("profile")}</p>
                   </Link>
                 </div>
 
                 <p onClick={handleLogOut} className="dropdown_items">
-                  Sign Out
+                  {t("profile_signout")}
                 </p>
               </div>
             </div>

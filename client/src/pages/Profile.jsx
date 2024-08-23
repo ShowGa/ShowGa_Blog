@@ -19,8 +19,12 @@ import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 // User-service
 import UserService from "../services/user-service";
+// i18next
+import { useTranslation } from "react-i18next";
 
 const Profile = () => {
+  const { t } = useTranslation();
+
   const filePickerRef = useRef();
 
   const { authUser, loginSetAuthUser } = useAuthUserStore();
@@ -118,7 +122,7 @@ const Profile = () => {
 
   return (
     <main className="p-profile-page_wrapper">
-      <h1 className="p-profile-title">Profile Information</h1>
+      <h1 className="p-profile-title">{t("profile_title")}</h1>
       <div className="p-profile-head_container">
         <img
           src={imgUrl || authUser.avatar}
@@ -157,7 +161,7 @@ const Profile = () => {
           hidden
         />
 
-        <label>Name</label>
+        <label>{t("profile_name")}</label>
         <input
           onChange={handleFormChange}
           id="username"
@@ -165,7 +169,7 @@ const Profile = () => {
           defaultValue={authUser.username}
         />
 
-        <label>Email</label>
+        <label>{t("profile_email")}</label>
         <input
           disabled={true}
           onChange={handleFormChange}
@@ -174,7 +178,7 @@ const Profile = () => {
           defaultValue={authUser.email}
         />
 
-        <button type="submit">Update</button>
+        <button type="submit">{t("profile_update")}</button>
       </form>
 
       <div
@@ -183,7 +187,7 @@ const Profile = () => {
         }}
         className="p-profile-function_button_container"
       >
-        <span>Delete account</span>
+        <span>{t("delete_account")}</span>
       </div>
 
       {showModal && (

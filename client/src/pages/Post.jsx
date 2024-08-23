@@ -24,6 +24,8 @@ import CommentService from "../services/comment-service";
 import { FaSquarePlus } from "react-icons/fa6";
 
 const Post = () => {
+  const { t } = useTranslation();
+
   const params = useParams();
 
   const { authUser } = useAuthUserStore();
@@ -244,7 +246,7 @@ const Post = () => {
               }}
             >
               <div className="p-row_flex_between">
-                <p className="text-xl font-bold">Comments</p>
+                <p className="text-xl font-bold">{t("comment_text")}</p>
                 <FaWindowClose
                   onClick={() => {
                     setShowCommentSec(!showCommentSec);
@@ -262,15 +264,15 @@ const Post = () => {
                         value={formData.content}
                         id="content"
                       ></textarea>
-                      <button type="submit">Comment</button>
+                      <button type="submit">{t("comment_comment")}</button>
                     </>
                   ) : (
                     <div>
                       <p>
                         <Link to={"/login"} className="link">
-                          Login
+                          {t("comment_login")}
                         </Link>{" "}
-                        to leave comments !
+                        {t("comment_login_des")}
                       </p>
                     </div>
                   )}
@@ -285,8 +287,12 @@ const Post = () => {
                       ref={selectRef}
                       className="p-commentSec_select"
                     >
-                      <option value="createdAt_desc">Most Recent</option>
-                      <option value="numOfLikes_desc">Most Likes</option>
+                      <option value="createdAt_desc">
+                        {t("comment_select_recent")}
+                      </option>
+                      <option value="numOfLikes_desc">
+                        {t("comment_select_like")}
+                      </option>
                     </select>
                   </div>
                 )}
@@ -302,7 +308,7 @@ const Post = () => {
                   </div>
                 )}
                 {comments && comments.length === 0 && (
-                  <p>No comment yet ! Be the first one to leave a comment .</p>
+                  <p>{t("comment_nocommentYet")}</p>
                 )}
               </div>
             </div>

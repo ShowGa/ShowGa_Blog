@@ -1,19 +1,19 @@
 import React, { useState } from "react";
+// i18next
+import { useTranslation } from "react-i18next";
 
 const Modal = ({ handleAction, setShowModal, condition }) => {
+  const { t } = useTranslation();
+
   const [confirmInput, setConfirmInput] = useState("");
 
   const handleCondition = () => {
     if (condition === "delete profile") {
-      return {
-        word: "Sad to see you go. Once your account is deleted, all of your content will be permanently gone, including your profile and comments.",
-      };
+      return t("delete_profile_des");
     }
 
     if (condition === "delete post") {
-      return {
-        word: "Are you sure delete post ?",
-      };
+      return t("delete_post_des");
     }
   };
 
@@ -26,10 +26,10 @@ const Modal = ({ handleAction, setShowModal, condition }) => {
         className="c-delete-modal_container"
       >
         <span onClick={setShowModal}>X</span>
-        <h3>{handleCondition().word}</h3>
+        <h3>{handleCondition()}</h3>
 
         <div className="c-delete-confirmation">
-          <p>Type "delete" for deletion</p>
+          <p>{t("delete_confirm")}</p>
           <input
             type="text"
             onChange={(e) => {
@@ -39,7 +39,7 @@ const Modal = ({ handleAction, setShowModal, condition }) => {
         </div>
 
         <button disabled={confirmInput !== "delete"} onClick={handleAction}>
-          Delete
+          {t("delete_text")}
         </button>
       </div>
     </div>
