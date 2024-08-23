@@ -1,5 +1,6 @@
 import User from "../models/userModel.js";
 import Post from "../models/postModel.js";
+import Comment from "../models/commentModel.js";
 
 export const updateUser = async (req, res) => {
   try {
@@ -52,6 +53,7 @@ export const deleteAccount = async (req, res) => {
     await Promise.all([
       User.findOneAndDelete({ _id: userId }),
       Post.deleteMany({ belongAuthorID: userId }),
+      Comment.deleteMany({ belongUserID: userId }),
     ]);
 
     res.clearCookie("jwt");

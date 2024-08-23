@@ -44,9 +44,12 @@ export const deletePost = async (req, res) => {
 
     const { postID } = req.params;
 
-    await Post.findOneAndDelete({ _id: postID });
+    await Promise.all([
+      Post.findOneAndDelete({ _id: postID }),
+      Comment.deleteMany({ belongPostID: postID }),
+    ]);
 
-    return res.status(201).json({ message: "Delete user successfully !" });
+    return res.status(201).json({ message: "Delete post successfully !" });
   } catch (e) {
     console.log("Error in deletePost controller !" + e);
     res

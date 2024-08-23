@@ -37,9 +37,7 @@ const DashPosts = () => {
   };
 
   const handleDeletePost = () => {
-    const postID = post[0]._id;
-
-    PostService.deletePost(postID)
+    PostService.deletePost(post._id)
       .then((res) => {
         toast.success(res.data.message);
         setPost(null);
