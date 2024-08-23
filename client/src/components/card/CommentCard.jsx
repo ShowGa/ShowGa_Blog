@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import { gao } from "../../assets";
 // react icons
 import { PiHandsClapping } from "react-icons/pi";
+import { FaHandsClapping } from "react-icons/fa6";
 import { changeTimeZone } from "../../utils/timezone";
 //react hot toast
 import toast from "react-hot-toast";
@@ -69,7 +70,11 @@ const CommentCard = ({ comment }) => {
 
       <div>
         <button onClick={handleClickClap} className="c-comment-card_function">
-          <PiHandsClapping className="text-lg" />
+          {totalLikes.current > 0 ? (
+            <FaHandsClapping className="text-xl" />
+          ) : (
+            <PiHandsClapping className="text-xl" />
+          )}
           <p>{likeAmount}</p>
         </button>
       </div>

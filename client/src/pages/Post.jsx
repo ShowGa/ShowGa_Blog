@@ -8,6 +8,7 @@ import CommentCard from "../components/card/CommentCard";
 import "./pages.css";
 // react icons
 import { PiHandsClapping } from "react-icons/pi";
+import { FaHandsClapping } from "react-icons/fa6";
 import { FaRegComment, FaWindowClose } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 // zustand
@@ -204,15 +205,20 @@ const Post = () => {
                 </div>
 
                 <div className="p-post_title_function-list">
-                  <div
+                  <button
                     onClick={handleClickClap}
                     className="p-function_clap_container"
                   >
-                    <PiHandsClapping className="text-xl" />
-                    <p>{post.numOfLikes}</p>
-                  </div>
+                    {totalLikes.current > 0 ? (
+                      <FaHandsClapping className="text-xl" />
+                    ) : (
+                      <PiHandsClapping className="text-xl" />
+                    )}
 
-                  <div
+                    <p>{post.numOfLikes}</p>
+                  </button>
+
+                  <button
                     className="p-function_comments_container"
                     onClick={() => {
                       setShowCommentSec(!showCommentSec);
@@ -221,7 +227,7 @@ const Post = () => {
                   >
                     <FaRegComment className="text-xl" />
                     <p>{commentNum}</p>
-                  </div>
+                  </button>
 
                   <div className="p-function_clap_container">
                     <FaEye className="text-xl" />
