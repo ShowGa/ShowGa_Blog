@@ -152,14 +152,14 @@ const Header = ({ changeLanguage }) => {
                 className="font-bold"
               >
                 <Link to={"/"}>
-                  <li className="dropdown_items">{t("")}</li>
+                  <li className="dropdown_items">{t("burger_home")}</li>
                 </Link>
                 <Link to={"/About"}>
-                  <li className="dropdown_items">{t("")}</li>
+                  <li className="dropdown_items">{t("burger_about")}</li>
                 </Link>
                 {!authUser && (
                   <Link to={"/login"}>
-                    <li className="dropdown_items">{t("")}</li>
+                    <li className="dropdown_items">{t("burger_login")}</li>
                   </Link>
                 )}
               </ul>
