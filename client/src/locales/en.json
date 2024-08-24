@@ -61,5 +61,8 @@
   "delete_profile_des": "Sad to see you go. Once your account is deleted, all of your content will be permanently gone, including your profile and comments.",
   "delete_post_des": "Are you sure delete post ?",
   "delete_confirm": "Type \"delete\" for deletion",
-  "delete_text": "DELETE"
+  "delete_text": "DELETE",
+
+  "About.jsx": "----------------------",
+  "about_title": "About ShowGa and Blog"
 }

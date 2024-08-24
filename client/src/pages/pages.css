@@ -346,7 +346,7 @@ About.jsx
 ==================
 */
 .p-about_section_container {
-  @apply h-[100vh] max-w-[80%]  m-auto pt-12;
+  @apply min-h-screen max-w-[80%]  m-auto py-12;
 }
 
 .p-about_section_container h1 {
@@ -525,4 +525,13 @@ Profile.jsx
 
 .p-items_active {
   @apply bg-gray-500 bg-opacity-30;
+}
+
+/*
+==================
+About.jsx
+==================
+*/
+.p-about-content h2 {
+  @apply text-2xl font-bold mt-8 border-b;
 }

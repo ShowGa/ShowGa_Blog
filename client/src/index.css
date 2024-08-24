@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "ZenMaruGothic";
+  src: url("/fonts/ZenMaruGothic-Regular.ttf") format("truetype");
+}
+
 :root {
   --bg: white;
   --textColor: black;
@@ -12,7 +17,8 @@
 
 body {
   box-sizing: border-box;
-  font-family: "Comfortaa", sans-serif;
+  font-family: "Comfortaa", "ZenMaruGothic";
+  /* font-family: ZenMaruGothic; */
   /* font-family: "Knewave", cursive; */
 }
 

@@ -61,5 +61,8 @@
   "delete_profile_des": "很遺憾看到您離開。一旦帳號被刪除，所有內容將永久消失，包括您的個人資料和評論。",
   "delete_post_des": "您確定要刪除這篇文章嗎？",
   "delete_confirm": "輸入 \"delete\" 來確認刪除",
-  "delete_text": "刪除"
+  "delete_text": "刪除",
+
+  "About.jsx": "----------------------",
+  "about_title": "關於ShowGa和部落格"
 }
