@@ -140,7 +140,7 @@ const Search = () => {
   }, [location.search]);
 
   return (
-    <div className="max-w-[80%] mx-auto max-md:max-w-[95%]">
+    <div className="min-h-screen max-w-[80%] mx-auto max-md:max-w-[95%]">
       {/* Hero section */}
       <section>
         <div className="p-heroSec_intro_head_container">
@@ -241,7 +241,7 @@ const Search = () => {
 
               {searchPosts && searchPosts.length === 0 && (
                 <div>
-                  <p>Sadly, there no result</p>
+                  <p>Sadly, there's no result</p>
                 </div>
               )}
             </div>
