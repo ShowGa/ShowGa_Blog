@@ -108,7 +108,7 @@ const Profile = () => {
       toast.error("No changes of user information !");
       return "error";
     }
-    if (formData.username.length > 20) {
+    if (formData?.username.length > 20) {
       toast.error("Username should be less than 20 characters !");
       return "error";
     }

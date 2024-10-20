@@ -69,6 +69,7 @@ Swiper
 .swiper-slide-shadow-left,
 .swiper-slide-shadow-right {
   border-radius: 0.5rem;
+  @apply w-[320px] h-[400px];
 }
 
 /*
