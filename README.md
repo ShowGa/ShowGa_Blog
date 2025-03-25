@@ -12,7 +12,7 @@ A personal blog built with MERN stack where I share my thoughts and experiences 
 
   - [React.js](https://github.com/facebook/react)
   - [Tailwind CSS](https://tailwindcss.com/)
-  - [i18next](https://www.i18next.com/) (For internationalization)
+  - [i18next](https://www.i18next.com/) (Multi-Language support)
   - [Vite](https://vitejs.dev/)
 
 - Backend:
@@ -33,7 +33,7 @@ A personal blog built with MERN stack where I share my thoughts and experiences 
 
   - Create, edit and delete articles
   - Featured articles selection
-  - Category-based organization
+  - Categorize article
 
 - [Reader Experience](#reader-experience)
 
@@ -46,22 +46,6 @@ A personal blog built with MERN stack where I share my thoughts and experiences 
   - Comment system
   - Clap (Like) functionality
   - User interactions
-
-### Authentication
-
-<!--  -->
-
-### Article Management
-
-<!--  -->
-
-### Reader Experience
-
-<!--  -->
-
-### Social Features
-
-<!--  -->
 
 ## Hosting
 
@@ -81,7 +65,7 @@ Deployed on [Render](https://showga-blog.onrender.com/)
 
   - [React.js](https://github.com/facebook/react)
   - [Tailwind CSS](https://tailwindcss.com/)
-  - [i18next](https://www.i18next.com/) (用於國際化)
+  - [i18next](https://www.i18next.com/) (多語言支持)
   - [Vite](https://vitejs.dev/)
 
 - 後端:
@@ -102,7 +86,7 @@ Deployed on [Render](https://showga-blog.onrender.com/)
 
   - 創建、編輯和刪除文章
   - 精選文章選擇
-  - 基於分類的組織
+  - 文章分類
 
 - [讀者體驗](#讀者體驗)
 
@@ -116,22 +100,6 @@ Deployed on [Render](https://showga-blog.onrender.com/)
   - 鼓掌（按讚）功能
   - 用戶互動
 
-### 認證
-
-<!--  -->
-
-### 文章管理
-
-<!--  -->
-
-### 讀者體驗
-
-<!--  -->
-
-### 社交功能
-
-<!--  -->
-
-### 部署
+## 部署
 
 部署於 [Render](https://showga-blog.onrender.com/)
