@@ -33,7 +33,7 @@ A personal blog built with MERN stack where I share my thoughts and experiences 
 
   - Create, edit and delete articles
   - Featured articles selection
-  - Categorize article
+  - Category-based organization
 
 - [Reader Experience](#reader-experience)
 
@@ -46,6 +46,22 @@ A personal blog built with MERN stack where I share my thoughts and experiences 
   - Comment system
   - Clap (Like) functionality
   - User interactions
+
+### Authentication
+
+![image](https://raw.githubusercontent.com/ShowGa/Pic-repository/refs/heads/main/Blog-Project-Feature1.png)
+
+### Article Management
+
+![image](https://raw.githubusercontent.com/ShowGa/Pic-repository/refs/heads/main/Blog-Project-Feature2.png)
+
+### Reader Experience
+
+![image](https://raw.githubusercontent.com/ShowGa/Pic-repository/refs/heads/main/Blog-Project-Feature3.png)
+
+### Social Features
+
+![image](https://raw.githubusercontent.com/ShowGa/Pic-repository/refs/heads/main/Blog-Project-Feature4.png)
 
 ## Hosting
 
@@ -86,7 +102,7 @@ Deployed on [Render](https://showga-blog.onrender.com/)
 
   - 創建、編輯和刪除文章
   - 精選文章選擇
-  - 文章分類
+  - 基於分類的組織
 
 - [讀者體驗](#讀者體驗)
 
@@ -99,6 +115,22 @@ Deployed on [Render](https://showga-blog.onrender.com/)
   - 評論系統
   - 鼓掌（按讚）功能
   - 用戶互動
+
+### 認證
+
+![image](https://raw.githubusercontent.com/ShowGa/Pic-repository/refs/heads/main/Blog-Project-Feature1.png)
+
+### 文章管理
+
+![image](https://raw.githubusercontent.com/ShowGa/Pic-repository/refs/heads/main/Blog-Project-Feature2.png)
+
+### 讀者體驗
+
+![image](https://raw.githubusercontent.com/ShowGa/Pic-repository/refs/heads/main/Blog-Project-Feature3.png)
+
+### 社交功能
+
+![image](https://raw.githubusercontent.com/ShowGa/Pic-repository/refs/heads/main/Blog-Project-Feature4.png)
 
 ## 部署
 
